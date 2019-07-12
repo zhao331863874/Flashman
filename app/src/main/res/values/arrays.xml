@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="tab_string_all_task">
+        <item>"配送中"</item>
+        <item>"退货取货中"</item>
+        <item>"返还中"</item>
+        <item>"更多"</item>
+    </array>
+
+    <array name="tab_string_payment_list">
+        <item>"待支付"</item>
+        <item>"支付失败"</item>
+        <item>"支付异常"</item>
+        <item>"支付成功"</item>
+    </array>
+</resources>

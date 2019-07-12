@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/navigation_bar_view" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        tools:context="com.ddinfo.flashman.activity.task.TaskPartSendCauseActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_gray"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="请选择拒收原因" />
+
+            <RadioGroup
+                android:id="@+id/rg_refuse_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                >
+
+                <RadioButton
+                    android:id="@+id/rb_one"
+                    style="@style/PartSelStyle"
+                    android:text="商品保质期不符合店家要求"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/rb_two"
+                    style="@style/PartSelStyle"
+                    android:text="送达日期晚，已从其他渠道进货"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rb_three"
+                    style="@style/PartSelStyle"
+                    android:text="破损/质量问题"
+                    />
+                <RadioButton
+                    android:id="@+id/rb_four"
+                    style="@style/PartSelStyle"
+                    android:text="误解活动优惠"
+                    />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <EditText
+                    android:id="@+id/et_other_cause"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/edit_white"
+                    android:hint="请输入其他原因"
+                    android:minHeight="40dp"
+                    android:paddingLeft="10dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="请输入店家收货码"
+                android:textColor="@color/text_color_deep_gray"
+                android:textSize="@dimen/text_size_xxx" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_take_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/edit_white"
+                    android:minHeight="40dp"
+                    android:paddingLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_pay_way"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="请选择收款方式" />
+
+                <RadioGroup
+                    android:id="@+id/rg_pay_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <RadioButton
+                        android:id="@+id/rb_cash"
+                        style="@style/PayWaySelStyle"
+                        android:drawablePadding="20dp"
+                        android:layout_width="match_parent"
+                        android:text="现金"
+                        android:visibility="gone"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_pos"
+                        style="@style/PayWaySelStyle"
+                        android:drawablePadding="20dp"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:text="POS机"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_alipay"
+                        style="@style/PayWaySelStyle"
+                        android:drawableRight="@mipmap/icon_alipay"
+                        android:visibility="gone"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/rb_wxpay"
+                        style="@style/PayWaySelStyle"
+                        android:drawableRight="@mipmap/icon_wechatpay"
+                        android:visibility="gone"
+                        />
+                </RadioGroup>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_done"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="确认部分送达"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_xxx"
+        android:gravity="center"
+        android:background="@color/bg_green"/>
+</LinearLayout>

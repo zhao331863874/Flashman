@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ddinfo.flashman.activity.menu.wallet.WithdrawsDetailActivity">
+    <include layout="@layout/navigation_bar_view"/>
+    <RelativeLayout
+        android:padding="10dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:text="出账金额"
+            android:textSize="@dimen/font12"
+            android:textColor="@color/text_color_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/money"
+            android:layout_alignParentRight="true"
+            tools:text="1.00"
+            android:textSize="@dimen/font12"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:text="类型"
+                android:textSize="@dimen/font12"
+                android:textColor="@color/text_color_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/type_state"
+                android:layout_alignParentRight="true"
+                tools:text="提现"
+                android:textSize="@dimen/font12"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:text="时间"
+                android:textSize="@dimen/font12"
+                android:textColor="@color/text_color_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/time"
+                android:layout_alignParentRight="true"
+                tools:text="2018-06-25 14:25:15"
+                android:textSize="@dimen/font12"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:text="运单号"
+                android:textSize="@dimen/font12"
+                android:textColor="@color/text_color_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/number_id"
+                android:layout_alignParentRight="true"
+                tools:text=""
+                android:textSize="@dimen/font12"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:text="交易单号"
+                android:textSize="@dimen/font12"
+                android:textColor="@color/text_color_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/trade_number_id"
+                android:layout_alignParentRight="true"
+                tools:text=""
+                android:textSize="@dimen/font12"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

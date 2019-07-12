@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+  <include layout="@layout/navigation_bar_view"/>
+  <EditText
+      android:id="@+id/et_barcode"
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:singleLine="true"
+      android:background="@drawable/bg_edit"
+      android:paddingLeft="5dp"
+      android:paddingRight="5dp"
+      android:hint="请输入条形码"
+      android:inputType="number"
+      android:maxLength="15"
+      android:textSize="@dimen/text_size_xxx"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft="50dp"
+      android:layout_marginRight="50dp"
+      />
+
+
+  <Button
+      android:id="@+id/btn_ok_barcode"
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:text="搜   索"
+      android:textColor="@color/white"
+      android:background="@drawable/corners_blue"
+      android:textSize="@dimen/text_size_xxx"
+      android:layout_marginTop="20dp"
+      android:layout_marginLeft="50dp"
+      android:layout_marginRight="50dp"
+      />
+  <Button
+      android:id="@+id/btn_go_saoma"
+      android:layout_width="wrap_content"
+      android:layout_height="40dp"
+      android:background="@null"
+      android:drawableLeft="@mipmap/flag_go_saoma"
+      android:text="切换扫码"
+      android:drawablePadding="10dp"
+      android:textColor="@color/blue"
+      android:textSize="@dimen/text_size_xx"
+      android:layout_gravity="right"
+      android:layout_marginRight="50dp"
+      android:layout_marginTop="20dp"
+      />
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:layout_marginTop="25dp"
+      android:background="@color/bound_search_view"
+      />
+
+
+</LinearLayout>

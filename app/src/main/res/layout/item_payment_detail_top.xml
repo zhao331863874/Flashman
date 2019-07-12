@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginBottom="10dp"
+        >
+        <TextView
+            android:id="@+id/tv_order_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_number"
+            android:gravity="center"
+            android:textColor="@color/text_color_red"
+            android:layout_margin="10dp"
+            android:text="待支付"/>
+
+        <TextView
+            android:id="@+id/tv_order_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textSize="@dimen/text_size_xx"
+            android:text="交货款单号：HKG83465874365"/>
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textSize="@dimen/text_size_xx"
+            android:text="创建时间：HKG83465874365"/>
+
+        <TextView
+            android:id="@+id/tv_error_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textSize="@dimen/text_size_xx"
+            android:text="支付失败时间：HKG83465874365"/>
+    </LinearLayout>
+</LinearLayout>

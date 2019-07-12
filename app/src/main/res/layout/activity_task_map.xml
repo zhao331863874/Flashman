@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.task.TaskMapActivity"
+    >
+
+
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:id="@+id/rel_map"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      >
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:screenOrientation="portrait"
+        />
+
+    <com.ddinfo.flashman.view.RecyclerViewViewPager.RecyclerViewPager
+        android:id="@+id/rcv_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:clipToPadding="false"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        app:rvp_singlePageFling="true"
+        app:rvp_triggerOffset="0.1"
+        />
+  </RelativeLayout>
+
+  <include layout="@layout/navigation_bar_view"/>
+</RelativeLayout>

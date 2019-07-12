@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_call_service"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/light_gray_bg_color"
+    tools:context="com.ddinfo.flashman.activity.menu.wallet.CallServiceActivity">
+    <include layout="@layout/navigation_bar_view"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/tv_call_phone"
+            style="@style/black_xx"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/corners_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:drawableRight="@mipmap/icon_phone"
+            android:text="电话：未获取到联系方式" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            style="@style/black_xx"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/corners_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:drawableRight="@mipmap/icon_email"
+            android:text="邮箱：未获取到联系邮箱" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textSize="@dimen/text_size_s"
+        android:textColor="@color/text_gray"
+        android:text="您有任何问题可以拨打电话或者\n发送到客服邮箱"
+        android:gravity="center"/>
+
+</LinearLayout>

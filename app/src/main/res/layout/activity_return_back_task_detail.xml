@@ -1,0 +1,99 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ddinfo.flashman.activity.task.TaskAllListFragment">
+
+    <include layout="@layout/navigation_bar_view" />
+
+    <com.kennyc.view.MultiStateView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/multiStateView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:msv_emptyView="@layout/common_empty"
+        app:msv_errorView="@layout/common_no_network">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_detail_recycle_header" />
+
+            <com.ddinfo.flashman.view.RefreshLayout.MaterialRefreshLayout
+                android:id="@+id/swipe_search_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rcv_task_all_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/light_gray_bg_color" />
+            </com.ddinfo.flashman.view.RefreshLayout.MaterialRefreshLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_return_back_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_real_back_count"
+                        style="@style/black_xx"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:text="实退商品总数: " />
+
+                    <TextView
+                        android:id="@+id/tv_real_back_money"
+                        style="@style/black_xx"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:text="实退退货金额:" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/line_gray" />
+
+                <Button
+                    android:id="@+id/btn_take_goods"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:gravity="center"
+                    android:text="确定取货"
+                    android:textColor="@color/bg_blue"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </com.kennyc.view.MultiStateView>
+
+
+</LinearLayout>
+

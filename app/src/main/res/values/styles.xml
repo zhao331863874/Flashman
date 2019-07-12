@@ -1,0 +1,153 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="left_txt_menu">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textColor">@color/light_black_color</item>
+        <item name="android:textSize">@dimen/txt_menu</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:drawablePadding">8dp</item>
+    </style>
+
+    <style name="customBackground" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="helloBackground" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@mipmap/bg_hello</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+
+    </style>
+
+    <style name="header_bar_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/nav_bar_height</item>
+        <item name="android:background">@color/bg_blue</item>
+    </style>
+    <!--通用字体样式-->
+    <style name="common_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="common_title_text" parent="@style/common_text">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="common_14_text" parent="@style/common_text">
+        <item name="android:textSize">14.0sp</item>
+    </style>
+
+    <!--配送员-->
+    <style name="black_x">
+        <item name="android:textSize">@dimen/text_size_x</item>
+        <item name="android:textColor">@color/light_black_color</item>
+    </style>
+
+    <style name="black_xx">
+        <item name="android:textSize">@dimen/text_size_xx</item>
+        <item name="android:textColor">@color/light_black_color</item>
+    </style>
+
+    <style name="black_xxx">
+        <item name="android:textSize">@dimen/text_size_xxx</item>
+        <item name="android:textColor">@color/light_black_color</item>
+    </style>
+
+    <style name="black_xxxx">
+        <item name="android:textSize">@dimen/text_size_xxxx</item>
+        <item name="android:textColor">@color/light_black_color</item>
+    </style>
+
+    <style name="TextAppearance_Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="login_edit_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textCursorDrawable">@drawable/edittext_cursor_drawable</item>
+    </style>
+
+    <!--配送-->
+    <style name="bg_corners_white">
+        <item name="android:background">@drawable/corners_white</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+
+    <style name="MatchWrapTv" parent="MatchWrap">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_btn_orange</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="AutoWrapTv" parent="AutoWrap">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_btn_orange</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="PartSelStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:drawableLeft">@drawable/sel_payway</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:textSize">@dimen/text_size_xx</item>
+        <item name="android:textColor">@color/text_color_deep_gray</item>
+    </style>
+
+    <style name="PayWaySelStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:drawableLeft">@drawable/sel_payway</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:textSize">@dimen/text_size_xxx</item>
+        <item name="android:textColor">@color/text_color_deep_gray</item>
+    </style>
+
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

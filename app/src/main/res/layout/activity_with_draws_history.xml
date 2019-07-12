@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_with_draws_history"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray_bg_color"
+    android:orientation="vertical"
+    tools:context="com.ddinfo.flashman.activity.menu.wallet.WithDrawsHistoryActivity">
+    <include layout="@layout/navigation_bar_view"/>
+    <com.ddinfo.flashman.view.RefreshLayout.MaterialRefreshLayout
+        android:id="@+id/swipe_search_list"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/withdraw_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_gray_bg_color" />
+    </com.ddinfo.flashman.view.RefreshLayout.MaterialRefreshLayout>
+</LinearLayout>

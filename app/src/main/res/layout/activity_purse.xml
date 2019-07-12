@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_purse"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ddinfo.flashman.activity.menu.wallet.WalletActivity"
+    android:background="@color/light_gray_bg_color">
+
+    <include layout="@layout/navigation_bar_view"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:id="@+id/rl_balance"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.0元"
+                android:textSize="@dimen/text_size_number"
+                android:textColor="@color/text_color_blue"
+                android:layout_centerInParent="true"
+                android:paddingBottom="20dp"
+                android:gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="余额"
+                    style="@style/black_xx"
+                    android:layout_marginRight="10dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="明细及提现"
+                    android:textSize="@dimen/text_size_x"
+                    android:textColor="@color/text_color_red"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_pledge"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:layout_marginLeft="1dp">
+
+            <TextView
+                android:id="@+id/tv_pledge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.0元"
+                android:textSize="@dimen/text_size_number"
+                android:textColor="@color/text_color_blue"
+                android:layout_centerInParent="true"
+                android:paddingBottom="20dp"
+                android:gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="押金"
+                    style="@style/black_xx"
+                    android:layout_marginRight="10dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查看"
+                    android:textSize="@dimen/text_size_x"
+                    android:textColor="@color/text_color_red"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:id="@+id/rl_credit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_credit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.0元"
+                android:textSize="@dimen/text_size_number"
+                android:textColor="@color/text_color_blue"
+                android:layout_centerInParent="true"
+                android:paddingBottom="20dp"
+                android:gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="授信额度"
+                    style="@style/black_xx"
+                    android:layout_marginRight="10dp"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_total_credit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:layout_marginLeft="1dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingBottom="20dp"
+                >
+                <TextView
+                    android:id="@+id/tv_total_credit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0元"
+                    android:textSize="@dimen/text_size_number"
+                    android:textColor="@color/text_color_blue" />
+                <TextView
+                    android:id="@+id/tv_frozen"
+                    android:layout_below="@+id/tv_total_credit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:textColor="@color/text_gray"
+                    android:text=""
+                    android:visibility="gone"
+                    android:textSize="@dimen/text_size_xx" />
+            </RelativeLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="可接货额度"
+                    style="@style/black_xx"
+                    android:layout_marginRight="10dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="冻结明细"
+                    android:textSize="@dimen/text_size_x"
+                    android:textColor="@color/text_color_red"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

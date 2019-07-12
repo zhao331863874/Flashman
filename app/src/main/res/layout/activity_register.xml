@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/light_gray_bg_color"
+    tools:context="com.ddinfo.flashman.activity.RegisterActivity">
+    <include layout="@layout/navigation_bar_view"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注意：同一手机号只能注册一个账号"
+        android:background="@color/text_bg_warning"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="@dimen/text_size_s"
+        android:textColor="@color/text_color_red"
+        android:paddingLeft="30dp"
+        android:id="@+id/textView" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        style="@style/bg_corners_white"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|right"
+            android:textSize="@dimen/text_size_xx"
+            android:textColor="@color/text_color_deep_gray"
+            android:paddingRight="10dp"
+            android:text="手机号码：" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/et_phone"
+            android:textSize="@dimen/text_size_xx"
+            android:hint="@string/please_input_phone"
+            android:background="@null"
+            android:inputType="phone"
+            android:textColorHint="@color/text_color_light_gray"
+
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/bg_corners_white"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/text_password"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|right"
+            android:paddingRight="10dp"
+            android:textSize="@dimen/text_size_xx"
+            android:textColor="@color/text_color_deep_gray"
+            android:text="验证码："/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/et_passwrod"
+            android:hint="@string/please_input_auth_code"
+            android:background="@null"
+            android:layout_alignParentTop="true"
+            android:textColorHint="@color/text_color_light_gray"
+            android:inputType="number"
+            android:layout_toEndOf="@+id/text_password" />
+
+        <TextView
+            android:id="@+id/bt_get_password"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="获取验证码"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textSize="@dimen/text_size_s"
+            android:textColor="@color/text_color_red"
+            android:background="@drawable/corners_gray"
+            android:layout_centerVertical="true" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        style="@style/bg_corners_white"
+        android:layout_marginTop="1dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_size_xx"
+            android:textColor="@color/text_color_deep_gray"
+            android:gravity="center_vertical|right"
+            android:paddingRight="10dp"
+            android:text="用户名：" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/et_username"
+            android:hint="@string/please_input_user_name"
+            android:textColorHint="@color/text_color_light_gray"
+
+            android:background="@null"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        style="@style/bg_corners_white"
+        android:layout_marginTop="1dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_size_xx"
+            android:text="身份证号："
+            android:textColor="@color/text_color_deep_gray"
+            android:gravity="center_vertical|right"
+            android:paddingRight="10dp"
+            android:id="@+id/textView4" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/et_ID_code"
+            android:hint="@string/please_input_ID_code"
+            android:textColorHint="@color/text_color_light_gray"
+
+            android:background="@null"
+            />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_register"
+        style="@style/bg_corners_white"
+        android:background="@drawable/corners_blue"
+        android:text="注 册"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_xx"
+        android:layout_marginTop="30dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击完成注册代表你已经阅读了"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_size_x"
+            />
+        <TextView
+            android:id="@+id/tv_service_contract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="《猪行侠服务协议》"
+            android:textSize="@dimen/text_size_xx"
+            android:textColor="@color/text_color_blue"
+            android:layout_marginLeft="5dp"
+
+            />
+    </LinearLayout>
+
+</LinearLayout>

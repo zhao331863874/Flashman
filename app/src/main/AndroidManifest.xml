@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ddinfo.flashman">
+
+    <!-- Required  一些系统要求的权限，如访问网络等 -->
+    <uses-permission android:name="com.ddinfo.ddmall.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <!-- 用于加快GPS首次定位 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- 用于Android M及以上系统，申请加入忽略电池优化白名单 -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- SD卡读取权限，用户写入离线定位数据 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <!-- 使用照相机权限 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <!-- 自动聚焦权限 -->
+    <application
+        android:name=".application.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".activity.HelloActivity"
+            android:alwaysRetainTaskState="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/helloBackground">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".activity.tab_frame.MainActivity"
+            android:alwaysRetainTaskState="true" />
+        <activity android:name=".activity.LaunchActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity
+            android:name=".activity.task.TaskAllListActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.task.TaskDetailActivity" />
+        <activity android:name=".activity.menu.PaymentActivity" />
+        <activity android:name=".activity.menu.SettingActivity" />
+        <activity android:name=".activity.CaptureActivity" />
+        <activity android:name=".activity.task.TaskMoreListActivity" />
+        <activity
+            android:name=".activity.menu.wallet.WalletActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".activity.menu.wallet.BalanceActivity" />
+        <activity android:name=".activity.menu.wallet.PledgeActivity" />
+        <activity android:name=".activity.menu.wallet.WithdrawsCashActivity" />
+        <activity android:name=".activity.menu.wallet.WithDrawsHistoryActivity" />
+        <activity android:name=".activity.menu.wallet.TopUpInputActivity" />
+        <activity android:name=".activity.menu.wallet.PayOrderActivity" />
+        <activity android:name=".activity.menu.wallet.BalanceTransferredActivity" />
+        <activity android:name=".activity.menu.wallet.WithdrawsCashSettingActivity" />
+        <activity android:name=".activity.menu.wallet.WithdrawsCashAddAlipayActivity" />
+        <activity android:name=".activity.menu.wallet.CallServiceActivity" />
+        <activity android:name=".activity.menu.wallet.ModeOfPaymentActivity" />
+        <activity android:name=".activity.task.QRCodeActivity" />
+        <activity android:name=".activity.webview.WebViewClientActivity" />
+        <!-- umeng sdk begin -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="582d5169f5ade4723c0003c6" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Dianda" />
+        <!-- weixin sdk begin -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+        <!-- weixin sdk end -->
+
+
+        <!-- alipay sdk begin -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <!-- alipay sdk end -->
+        <activity android:name=".activity.task.WriteQRCodeActivity" />
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="@string/file_provide"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity android:name=".activity.menu.AppMesActivity" />
+        <activity android:name=".activity.task.TaskIncomeActivity" />
+        <activity android:name=".activity.task.TaskIncomeResultActivity" />
+
+        <service
+            android:name=".activity.task.IncomeResuleService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activity.menu.BoardActivity" />
+        <activity android:name=".activity.menu.PaymentListActivity" />
+        <activity android:name=".activity.menu.PaymentDetailActivity" />
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="N6wncLHd7cs14aVqKAgZQDgdGHxUQYfN" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <service
+            android:name="com.baidu.trace.LBSTraceService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activity.task.TaskMapActivity" />
+        <activity android:name=".activity.task.StoreImgActivity" />
+        <activity android:name=".activity.task.TaskPartSendCauseActivity" />
+        <activity android:name=".activity.task.TaskPartSendActivity" />
+        <activity android:name=".activity.task.TaskPartSendConfirmActivity" />
+        <activity android:name=".activity.menu.SupervisingJuniorActivity" />
+        <activity android:name=".activity.task.WaitForDeliveryActivity" />
+        <activity android:name=".activity.task.FrozenDetailActivity" />
+        <activity android:name=".activity.task.ReturnBackTaskDetailActivity" />
+        <activity
+            android:name=".apshare.ShareEntryActivity"
+            android:exported="true" />
+        <activity android:name=".activity.menu.wallet.WithdrawsDetailActivity" />
+        <activity android:name=".activity.PerfectUserInfoActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+        </activity>
+    </application>
+
+</manifest>

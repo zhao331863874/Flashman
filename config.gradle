@@ -1,0 +1,7 @@
+
+ext{
+    versionCode = 131
+    versionName = "1.3.1"
+    appIdSuffix = false
+    runInSimulator = false;
+}

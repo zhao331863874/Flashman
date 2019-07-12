@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/light_gray_bg_color"
+    android:orientation="vertical"
+    >
+
+  <LinearLayout
+
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/corners_white"
+      android:orientation="vertical"
+      >
+
+    <LinearLayout
+        android:id="@+id/ll_itemView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="1"
+          android:orientation="horizontal"
+          android:padding="2dp"
+          >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="0dp"
+              android:layout_weight="1"
+              >
+
+            <TextView
+                android:id="@+id/tv_store_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="武胜烟酒店"
+                android:textColor="@color/text_color_green"
+                android:textSize="@dimen/text_size_xx"
+                />
+
+            <TextView
+                android:id="@+id/tv_numberid"
+                style="@style/black_x"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:layout_toLeftOf="@+id/tv_map_dingwei"
+                android:layout_toRightOf="@+id/tv_store_name"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="FH-15-null"
+                />
+
+            <TextView
+                android:id="@+id/tv_map_dingwei"
+                style="@style/black_x"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="5.6公里"
+                />
+          </RelativeLayout>
+
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="0dp"
+              android:layout_weight="1"
+              android:gravity="bottom"
+              >
+
+            <TextView
+                android:id="@+id/tv_store_lbname"
+                style="@style/black_x"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                tools:text="黄老板"
+                />
+
+            <TextView
+                android:id="@+id/tv_store_phoneNum"
+                style="@style/black_xxx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_store_lbname"
+                android:gravity="center"
+                tools:text="[1368934345]"
+                android:textColor="@color/blue_old"
+                />
+          </RelativeLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_map_shoppre"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="6dp"
+            android:scaleType="centerCrop"
+            android:transitionName="shareView"
+            android:src="@mipmap/ceshidianpu"
+            />
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="1"
+          android:orientation="horizontal"
+          android:padding="2dp"
+          >
+
+        <TextView
+            style="@style/black_x"
+            android:id="@+id/tv_store_Address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minLines="2"
+            tools:text="江苏省无锡市滨湖区新区梅村梅锡路香梅花园一期88-91号"
+            />
+      </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_gray_new"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_task_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+      <TextView
+          android:id="@+id/tv_new_left"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="10dp"
+          android:layout_marginTop="10dp"
+          android:layout_weight="1"
+          android:gravity="center"
+          android:text="部分送达"
+          android:textColor="@color/text_color_blue"
+          android:textSize="@dimen/text_size_xxx"
+          />
+
+      <View
+          android:layout_width="1dp"
+          android:layout_height="match_parent"
+          android:background="@color/line_gray_new"
+          />
+
+      <TextView
+          android:id="@+id/tv_left"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="10dp"
+          android:layout_marginTop="10dp"
+          android:layout_weight="1"
+          android:gravity="center"
+          android:text="送 达"
+          android:textColor="@color/text_color_blue"
+          android:textSize="@dimen/text_size_xxx"
+          />
+
+      <View
+          android:layout_width="1dp"
+          android:layout_height="match_parent"
+          android:background="@color/line_gray_new"
+          />
+
+      <TextView
+          android:id="@+id/tv_right"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="10dp"
+          android:layout_marginTop="10dp"
+          android:layout_weight="1"
+          android:gravity="center"
+          android:text="拒 收"
+          android:textColor="@color/text_color_blue"
+          android:textSize="@dimen/text_size_xxx"
+          />
+    </LinearLayout>
+  </LinearLayout>
+
+</LinearLayout>

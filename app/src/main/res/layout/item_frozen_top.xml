@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray_bg_color">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:padding="10dp"
+        android:background="@color/white"
+        android:layout_marginBottom="1dp">
+        <TextView
+            android:id="@+id/tv_junior_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/text_color_blue"/>
+
+        <TextView
+            android:layout_toLeftOf="@+id/tv_frozen_num"
+            android:id="@+id/text_frozen_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="冻结金额："
+            android:textColor="@color/text_color_deep_gray"
+            />
+
+        <TextView
+            android:id="@+id/tv_frozen_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/text_color_red"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_top"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@mipmap/bg_menu">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentBottom="true"
+                >
+                <ImageView
+                    android:id="@+id/img_user"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/menu_img"
+                    android:background="@drawable/corners_white" />
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="请登录"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_menu"
+                    android:gravity="center_vertical"
+                    android:layout_toEndOf="@+id/img_user" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingBottom="20dp"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:id="@+id/ll_r"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_arrive"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="left"
+                    android:paddingTop="18dp"
+                    android:textColor="@color/light_black_color"
+                    android:textSize="@dimen/txt_menu"
+                    android:paddingRight="10dp"
+                    android:drawablePadding="8dp"
+                    android:drawableLeft="@mipmap/icon_menu_arrive"
+                    android:drawableRight="@mipmap/menu_rightbutton_small"
+                    android:text="到仓确认" />
+
+                <TextView
+                    android:id="@+id/tv_cur_response"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_color_red"
+                    android:text="当前接单仓：获取中..."/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_payment"
+                    style="@style/left_txt_menu"
+                    android:drawableLeft="@mipmap/icon_menu_payment"
+                    android:drawableRight="@mipmap/menu_rightbutton_small"
+                    android:text="待交货款" />
+
+                <TextView
+                    android:id="@+id/tv_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="120dp"
+                    android:textColor="@color/text_color_red"
+                    android:text="待缴金额：获取中..."/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_payment_list"
+                    style="@style/left_txt_menu"
+                    android:drawableLeft="@mipmap/icon_menu_payment"
+                    android:drawableRight="@mipmap/menu_rightbutton_small"
+                    android:text="交货款单" />
+
+                <TextView
+                    android:id="@+id/tv_payment_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="120dp"
+                    android:textColor="@color/text_color_red"
+                    android:text="待支付金额：获取中..."/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_purse"
+                    style="@style/left_txt_menu"
+                    android:drawableLeft="@mipmap/icon_menu_purse"
+                    android:drawableRight="@mipmap/menu_rightbutton_small"
+                    android:text="钱包" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_board"
+                    style="@style/left_txt_menu"
+                    android:drawableLeft="@mipmap/icon_board"
+                    android:drawableRight="@mipmap/menu_rightbutton_small"
+                    android:text="我的看板" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_superior"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_superior"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="left"
+                    android:paddingTop="18dp"
+                    android:textColor="@color/light_black_color"
+                    android:textSize="@dimen/txt_menu"
+                    android:paddingRight="10dp"
+                    android:drawablePadding="8dp"
+                    android:drawableLeft="@mipmap/icon_superior"
+                    android:drawableRight="@mipmap/menu_rightbutton_small"
+                    android:text="扫描上级配送员" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_color_deep_gray"
+                        android:text="上级配送员："/>
+
+                    <TextView
+                        android:id="@+id/tv_superior_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_color_red"
+                        android:layout_marginLeft="10dp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/tv_junior"
+                    style="@style/left_txt_menu"
+                    android:drawableLeft="@mipmap/icon_junior"
+                    android:drawableRight="@mipmap/menu_rightbutton_small"
+                    android:text="管理下级配送员" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_setting"
+                    style="@style/left_txt_menu"
+                    android:drawableLeft="@mipmap/icon_menu_setting"
+                    android:drawableRight="@mipmap/menu_rightbutton_small"
+                    android:text="设置" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/et_goods_code"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/layer_btn_blue"
+            android:gravity="left|center_vertical"
+            android:hint="请输入店家收货码"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_pay_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="请选择收款方式"
+                />
+
+            <RadioGroup
+                android:id="@+id/rg_pay_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <RadioButton
+                    android:id="@+id/rb_cash"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="现金"
+                    android:visibility="gone"/>
+
+                <RadioButton
+                    android:id="@+id/rb_pos"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="1dp"
+                    android:text="POS机"
+                    android:visibility="gone"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rb_alipay"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="1dp"
+                    android:drawableLeft="@mipmap/icon_alipay"
+                    android:visibility="gone"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rb_wxpay"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="1dp"
+                    android:drawableLeft="@mipmap/icon_wechatpay"
+                    android:visibility="gone"
+                    />
+            </RadioGroup>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_order_payed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="订单已支付"
+            />
+    </LinearLayout>
+</LinearLayout>

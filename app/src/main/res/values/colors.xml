@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FAB52F</color>
+    <color name="colorNav">#ededed</color>
+    <color name="line_gray">#ebebeb</color>
+    <color name="line_gray_new">#f0f0f0</color>
+    <color name="line_gray_high">#cacaca</color>
+    <color name="black">#000000</color>
+    <color name="black_tab">#646464</color>
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#f31c35</color>
+    <color name="blue_old">#00C0FF</color>
+    <color name="bg_gray">#F9F9F9</color>
+    <color name="text_gray">#a5a5a5</color>
+    <color name="half_transparent">#51ffffff</color>
+    <!-- 透明色 -->
+    <color name="transparent">#00000000</color>
+    <color name="bg_home">#f9f9f9</color>
+    <color name="deep_red">#ff0042</color>
+    <color name="location_background">#EDEDED</color>
+    <color name="shop_note_color">#a5a5a5</color>
+    <color name="shop_progress">#FAB62F</color>
+    <color name="light_red">#e33f3f</color>
+    <color name="light_blue">#FF5BBEF4</color>
+    <color name="theme_color">#FAB52F</color>
+    <color name="yell_text_color">#ffa800</color>
+    <color name="light_black_color">#282828</color>
+    <color name="light_gray_bg_color">#ededed</color>
+    <color name="bg_search_view">#fafafa</color>
+    <color name="bound_search_view">#ececec</color>
+    <color name="marker_visit">#00cb00</color>
+    <color name="marker_un_visit">#ff6634</color>
+    <color name="marker_current">#3598ff</color>
+    <color name="tab_background">#ffffff</color>
+
+    <!--配送-->
+    <!--Text-->
+    <color name="red_text">#ED494E</color>
+    <color name="red_text_light">#EAB9BC</color>
+    <color name="text_bg_warning">#FFFFCC</color>
+    <color name="text_color_green">#79c213</color>
+    <color name="text_color_red">#FF4343</color>
+    <color name="text_color_blue">#149DEB</color>
+    <color name="text_color_orange">#EB4C0D</color>
+    <color name="text_color_deep_gray">#282828</color>
+    <color name="text_color_light_gray">#e5e5e5</color>
+    <color name="text_color_gray">#b2b2b2</color>
+
+
+
+    <!--BG-->
+    <color name="bg_red">#FF4040</color>
+    <color name="bg_blue">#149DEB</color>
+    <color name="bg_green">#64DE67</color>
+
+    <color name="gray_button_pressed">#ffd3d3d3</color>
+
+    <!-- QRCode scanner color begin -->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#B0000000</color>
+    <color name="viewfinder_frame">#90FFFFFF</color>
+    <color name="result_point_color">#C0FFFF00</color>
+    <color name="laser_color">#0F0</color>
+    <color name="corner_color">#00FF00</color>
+
+    <color name="colorPrimaryDarkTrans">#CCf57257</color>
+    <!-- QRCode scanner color end -->
+</resources>

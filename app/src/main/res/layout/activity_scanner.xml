@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/light_gray_bg_color">
+
+    <include layout="@layout/navigation_bar_view"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <SurfaceView
+            android:id="@+id/scanner_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
+
+        <com.ddinfo.flashman.utils.zxing.view.ViewfinderView
+            android:id="@+id/viewfinder_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:corner_color="@color/corner_color"
+            app:frame_color="@color/viewfinder_frame"
+            app:label_text="二维码扫描"
+            app:label_text_color="@color/colorAccent"
+            app:laser_color="@color/laser_color"
+            app:mask_color="@color/viewfinder_mask"
+            app:result_color="@color/result_view"
+            app:result_point_color="@color/result_point_color"/>
+
+        <Button
+            android:id="@+id/btn_write_QRCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:text="手动输入二维码"
+            android:textColor="@color/white"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="40dp"
+            android:background="@color/transparent"
+            android:visibility="gone"
+            />
+
+
+    </FrameLayout>
+
+
+</LinearLayout>

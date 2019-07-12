@@ -1,0 +1,196 @@
+apply plugin: 'com.android.application'
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.2'
+    }
+}
+apply plugin: 'com.getkeepsafe.dexcount'
+android {
+    compileSdkVersion 23
+    buildToolsVersion '25.0.0'
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    defaultConfig {
+        applicationId "com.ddinfo.flashman"
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        manifestPlaceholders = [CHANNEL_VALUE: "10000"]
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("../KeyDianda.jks")
+            storePassword "111111"
+            keyAlias "key_dianda"
+            keyPassword "111111"
+        }
+
+        release {
+            storeFile file("../KeyDianda.jks")
+            storePassword "111111"
+            keyAlias "key_dianda"
+            keyPassword "111111"
+        }
+    }
+
+    //配置构建包文件名称
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File(
+                    output.outputFile.parent + "/${variant.buildType.name}",
+                    "Flashman_${variant.buildType.name}_${variant.versionName}_${variant.name}.apk")
+        }
+    }
+
+    buildTypes {
+        //测试
+        debug {
+//            buildConfigField "boolean", "LOG_DEBUG", "true"
+//            minifyEnabled false
+//            zipAlignEnabled false
+//            shrinkResources false
+//            signingConfig signingConfigs.debug
+//            debuggable true
+//            jniDebuggable true
+//            applicationIdSuffix rootProject.ext.appIdSuffix ? '.debug' : ''
+//            buildConfigField 'String', 'API_SERVER_URL', '"http://testpsappapi.diandainfo.com"'
+//            resValue "string", "app_name", "猪行侠_测试"
+//            resValue "string", "file_provide", "com.ddinfo.flashman.debug.fileProvider"
+
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            zipAlignEnabled true
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            buildConfigField 'String', 'API_SERVER_URL', '"http://psappapi.dd528.com"'
+            resValue "string", "app_name", "猪行侠"
+            resValue "string", "file_provide", "com.ddinfo.flashman.fileProvider"
+        }
+
+        //预发布
+        preview {
+            initWith debug
+            applicationIdSuffix rootProject.ext.appIdSuffix ? '.preview' : ''
+            buildConfigField 'String', 'API_SERVER_URL', '"http://prepsappapi.diandainfo.com"'
+            resValue "string", "app_name", "猪行侠_预发布"
+            resValue "string", "file_provide", "com.ddinfo.flashman.preview.fileProvider"
+        }
+
+        //qoa
+        qoa {
+            initWith debug
+            applicationIdSuffix rootProject.ext.appIdSuffix ? '.qoa' : ''
+            buildConfigField 'String', 'API_SERVER_URL', '"http://qoapsappapi.diandainfo.com"'
+            resValue "string", "app_name", "猪行侠_qoa"
+            resValue "string", "file_provide", "com.ddinfo.flashman.qoa.fileProvider"
+        }
+
+        //发布
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            zipAlignEnabled true
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            buildConfigField 'String', 'API_SERVER_URL', '"http://psappapi.dd528.com"'
+            resValue "string", "app_name", "猪行侠"
+            resValue "string", "file_provide", "com.ddinfo.flashman.fileProvider"
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            java.srcDirs = ['src/main/java']
+        }
+    }
+
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi' //, 'x86'//, 'x86_64', 'arm64-v8a', 'armeabi-v7a'
+            universalApk false
+        }
+    }
+    sourceSets.main {
+        jniLibs.srcDirs = ['libs']
+    }
+}
+
+if (!rootProject.ext.runInSimulator) { //批量修改生成的apk文件名 ZYZ修改
+    android.applicationVariants.all { variant ->
+        tasks.all { task ->
+            if ("assemble${variant.name.capitalize()}".equalsIgnoreCase(task.name)) {
+                task << {
+                    def outputFileStr = null;
+                    variant.outputs.each { output ->
+                        outputFileStr = output.outputFile.toString();
+                    }
+                    ant.copy file: outputFileStr,
+                            tofile: "${buildDir}/outputs/apk/${variant.name}.apk"
+                    println "${it.name} ${buildDir}/outputs/apk/"
+                }
+            }
+        }
+    }
+}
+
+repositories {
+    maven { url "https://jitpack.io" }
+    mavenCentral()
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/commons-codec-1.9.jar')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/alipaySdk-20161222.jar')
+    compile files('libs/libapshare20161108.jar')
+    compile('pub.devrel:easypermissions:0.3.0') {
+        exclude group: 'com.android.support'
+    }
+    compile('io.socket:socket.io-client:0.8.1') {
+        exclude group: 'org.json', module: 'json'
+    }
+    compile files('libs/BaiduLBS_Android.jar')
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.android.support:percent:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile 'com.umeng.analytics:analytics:5.6.1'
+    compile 'com.google.zxing:core:3.2.1'
+    compile 'com.google.android.gms:play-services-appindexing:9.4.0'
+    compile 'com.github.Kennyc1012:MultiStateView:1.3.2'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.blankj:utilcode:1.3.5'
+    compile 'com.tencent.bugly:crashreport_upgrade:1.3.4'
+    compile 'com.tencent.bugly:nativecrashreport:3.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile project(':lableview')
+}

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/et_goods_code"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/layer_btn_blue"
+            android:gravity="left|center_vertical"
+            android:hint="请输入店家收货码"
+            />
+
+    </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/ll_refuse"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/white"
+      android:orientation="vertical"
+      android:padding="10dp"
+      android:visibility="visible"
+      >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_gray"
+        android:padding="5dp"
+        android:text="请选择拒收原因"
+        android:textColor="@color/text_gray"
+        android:textSize="@dimen/text_size_xx"
+        />
+
+    <RadioGroup
+        android:id="@+id/grout_reason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkedButton="@+id/radio_defaut"
+        android:orientation="vertical"
+        >
+
+      <RadioButton
+          android:id="@+id/radio_defaut"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="商品保质期不符合店家要求"
+          android:textSize="@dimen/text_size_xx"
+          />
+
+      <RadioButton
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="送达日期晚，已从其他渠道进货"
+          android:textSize="@dimen/text_size_xx"
+          />
+
+      <RadioButton
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="破损/质量问题"
+          android:textSize="@dimen/text_size_xx"
+          />
+
+      <RadioButton
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="误解活动优惠"
+          android:textSize="@dimen/text_size_xx"
+          />
+
+      <RadioButton
+          android:id="@+id/radio_other"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="其他"
+          android:textSize="@dimen/text_size_xx"
+          />
+
+
+      <EditText
+          android:id="@+id/edit_reason"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/bg_edit"
+          android:hint="请输入其他原因"
+          android:textSize="@dimen/text_size_xx"
+          />
+    </RadioGroup>
+  </LinearLayout>
+
+
+</LinearLayout>

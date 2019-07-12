@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_app_mes"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ddinfo.flashman.activity.menu.AppMesActivity">
+
+    <include layout="@layout/navigation_bar_view"/>
+
+    <ImageView
+        android:id="@+id/iv_app_logo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/ic_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+    <TextView
+        android:id="@+id/tv_app_mes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_app_logo"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="猪行侠"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="上海店达信息技术有限公司"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/text_size_x"
+            android:textColor="@color/text_color_gray"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Copyright ©2017.版权所有"
+            android:textSize="@dimen/text_size_s"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/text_color_gray"
+            android:gravity="center_horizontal"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

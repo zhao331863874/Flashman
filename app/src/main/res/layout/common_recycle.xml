@@ -1,0 +1,35 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             >
+
+    <com.kennyc.view.MultiStateView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    android:id="@+id/multiStateView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:msv_emptyView="@layout/common_empty"
+                                    app:msv_errorView="@layout/common_no_network">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.ddinfo.flashman.view.RefreshLayout.MaterialRefreshLayout
+                android:id="@+id/swipe_search_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycle_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/light_gray_bg_color" />
+            </com.ddinfo.flashman.view.RefreshLayout.MaterialRefreshLayout>
+
+        </LinearLayout>
+    </com.kennyc.view.MultiStateView>
+
+</FrameLayout>

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray_bg_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corners_white"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
+
+        <LinearLayout
+            android:id="@+id/ll_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <!--金额-->
+            <RelativeLayout
+                android:id="@+id/rel_income_back"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:id="@+id/text_amount_income"
+                    style="@style/black_x"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="收入:" />
+
+                <TextView
+                    android:layout_toRightOf="@+id/tv_amount_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/black_x"
+                    android:layout_alignBaseline="@+id/text_amount_income"
+                    android:layout_alignBottom="@+id/text_amount_income"
+                    android:text="元"/>
+
+                <TextView
+                    style="@style/black_x"
+                    android:id="@+id/tv_amount_frozen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="冻结：141.00元" />
+
+                <TextView
+                    android:id="@+id/tv_amount_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:paddingTop="7dp"
+                    android:text="8.10"
+                    android:textColor="@color/text_color_red"
+                    android:textSize="@dimen/text_size_xxxx"
+                    android:layout_alignBaseline="@+id/text_amount_income"
+
+                    android:layout_alignBottom="@+id/text_amount_income"
+                    android:layout_toEndOf="@+id/text_amount_income" />
+            </RelativeLayout>
+
+            <!--距离-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_circle"
+                    android:gravity="center"
+                    android:text="我"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_xx" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="- - - -"
+                        android:textColor="@color/text_gray" />
+
+                    <TextView
+                        android:id="@+id/tv_distance_take"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="1.9千米"
+                        android:textSize="@dimen/text_size_x" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="- - - -"
+                        android:textColor="@color/text_gray" />
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/bg_circle"
+                        android:gravity="center"
+                        android:text="取"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_xx" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="- - - -"
+                        android:textColor="@color/text_gray" />
+
+                    <TextView
+                        android:id="@+id/tv_distance_send"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="1.9千米"
+                        android:textSize="@dimen/text_size_xx"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="- - - -"
+                        android:textColor="@color/text_gray" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_circle"
+                    android:gravity="center"
+                    android:text="送"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_xx" />
+
+            </LinearLayout>
+
+            <!--地址_收-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_gray"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="top"
+                    android:text="取:"
+                    android:textColor="@color/text_color_gray"
+                    android:textSize="@dimen/text_size_x" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:paddingLeft="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_store_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="丹尼斯超市"
+                        android:textColor="@color/text_color_green"
+                        android:textSize="@dimen/text_size_x" />
+
+                    <TextView
+                        android:id="@+id/tv_store_invoiceId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/tv_store_name"
+                        android:text=""
+                        android:textColor="@color/text_color_red"
+                        android:textSize="@dimen/text_size_x" />
+
+                    <TextView
+                        android:id="@+id/tv_address_send"
+                        style="@style/black_x"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_store_name"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center_vertical"
+                        android:text="浦东新区达尔文路88号阿西吧加班吧少年" />
+                </RelativeLayout>
+            </LinearLayout>
+            <!--地址_取-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/bg_gray"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="top"
+                    android:text="收:"
+                    android:textColor="@color/text_color_gray"
+                    android:textSize="@dimen/text_size_x" />
+
+                <TextView
+                    android:id="@+id/tv_address_take"
+                    style="@style/black_x"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:text="浦东新区达尔文路88号阿西吧加班吧少年" />
+
+                <TextView
+                    android:id="@+id/text_time_take"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="top"
+                    android:paddingLeft="5dp"
+                    android:text="创建时间："
+                    android:textColor="@color/text_color_gray" />
+
+                <TextView
+                    android:id="@+id/tv_time_take"
+                    style="@style/black_x"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="top"
+                    android:text="10:15" />
+            </LinearLayout>
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/line_gray_new"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="扫描二维码"
+            android:gravity="center"
+            android:textColor="@color/text_color_blue"
+            android:textSize="@dimen/text_size_xx"
+            android:visibility="gone"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll_task_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            <TextView
+                android:id="@+id/tv_left"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="送 达"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/text_color_blue"
+                android:textSize="@dimen/text_size_xx"/>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/line_gray_new"/>
+            <TextView
+                android:id="@+id/tv_right"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="拒 收"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/text_color_blue"
+                android:textSize="@dimen/text_size_xx"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

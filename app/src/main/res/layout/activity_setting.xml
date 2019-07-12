@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray_bg_color"
+    android:orientation="vertical"
+    tools:context="com.ddinfo.flashman.activity.menu.SettingActivity">
+    <include layout="@layout/navigation_bar_view"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/perfectUserInfo"
+            style="@style/black_xx"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/corners_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:drawableRight="@mipmap/arrowhead_right"
+            android:text="完善个人信息" />
+        <TextView
+            android:id="@+id/tv_app_mes"
+            style="@style/black_xx"
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/corners_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:drawableRight="@mipmap/arrowhead_right"
+            android:text="关于猪行侠" />
+
+        <TextView
+            android:id="@+id/tv_checkout_new"
+            style="@style/black_xx"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/corners_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:drawableRight="@mipmap/arrowhead_right"
+            android:visibility="gone"
+            android:text="检查新版本" />
+
+        <TextView
+            android:id="@+id/tv_call_service"
+            style="@style/black_xx"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/corners_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:drawableRight="@mipmap/arrowhead_right"
+            android:text="联系客服" />
+
+        <TextView
+            android:id="@+id/tv_quit"
+            style="@style/black_xx"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/corners_white"
+            android:gravity="center"
+            android:text="退出登录" />
+
+    </LinearLayout>
+
+</LinearLayout>

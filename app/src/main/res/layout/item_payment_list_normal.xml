@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        >
+        <TextView
+            android:id="@+id/tv_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_xx"
+            android:textColor="@color/text_color_deep_gray"
+            android:layout_marginLeft="5dp"
+            android:text="JKH384568743265"/>
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2017年5月11日11:31:52"
+            android:layout_below="@+id/tv_id"
+            android:textSize="@dimen/text_size_xx"
+            android:textColor="@color/text_color_deep_gray"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_number"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text="687.00元"
+            android:textColor="@color/text_color_red"
+            android:layout_marginRight="10dp"/>
+
+    </RelativeLayout>
+</LinearLayout>

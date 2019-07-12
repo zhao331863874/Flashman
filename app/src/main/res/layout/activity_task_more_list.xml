@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_task_more_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray_bg_color"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/navigation_bar_view"/>
+
+    <LinearLayout
+        android:id="@+id/ll_order_top"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_count_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/text_color_blue"
+                android:textSize="@dimen/text_size_xxxxx" />
+
+            <TextView
+                android:id="@+id/tv_text_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="今日完成订单数"
+                android:textColor="@color/light_black_color" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="1dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_count_right_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/text_color_blue"
+                    android:textSize="@dimen/text_size_xxxxx" />
+
+                <TextView
+                    android:id="@+id/text_count_right_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="本月累计完成订单数"
+                    android:textColor="@color/light_black_color" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray_bg_color"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="1dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_count_right_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/text_color_blue"
+                    android:textSize="@dimen/text_size_xxxxx" />
+
+                <TextView
+                    android:id="@+id/text_count_right_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="上月累计完成订单数"
+                    android:textColor="@color/light_black_color" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.ddinfo.flashman.view.RefreshLayout.MaterialRefreshLayout
+        android:id="@+id/swipe_search_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv_task_more_task"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_gray_bg_color" />
+    </com.ddinfo.flashman.view.RefreshLayout.MaterialRefreshLayout>
+
+
+</LinearLayout>
