@@ -117,7 +117,7 @@ public class ExampleConfig {
   public static final String INTENT_TOPUPMONEY = "INTENT_TOPUPMONEY";
   public static final String INTENT_DELIVERY_IDS_NEY = "deliveryOrderIdsKEY";
 
-  public static final String INTENT_TYPE = "INTENT_TYPE";
+  public static final String INTENT_TYPE = "INTENT_TYPE"; //支付方式
   public static final int INTENT_WITHDRAWS_BALANCE = 2003;
   public static final int INTENT_WITHDRAWS_PLEDGE = 2004;
   public static final String LOGIN_PHONE = "LOGIN_PHONE";

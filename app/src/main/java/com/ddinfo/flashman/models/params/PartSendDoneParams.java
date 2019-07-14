@@ -9,14 +9,15 @@ import java.util.Objects;
 
 /**
  * Created by Gavin on 2017/6/6.
+ * 部分送达参数实体类
  */
 
 public class PartSendDoneParams implements Serializable {
-    private String deliveryOrderId;
-    private String receiveType;
-    private String details;
-    private String reason;
-    private String receiptCode;
+    private String deliveryOrderId; //送货订单ID
+    private String receiveType;     //支付方式
+    private String details;         //部分送达商品信息（商品ID，拒收数量）
+    private String reason;          //拒收原因
+    private String receiptCode;     //店家收获码
 
     public PartSendDoneParams() {
     }

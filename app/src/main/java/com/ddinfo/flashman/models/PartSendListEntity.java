@@ -20,7 +20,7 @@ public class PartSendListEntity implements Serializable {
     private int id;
     private String name;
     private String invoiceNumberId;
-    private String deliveryOrderId;
+    private String deliveryOrderId; //送货订单ID
     private List<DetailsBean> details;
 
     public int getId() {
@@ -71,9 +71,9 @@ public class PartSendListEntity implements Serializable {
          * snapshot : {"id":125375,"name":"美汁源果粒橙  1.25L*12瓶/箱","comboType":0,"onSellGoodsCombs":[{"goodId":110,"type":"0","amount":1,"isFree":false,"name":"美汁源果粒橙  1.25L*12瓶/箱","specification":"1.25L*12瓶","unit":"箱","bulkSpecification":"1.25L","bulkUnit":"瓶","barCode":"6956416200814","transProportion":12,"originalPrice":0,"price":0,"WarehouseId":17}]}
          */
 
-        private int id;
-        private String name;
-        private int quantity;
+        private int id;            //商品ID
+        private String name;       //商品名称
+        private int quantity;      //商品所有的数量
         private int refuseQuantity;//添加字段 拒收数量
         private int giftFlag;
 

@@ -66,13 +66,13 @@ public class TaskDetailActivity extends BaseActivity implements EasyPermissions.
     // 整数: 李占晓 拒收 static
     private static final int TYPE_GOODSREFUSE = 0x22;
 
-    public static final String PAYTYPE_CASH = "cash";
-    public static final String PAYTYPE_ALIPAY = "alipay";
-    public static final String PAYTYPE_WXPAY = "wepay";
+    public static final String PAYTYPE_CASH = "cash";     //现金
+    public static final String PAYTYPE_ALIPAY = "alipay"; //支付宝
+    public static final String PAYTYPE_WXPAY = "wepay";   //微信
 
-    private PayResultEntity payResultEntity;
-    private String urlCode;
-    private String mPayType = "";
+    private PayResultEntity payResultEntity; //支付请求返回数据
+    private String urlCode;       //生成二维码地址
+    private String mPayType = ""; //支付方式
 
     @Bind(R.id.left_button)   //返回按钮
     ImageButton leftButton;
@@ -152,7 +152,7 @@ public class TaskDetailActivity extends BaseActivity implements EasyPermissions.
     private boolean isPermission;
     private double lat = 0, lon = 0;
 
-    private ArrayList<String> payMethods = new ArrayList<>();
+    private ArrayList<String> payMethods = new ArrayList<>(); //支付方式
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -586,8 +586,8 @@ public class TaskDetailActivity extends BaseActivity implements EasyPermissions.
 
     public void showDiolog(final int type) {
         final int hasPay = mData.getHasPay();
-        TaskSendDialog taskSendDialog = new TaskSendDialog(context);
-        TaskRefuseDialog taskRefuseDialog = new TaskRefuseDialog(context);
+        TaskSendDialog taskSendDialog = new TaskSendDialog(context); //送达弹框
+        TaskRefuseDialog taskRefuseDialog = new TaskRefuseDialog(context); //拒收弹框
         switch (type) {
             case TYPE_GOODSSEND: //Type == 送达
                 taskSendDialog.show(hasPay, payMethods, mData.getNumberId(), new TaskSendDialog.OnSendOptionClickListener() {
@@ -621,7 +621,7 @@ public class TaskDetailActivity extends BaseActivity implements EasyPermissions.
         }
     }
 
-    Callback<BaseResponseEntity<PayResultEntity>> callbackGoodsResult =
+    Callback<BaseResponseEntity<PayResultEntity>> callbackGoodsResult = //送达、拒收请求回调
             new SimpleCallBack<BaseResponseEntity<PayResultEntity>>(context) {
                 @Override
                 public void onSuccess(Call<BaseResponseEntity<PayResultEntity>> call,

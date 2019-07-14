@@ -6,10 +6,10 @@ package com.ddinfo.flashman.models;
  */
 
 public class PayResultEntity {
-    private String codeUrl;
-    private String payId;
-    private String OrderId;
-    private String orderAmount;
+    private String codeUrl; //生成二维码地址
+    private String payId;   //支付ID
+    private String OrderId; //订单号
+    private String orderAmount; //订单金额
 
     public String getOrderId() {
         return OrderId;

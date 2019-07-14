@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Created by Gavin on 2017/6/6.
+ * 部分送达商品实体类
  */
 
 public class PartSendConfirmEntity implements Serializable {
@@ -18,7 +19,7 @@ public class PartSendConfirmEntity implements Serializable {
 
   private int deliveryOrderId;
   private GoodsDetailBean goodsDetail;
-  private String invoiceNumberId;
+  private String invoiceNumberId; //发货单号
   private NowInfoBean nowInfo;
   private OrgInfoBean orgInfo;
 
@@ -66,7 +67,7 @@ public class PartSendConfirmEntity implements Serializable {
     private List<RejectBean> arrive;
     private List<RejectBean> reject;
     private int arriveAmount;
-    private int rejectAmount;
+    private int rejectAmount; //拒收商品总数
 
     public int getArriveAmount() {
       return arriveAmount;
@@ -107,8 +108,8 @@ public class PartSendConfirmEntity implements Serializable {
        * quantity : 57044
        */
 
-      private int id;
-      private int quantity;
+      private int id;       //商品ID
+      private int quantity; //商品数量
       private String name;
       private List<OnSellGoodsCombsBean> onSellGoodsCombs;
       private int giftFlag;
@@ -181,7 +182,7 @@ public class PartSendConfirmEntity implements Serializable {
     }
   }
 
-  public static class NowInfoBean implements Serializable{
+  public static class NowInfoBean implements Serializable{ //现商品实体类
     /**
      * dadouOff : 82118
      * goodsAmount : 76008
@@ -193,14 +194,14 @@ public class PartSendConfirmEntity implements Serializable {
      * totalOff : 56013
      */
 
-    private double dadouOff;
-    private int goodsAmount;
-    private double hadPaySum;
-    private double needPaySum;
-    private double needRefund;
-    private double otherOff;
-    private double sum;
-    private double totalOff;
+    private double dadouOff;   //商品达豆
+    private int goodsAmount;   //商品总数
+    private double hadPaySum;  //现商品支付金额
+    private double needPaySum; //现商品应收账款
+    private double needRefund; //现商品应退款
+    private double otherOff;   //其他优惠
+    private double sum;        //商品总金额
+    private double totalOff;   //合计优惠
     private int giftFlag;
 
     public int getGiftFlag() {
@@ -288,14 +289,14 @@ public class PartSendConfirmEntity implements Serializable {
      * totalOff : 56013
      */
 
-    private double dadouOff;
-    private int goodsAmount;
-    private double hadPaySum;
-    private double needPaySum;
+    private double dadouOff;   //商品达豆
+    private int goodsAmount;   //商品总数
+    private double hadPaySum;  //原商品支付金额
+    private double needPaySum; //原商品应收账款
     private double needRefund;
-    private double otherOff;
-    private double sum;
-    private double totalOff;
+    private double otherOff;   //其他优惠
+    private double sum;        //商品总金额
+    private double totalOff;   //合计优惠
 
     public double getDadouOff() {
       return dadouOff;

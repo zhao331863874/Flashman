@@ -40,14 +40,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * 部分送达界面
+ */
 public class TaskPartSendActivity extends BaseActivity {
-    @Bind(R.id.tv_order_id)
+    @Bind(R.id.tv_order_id) //发货单号
     TextView tvOrderId;
-    @Bind(R.id.tv_order_price)
+    @Bind(R.id.tv_order_price) //货品价格
     TextView tvOrderPrice;
     @Bind(R.id.rv_order_part_send)
     RecyclerView rvOrderPartSend;
-    @Bind(R.id.tv_next)
+    @Bind(R.id.tv_next)     //下一步
     TextView tvNext;
 
     private PartSendListEntity partSendListEntity;
@@ -66,8 +69,8 @@ public class TaskPartSendActivity extends BaseActivity {
 
     public void initViews() {
         setTitle("请选择拒收商品");
-        rvOrderPartSend.setLayoutManager(new LinearLayoutManager(this));
-        rvOrderPartSend.addItemDecoration(new ListItemDecoration(this, ListItemDecoration.VERTICAL_LIST));
+        rvOrderPartSend.setLayoutManager(new LinearLayoutManager(this)); //设置布局管理器
+        rvOrderPartSend.addItemDecoration(new ListItemDecoration(this, ListItemDecoration.VERTICAL_LIST)); //设置分割线
         mAdapter = new OrderPartSendAdapter(this);
         rvOrderPartSend.setAdapter(mAdapter);
     }
@@ -90,8 +93,12 @@ public class TaskPartSendActivity extends BaseActivity {
         callPartList.enqueue(callbackPartSendList);
     }
 
+    /**
+     * @param goodsAmount 商品数量
+     * @param position 商品索引
+     */
     private void showNumEditDialog(final int goodsAmount, final int position){
-        final View view = LayoutInflater.from(this).inflate(R.layout.dialog_goods_num_edit, null);
+        final View view = LayoutInflater.from(this).inflate(R.layout.dialog_goods_num_edit, null); //加载商品数量输入布局
         final EditText etGoodsNum = (EditText) view.findViewById(R.id.et_goods_num);
         etGoodsNum.setHint("商品总数："+goodsAmount);
         etGoodsNum.setBackground(ContextCompat.getDrawable(context,R.drawable.edit_white));
@@ -122,7 +129,7 @@ public class TaskPartSendActivity extends BaseActivity {
                     } else {
                         int refuseQuantity = goodsAmount - changeGoodsAmount;
                         partSendListEntity.getDetails().get(position).setRefuseQuantity(refuseQuantity);
-                        mAdapter.notifyItemChanged(position);
+                        mAdapter.notifyItemChanged(position); //更新数据
                     }
                 }
 
@@ -135,21 +142,21 @@ public class TaskPartSendActivity extends BaseActivity {
     public void initListener() {
         mAdapter.setOnSelNumClickListener(new OrderPartSendAdapter.OnSelNumClickListener() {
             @Override
-            public void onSelNumAdd(View v, int position) {
+            public void onSelNumAdd(View v, int position) { //点击增加按钮回调
                 PartSendListEntity.DetailsBean detailsBean = partSendListEntity.getDetails().get(position);
                 partSendListEntity.getDetails().get(position).setRefuseQuantity(detailsBean.getRefuseQuantity() + 1);
-                mAdapter.notifyItemChanged(position);
+                mAdapter.notifyItemChanged(position); //更新数据
             }
 
             @Override
-            public void onSelNumDel(View v, int position) {
+            public void onSelNumDel(View v, int position) { //点击减少按钮回调
                 PartSendListEntity.DetailsBean detailsBean = partSendListEntity.getDetails().get(position);
                 partSendListEntity.getDetails().get(position).setRefuseQuantity(detailsBean.getRefuseQuantity() - 1);
-                mAdapter.notifyItemChanged(position);
+                mAdapter.notifyItemChanged(position); //更新数据
             }
 
             @Override
-            public void onSelNum(View v, int position) {
+            public void onSelNum(View v, int position) { //点击商品数量回调
                 showNumEditDialog(partSendListEntity.getDetails().get(position).getQuantity(),position);
 
             }
@@ -159,7 +166,7 @@ public class TaskPartSendActivity extends BaseActivity {
 
         tvNext.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { //点击下一步回调
                 confirmParams = new PartSendDoneParams();
                 int allCount = 0;//商品所有的数量
                 int allRefuseCount = 0;//拒收商品所有的数量

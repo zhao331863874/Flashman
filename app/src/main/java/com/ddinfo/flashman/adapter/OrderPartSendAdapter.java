@@ -60,8 +60,8 @@ public class OrderPartSendAdapter extends RecyclerView.Adapter<RecyclerView.View
         holderNormal.tvGoodsName.setText(goodsBean.getName());
         if (goodsBean.getGiftFlag() == 1) {//赠品
             holderNormal.tvIndex.setText("赠");
-            holderNormal.ivDel.setVisibility(View.INVISIBLE);
-            holderNormal.ivAdd.setVisibility(View.INVISIBLE);
+            holderNormal.ivDel.setVisibility(View.INVISIBLE); //显示减少数量按钮
+            holderNormal.ivAdd.setVisibility(View.INVISIBLE); //显示增加数量按钮
             holderNormal.tvGoodsNum.setText(goodsBean.getQuantity() + "");
 
         } else {
@@ -70,28 +70,28 @@ public class OrderPartSendAdapter extends RecyclerView.Adapter<RecyclerView.View
             holderNormal.tvIndex.setText(position + 1 + "");
             holderNormal.ivDel.setVisibility(View.VISIBLE);
             holderNormal.ivAdd.setVisibility(View.VISIBLE);
-            holderNormal.ivDel.setClickable(false);
+            holderNormal.ivDel.setClickable(false); //设置按钮不可点击
             holderNormal.ivAdd.setClickable(false);
 
             holderNormal.tvGoodsNum.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(View view) { //点击商品数量监听
                     if (onSelNumClickListener != null) {
                         onSelNumClickListener.onSelNum(view, position);
                     }
                 }
             });
 
-            if (goodsBean.getRefuseQuantity() <= 0) {
-                holderNormal.ivDel.setClickable(false);
-                holderNormal.ivDel.setImageDrawable(ContextCompat.getDrawable(context, R.mipmap.img_del_off));
+            if (goodsBean.getRefuseQuantity() <= 0) { //如果拒收数量小于等于0
+                holderNormal.ivDel.setClickable(false); //设置减少按钮不可点击
+                holderNormal.ivDel.setImageDrawable(ContextCompat.getDrawable(context, R.mipmap.img_del_off)); //绘制不可点击下图片
             } else {
                 holderNormal.ivDel.setImageDrawable(ContextCompat.getDrawable(context, R.mipmap.img_del));
                 holderNormal.ivDel.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v) { //点击减少按钮监听
                         if (onSelNumClickListener != null) {
-                            notifyDataSetChanged();
+                            notifyDataSetChanged(); //更新数据
                             onSelNumClickListener.onSelNumDel(v, position);
                         }
                     }
@@ -118,7 +118,7 @@ public class OrderPartSendAdapter extends RecyclerView.Adapter<RecyclerView.View
         //动态添加套装和赠品
         if (detailEntity.getDetails().get(position).getSnapshot().getOnSellGoodsCombs().size() == 1 && detailEntity.getDetails().get(position).getSnapshot().getOnSellGoodsCombs().get(0).getAmount() == 1) {
             //单品不显示商品列表，仅显示标题
-            holderNormal.llGifts.removeAllViews();
+            holderNormal.llGifts.removeAllViews(); //移除子view
         } else {
             addCombsGoods(holderNormal, position);
         }
@@ -170,15 +170,15 @@ public class OrderPartSendAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     public static class ViewHolderNormal extends RecyclerView.ViewHolder {
-        @Bind(R.id.tv_index)
+        @Bind(R.id.tv_index) //商品索引
         TextView tvIndex;
-        @Bind(R.id.tv_goods_name)
+        @Bind(R.id.tv_goods_name) //商品名称
         TextView tvGoodsName;
-        @Bind(R.id.iv_del)
+        @Bind(R.id.iv_del)        //减少数量按钮
         ImageView ivDel;
-        @Bind(R.id.tv_goods_num)
+        @Bind(R.id.tv_goods_num)  //商品数量
         TextView tvGoodsNum;
-        @Bind(R.id.iv_add)
+        @Bind(R.id.iv_add)        //增加数量按钮
         ImageView ivAdd;
         @Bind(R.id.ll_gifts)
         LinearLayout llGifts;
@@ -190,11 +190,11 @@ public class OrderPartSendAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     public interface OnSelNumClickListener {
-        void onSelNumAdd(View v, int position);
+        void onSelNumAdd(View v, int position); //增加商品数量
 
-        void onSelNumDel(View v, int position);
+        void onSelNumDel(View v, int position); //减少商品数量
 
-        void onSelNum(View v, int position);
+        void onSelNum(View v, int position);    //点击商品数量
     }
 
 

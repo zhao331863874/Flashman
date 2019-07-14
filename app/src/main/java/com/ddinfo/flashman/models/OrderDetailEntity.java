@@ -60,7 +60,7 @@ public class OrderDetailEntity implements Serializable {
   private int state;
   private String invoiceNumberId;  //发货单号
   private String rejectCode;
-  private int hasPay;
+  private int hasPay;              //是否支付
   private int distance;            //距离
   private double lon;
   private double lat;

@@ -19,48 +19,51 @@ import java.util.List;
 
 import butterknife.Bind;
 
+/**
+ * 确认部分送达界面
+ */
 public class TaskPartSendConfirmActivity extends BaseActivity {
 
-    @Bind(R.id.tv_send_goods_id)
+    @Bind(R.id.tv_send_goods_id)    //发货单号
     TextView tvSendGoodsId;
-    @Bind(R.id.tv_origin_count)
+    @Bind(R.id.tv_origin_count)     //原商品总数量
     TextView tvOriginCount;
-    @Bind(R.id.tv_origin_sum)
+    @Bind(R.id.tv_origin_sum)       //原商品金总额
     TextView tvOriginSum;
-    @Bind(R.id.tv_origin_dadou)
+    @Bind(R.id.tv_origin_dadou)     //原商品达豆
     TextView tvOriginDadou;
-    @Bind(R.id.tv_origin_other_sale)
+    @Bind(R.id.tv_origin_other_sale)//原商品其它优惠
     TextView tvOriginOtherSale;
-    @Bind(R.id.tv_origin_all_sale)
+    @Bind(R.id.tv_origin_all_sale)  //原商品全部优惠
     TextView tvOriginAllSale;
-    @Bind(R.id.tv_origin_receivable)
+    @Bind(R.id.tv_origin_receivable)//原商品应收账款
     TextView tvOriginReceivable;
-    @Bind(R.id.tv_origin_payed)
+    @Bind(R.id.tv_origin_payed)     //原商品支付金额？
     TextView tvOriginPayed;
-    @Bind(R.id.tv_now_payed)
+    @Bind(R.id.tv_now_payed)        //现商品支付金额
     TextView tvNowPayed;
-    @Bind(R.id.tv_now_count)
+    @Bind(R.id.tv_now_count)        //现商品总数量
     TextView tvNowCount;
-    @Bind(R.id.tv_now_sum)
+    @Bind(R.id.tv_now_sum)          //现商品总金额
     TextView tvNowSum;
-    @Bind(R.id.tv_now_dadou)
+    @Bind(R.id.tv_now_dadou)        //现商品达豆
     TextView tvNowDadou;
-    @Bind(R.id.tv_now_other_sale)
+    @Bind(R.id.tv_now_other_sale)   //现商品其它优惠
     TextView tvNowOtherSale;
-    @Bind(R.id.tv_now_all_sale)
+    @Bind(R.id.tv_now_all_sale)     //现商品全部优惠
     TextView tvNowAllSale;
-    @Bind(R.id.tv_now_receivable)
+    @Bind(R.id.tv_now_receivable)   //现商品应收账款
     TextView tvNowReceivable;
-    @Bind(R.id.tv_reject_goods_count)
+    @Bind(R.id.tv_reject_goods_count) //拒收商品总数
     TextView tvRejectGoodsCount;
-    @Bind(R.id.ll_reject_goods_group_out)
+    @Bind(R.id.ll_reject_goods_group_out) //拒收商品视图
     LinearLayout llRejectGoodsGroupOut;
-    @Bind(R.id.ll_delivery_goods_group_out)
+    @Bind(R.id.ll_delivery_goods_group_out) //送达商品视图
     LinearLayout llDeliveryGoodsGroupOut;
-    @Bind(R.id.tv_done)
+    @Bind(R.id.tv_done)  //确认部分送达按钮
     TextView tvDone;
 
-    private PartSendConfirmEntity confirmEntity;
+    private PartSendConfirmEntity confirmEntity; //部分送达商品实体类
     private PartSendDoneParams confirmParams;
 
     private static final int GOODS_REJECT = 100;
@@ -96,8 +99,8 @@ public class TaskPartSendConfirmActivity extends BaseActivity {
         tvNowAllSale.setText("合计优惠：" + confirmEntity.getNowInfo().getTotalOff());
 
         if(confirmEntity.getOrgInfo().getHadPaySum() == 0){ //未支付订单
-            tvOriginPayed.setVisibility(View.GONE);
-            tvOriginReceivable.setVisibility(View.VISIBLE);
+            tvOriginPayed.setVisibility(View.GONE); //隐蔽原商品支付金额
+            tvOriginReceivable.setVisibility(View.VISIBLE); //显示原商品应收账款
 //            msp = new SpannableString("应收：" + confirmEntity.getOrgInfo().getNeedPaySum());
 //            msp.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context,R.color.text_color_red)), ("应收：").length(), ("应收：").length()+(confirmEntity.getNowInfo().getNeedPaySum()+"").length()-1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             tvOriginReceivable.setText("应收：" + confirmEntity.getOrgInfo().getNeedPaySum());
@@ -108,8 +111,8 @@ public class TaskPartSendConfirmActivity extends BaseActivity {
         }
 
         if(confirmEntity.getNowInfo().getHadPaySum() == 0){ //未支付订单
-            tvNowPayed.setVisibility(View.GONE);
-            tvNowReceivable.setVisibility(View.VISIBLE);
+            tvNowPayed.setVisibility(View.GONE); //隐蔽现商品支付金额
+            tvNowReceivable.setVisibility(View.VISIBLE); //显示现商品应收账款
 //            msp = new SpannableString("应收：" + confirmEntity.getNowInfo().getNeedPaySum());
 //            msp.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context,R.color.text_color_red)), ("应收：").length(), ("应收：").length()+(confirmEntity.getNowInfo().getNeedPaySum()+"").length()-1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             tvNowReceivable.setTextColor(ContextCompat.getColor(context,R.color.text_color_red));
@@ -142,9 +145,9 @@ public class TaskPartSendConfirmActivity extends BaseActivity {
 
     private void addGoodsView(List<PartSendConfirmEntity.GoodsDetailBean.RejectBean> rejectBeans, int status) {
         for (int i = 0; i < rejectBeans.size(); i++) { //商品组
-            View goodsGroupView = LayoutInflater.from(context).inflate(R.layout.item_part_goods_in, null);
+            View goodsGroupView = LayoutInflater.from(context).inflate(R.layout.item_part_goods_in, null); //拒收商品布局
             LinearLayout llGoodsIn = (LinearLayout) goodsGroupView.findViewById(R.id.ll_goods_group_in);
-            TextView tvIndex = (TextView) goodsGroupView.findViewById(R.id.tv_index);
+            TextView tvIndex = (TextView) goodsGroupView.findViewById(R.id.tv_index); //拒收商品索引
             if(rejectBeans.get(i).getGiftFlag() == 1){
                 tvIndex.setText("赠");
             }else{
@@ -180,8 +183,8 @@ public class TaskPartSendConfirmActivity extends BaseActivity {
         TextView tvGoodsName = new TextView(context, null);
         LinearLayout.LayoutParams paramsGoodsName = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         tvGoodsName.setText(name);
-        float density = context.getResources().getDisplayMetrics().density;
-        tvGoodsName.setMaxWidth(270 * (int)density);
+        float density = context.getResources().getDisplayMetrics().density; //获得屏幕相对密度
+        tvGoodsName.setMaxWidth(270 * (int)density); //设置TextView控件的最大宽
         tvGoodsName.setMaxLines(2);
         //商品数量
         TextView tvGoodsAmount = new TextView(context, null);

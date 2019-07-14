@@ -281,7 +281,7 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
       resultIntent.putExtras(bundle);
       this.setResult(RESULT_OK, resultIntent);
     }
-    CaptureActivity.this.finish();   //ZYZ标签
+    CaptureActivity.this.finish();
   }
 
   private void initCamera(SurfaceHolder surfaceHolder) {
