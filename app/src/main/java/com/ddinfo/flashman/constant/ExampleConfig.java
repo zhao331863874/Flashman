@@ -114,13 +114,13 @@ public class ExampleConfig {
   public static final String AUTH_CODE_SECOND = "AUTH_CODE_SECOND";
   public static final String PAY_TIME = "PAY_TIME";
 
-  public static final String INTENT_TOPUPMONEY = "INTENT_TOPUPMONEY";
+  public static final String INTENT_TOPUPMONEY = "INTENT_TOPUPMONEY"; //充值金额
   public static final String INTENT_DELIVERY_IDS_NEY = "deliveryOrderIdsKEY";
 
   public static final String INTENT_TYPE = "INTENT_TYPE"; //支付方式
   public static final int INTENT_WITHDRAWS_BALANCE = 2003;
   public static final int INTENT_WITHDRAWS_PLEDGE = 2004;
-  public static final String LOGIN_PHONE = "LOGIN_PHONE";
+  public static final String LOGIN_PHONE = "LOGIN_PHONE"; //登录手机号
 
   public static final int CODE_RESET_TIME = 60;
   /********

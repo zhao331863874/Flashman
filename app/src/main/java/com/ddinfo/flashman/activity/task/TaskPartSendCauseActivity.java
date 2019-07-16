@@ -243,7 +243,7 @@ public class TaskPartSendCauseActivity extends BaseActivity {
                             bundle.putString(TaskIncomeActivity.URL_CODE, response.body().getData().getCodeUrl()); //生成二维码地址
                             bundle.putString("orderId",response.body().getData().getOrderId()+""); //订单号
                             bundle.putString("orderAmount",response.body().getData().getOrderAmount()+""); //订单金额
-                            startActivity(TaskIncomeActivity.class,bundle);   //ZYZ标签
+                            startActivity(TaskIncomeActivity.class,bundle);
                         }
                     }
                     @Override

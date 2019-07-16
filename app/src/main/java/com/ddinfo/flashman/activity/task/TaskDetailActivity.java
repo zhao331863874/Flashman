@@ -104,7 +104,7 @@ public class TaskDetailActivity extends BaseActivity implements EasyPermissions.
     TextView tvStorePhoneNum;
     @Bind(R.id.ll_detail_name)
     LinearLayout llDetailName;
-    @Bind(R.id.tv_address_send)    //收货地址？
+    @Bind(R.id.tv_address_send)    //收货地址
     TextView tvAddressSend;
     @Bind(R.id.tv_hope_time_title) //取货
     TextView tvHopeTimeTitle;
@@ -149,8 +149,8 @@ public class TaskDetailActivity extends BaseActivity implements EasyPermissions.
 
     private OrderDetailEntity mData;
     private OrderDetailEntityV1 mDataV1;
-    private boolean isPermission;
-    private double lat = 0, lon = 0;
+    private boolean isPermission;    //判断是否开启权限
+    private double lat = 0, lon = 0; //维度，经度
 
     private ArrayList<String> payMethods = new ArrayList<>(); //支付方式
 
@@ -240,7 +240,7 @@ public class TaskDetailActivity extends BaseActivity implements EasyPermissions.
                         });
                     }
                 });
-
+                //部分送达
                 tvNewLeft.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -257,7 +257,7 @@ public class TaskDetailActivity extends BaseActivity implements EasyPermissions.
                         showDiolog(TYPE_GOODSREFUSE);
                     }
                 });
-                //                地图
+                //地图
                 tvMapDitu.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -267,7 +267,7 @@ public class TaskDetailActivity extends BaseActivity implements EasyPermissions.
                 });
                 imgMapShoppre.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(View view) { //店铺图片
                         Intent intent = new Intent(TaskDetailActivity.this, StoreImgActivity.class);
                         intent.putExtra("lat", mData.getLat());
                         intent.putExtra("lon", mData.getLon());
@@ -392,23 +392,23 @@ public class TaskDetailActivity extends BaseActivity implements EasyPermissions.
         setTitle("订单详情");
         if (mPosition == 4 || mPosition == 5) {
             if (mDataV1 != null) {
-                tvAddressTake.setText(mDataV1.getWarehouseAddress());
-                tvAddressSend.setText(mDataV1.getStoreAddress());
-                tvHopeTime.setText(mDataV1.getReceiveTime());
-                tvStoreName.setText(mDataV1.getStoreName());
+                tvAddressTake.setText(mDataV1.getWarehouseAddress()); //取货地址
+                tvAddressSend.setText(mDataV1.getStoreAddress()); //收货地址
+                tvHopeTime.setText(mDataV1.getReceiveTime()); //取货时间
+                tvStoreName.setText(mDataV1.getStoreName());  //店铺名称
                 try {
-                    tvOrderMes.setText(mData.getRemark());
+                    tvOrderMes.setText(mData.getRemark()); //订单备注
                 } catch (Exception e) {
-                    llDetailMes.setVisibility(View.GONE);
+                    llDetailMes.setVisibility(View.GONE);  //隐藏订单备注布局控件
                     e.printStackTrace();
                 }
-                tvOrderMoney.setText(mDataV1.getOrderAmount());
-                tvTaskId.setText(mDataV1.getNumberId());
-                tvIncome.setText(mDataV1.getCommission());
-                tvOrderId.setText(mDataV1.getOrderId() + "");
-                llDetailInvoiceId.setVisibility(View.GONE);
+                tvOrderMoney.setText(mDataV1.getOrderAmount()); //订单金额
+                tvTaskId.setText(mDataV1.getNumberId());        //运单编号
+                tvIncome.setText(mDataV1.getCommission());      //预期收入
+                tvOrderId.setText(mDataV1.getOrderId() + "");   //订单编号
+                llDetailInvoiceId.setVisibility(View.GONE);     //隐藏发货单号布局
                 try {
-                    tvOrderInvoiceId.setText(mDataV1.getInvoiceNumberId());
+                    tvOrderInvoiceId.setText(mDataV1.getInvoiceNumberId()); //发货单号
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -696,10 +696,10 @@ public class TaskDetailActivity extends BaseActivity implements EasyPermissions.
 
     private void toMapActivity() {
         Bundle bundle = new Bundle();
-        bundle.putDouble("la", lat);
-        bundle.putDouble("lo", lon);
-        bundle.putDouble("currentLa", mData.getLat());
-        bundle.putDouble("currentLo", mData.getLon());
+        bundle.putDouble("la", lat); //维度
+        bundle.putDouble("lo", lon); //经度
+        bundle.putDouble("currentLa", mData.getLat()); //当前经度
+        bundle.putDouble("currentLo", mData.getLon()); //当前维度
         bundle.putInt(ExampleConfig.DELIVERY_ID, mData.getId());
         startActivity(TaskMapActivity.class, bundle);
     }
