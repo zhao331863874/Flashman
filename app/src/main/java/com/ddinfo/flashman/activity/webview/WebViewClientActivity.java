@@ -33,14 +33,17 @@ import butterknife.OnClick;
 
 //import com.blankj.utilcode.utils.ToastUtils;
 
+/**
+ * 余额明细界面
+ */
 @SuppressLint({"JavascriptInterface", "SetJavaScriptEnabled"})
 public class WebViewClientActivity extends BaseActivity {
     @Bind(R.id.webview)
     WebView webView;
     View navigationView;
     private ProgressDialog mDialogLoad = null;
-    private String urlStr = "";
-    private String title = "";
+    private String urlStr = ""; //余额明细Web url地址
+    private String title = "";  //标题抬头
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,9 +145,9 @@ public class WebViewClientActivity extends BaseActivity {
 
     private void initDialog() {
         mDialogLoad = new ProgressDialog(WebViewClientActivity.this);
-        mDialogLoad.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        mDialogLoad.setCancelable(true);
-        mDialogLoad.setCanceledOnTouchOutside(false);
+        mDialogLoad.setProgressStyle(ProgressDialog.STYLE_SPINNER); //设置进度条的形式为圆形转动的进度条
+        mDialogLoad.setCancelable(true); //设置是否可以通过点击Back键取消
+        mDialogLoad.setCanceledOnTouchOutside(false); //设置在点击Dialog外是否取消Dialog进度条
         mDialogLoad.setMessage("正在加载...");
     }
 
@@ -154,7 +157,7 @@ public class WebViewClientActivity extends BaseActivity {
             finish();
             return true;
         } else if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
-            webView.goBack();
+            webView.goBack(); //返回上一页
             return true;
         }
         return false;
@@ -189,12 +192,12 @@ public class WebViewClientActivity extends BaseActivity {
     @OnClick({R.id.left_button, R.id.right_button, R.id.rightBtn})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.left_button:
+            case R.id.left_button: //点击返回
 //                finish();
                 if (!(webView.canGoBack())) {
                     finish();
                 } else if (webView.canGoBack()) {
-                    webView.goBack();
+                    webView.goBack(); //返回上一页
                 }
                 break;
             case R.id.right_button:

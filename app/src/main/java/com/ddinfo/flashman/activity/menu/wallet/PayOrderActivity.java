@@ -65,6 +65,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
+/**
+ * 确认支付金额界面
+ */
 public class PayOrderActivity extends BaseActivity {
 
     private static final int payWayAli = 201;
@@ -74,35 +77,35 @@ public class PayOrderActivity extends BaseActivity {
     public static final String TRACK_PAY_ORDER_RECORD="TRACK_PAY_ORDER_RECORD";
     public static IWXAPI api;
 
-    @Bind(R.id.left_button)
+    @Bind(R.id.left_button)   //返回按钮
     ImageButton leftButton;
-    @Bind(R.id.header_name)
+    @Bind(R.id.header_name)   //标题抬头
     TextView headerName;
     @Bind(R.id.right_button)
     ImageButton rightButton;
     @Bind(R.id.rightBtn)
     Button rightBtn;
-    @Bind(R.id.tv_pay_money)
+    @Bind(R.id.tv_pay_money)  //充值金额
     TextView tvPayMoney;
-    @Bind(R.id.tv_enter)
+    @Bind(R.id.tv_enter)      //确认支付
     TextView tvEnter;
-    @Bind(R.id.tv_last_time)
+    @Bind(R.id.tv_last_time)  //剩余支付时间
     TextView tvLastTime;
-    @Bind(R.id.iv_sel_alipay)
+    @Bind(R.id.iv_sel_alipay) //支付宝选中图标
     ImageView ivSelAlipay;
-    @Bind(R.id.rl_alipay)
+    @Bind(R.id.rl_alipay)     //支付宝选项布局
     RelativeLayout rlAlipay;
-    @Bind(R.id.iv_sel_wechat)
+    @Bind(R.id.iv_sel_wechat) //微信选中图标
     ImageView ivSelWechat;
-    @Bind(R.id.rl_wechatpay)
+    @Bind(R.id.rl_wechatpay)  //微信选项布局
     RelativeLayout rlWechatpay;
 
-    private ArrayList<String> payMethods = new ArrayList<>();
+    private ArrayList<String> payMethods = new ArrayList<>(); //支付方式
     private String type;
     private Dialog popUpDialog;
     private Timer payTimer;
 
-    private double topUpMoney;
+    private double topUpMoney; //充值金额
     private int deliveryOrderIds;
     private int payWayCur = -1;
     private long lastTime;
@@ -197,7 +200,7 @@ public class PayOrderActivity extends BaseActivity {
     @OnClick({R.id.tv_enter, R.id.rl_alipay, R.id.rl_wechatpay})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_enter:
+            case R.id.tv_enter: //确认支付
                 if (lastTime != 0) {
                     if (deliveryOrderIds != -1) {
                         //交货款
@@ -317,7 +320,7 @@ public class PayOrderActivity extends BaseActivity {
                         switch (payType) {
                             case payWayAli:
                                 if (!TextUtils.isEmpty(alipayResponse.getCodeUrl())) {
-                                    AlipayAPI.alipay(PayOrderActivity.this, alipayResponse);
+                                    AlipayAPI.alipay(PayOrderActivity.this, alipayResponse);   //ZYZ标签
                                 }
                                 break;
                             case payWayWx:

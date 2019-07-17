@@ -32,28 +32,28 @@ import retrofit2.Response;
  * 完善用户信息
  */
 public class PerfectUserInfoActivity extends BaseActivity {
-  @Bind(R.id.tint)
+  @Bind(R.id.tint) //个人信息审核状态
   TextView tint;
-  @Bind(R.id.real_name)
+  @Bind(R.id.real_name) //真实姓名
   EditText realName;
-  @Bind(R.id.ID_card)
+  @Bind(R.id.ID_card)   //身份证号
   EditText IDCard;
-  @Bind(R.id.delivery_address)
+  @Bind(R.id.delivery_address) //家庭住址
   EditText deliveryAddress;
-  @Bind(R.id.urgency_name)
+  @Bind(R.id.urgency_name)   //紧急联系人姓名
   EditText urgencyName;
-  @Bind(R.id.urgency_phone)
+  @Bind(R.id.urgency_phone)  //紧急联系人手机
   EditText urgencyPhone;
-  @Bind(R.id.urgency_ship)
+  @Bind(R.id.urgency_ship)   //紧急联系人关系
   EditText urgencyShip;
-  @Bind(R.id.bank_name)
+  @Bind(R.id.bank_name)      //开户银行
 
   EditText bankName;
-  @Bind(R.id.bank_count_user)
+  @Bind(R.id.bank_count_user)//户主姓名
   EditText bankCountUser;
-  @Bind(R.id.bank_count_ID)
+  @Bind(R.id.bank_count_ID)  //银行卡号
   EditText bankCountID;
-  @Bind(R.id.submit)
+  @Bind(R.id.submit) //提交信息
   Button submit;
   private AttachUserInfoEntity userInfoEntity = new AttachUserInfoEntity();
 
@@ -69,11 +69,11 @@ public class PerfectUserInfoActivity extends BaseActivity {
     initUserInfo();
   }
 
-  @OnClick(R.id.submit)
+  @OnClick(R.id.submit) //提交按钮监听
   void submitUpload(){
     try {
       AttachUserInfoEntity entity = getDataFromView();
-      if(!verifyForm(entity)){
+      if(!verifyForm(entity)){ //判断信息格式是否验证通过
         return;
       }
       Call<BaseResponseEntity> uploadCall = webService.uploadAttachUserInfo(ExampleConfig.token, entity);
@@ -97,7 +97,7 @@ public class PerfectUserInfoActivity extends BaseActivity {
     }
   }
 
-  private void initHint() {
+  private void initHint() { //初始化个人信息审核状态
     tint.setText(userInfoEntity.getConfirmStateDesc());
   }
 
@@ -134,7 +134,7 @@ public class PerfectUserInfoActivity extends BaseActivity {
 
   private void initOnlyShow(boolean isOnlyShow) {
     if(!isOnlyShow) return;
-    realName.setEnabled(false);
+    realName.setEnabled(false); //设置不可编辑状态
     if(!TextUtils.isEmpty(userInfoEntity.realName)){
       realName.setBackgroundColor(Color.TRANSPARENT);
     }
@@ -178,10 +178,10 @@ public class PerfectUserInfoActivity extends BaseActivity {
     if(!TextUtils.isEmpty(userInfoEntity.urgencyShip)){
       urgencyShip.setBackgroundColor(Color.TRANSPARENT);
     }
-    submit.setVisibility(View.GONE);
+    submit.setVisibility(View.GONE); //隐藏提交信息
   }
 
-  private AttachUserInfoEntity getDataFromView() {
+  private AttachUserInfoEntity getDataFromView() { //获取个人信息
     AttachUserInfoEntity entity = new AttachUserInfoEntity();
     entity.realName = realName.getText().toString().trim();
     entity.IDCard = IDCard.getText().toString().trim();
@@ -195,7 +195,7 @@ public class PerfectUserInfoActivity extends BaseActivity {
     return entity;
   }
 
-  private boolean verifyForm(AttachUserInfoEntity entity) {
+  private boolean verifyForm(AttachUserInfoEntity entity) { //信息格式验证
     if(TextUtils.isEmpty(entity.realName)){
       ToastUtils.showShortToast("真实姓名不能为空！");
       return false;

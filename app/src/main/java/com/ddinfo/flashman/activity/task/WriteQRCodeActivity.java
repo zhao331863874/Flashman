@@ -20,8 +20,8 @@ import retrofit2.Response;
 
 public class WriteQRCodeActivity extends BaseActivity {
 
-  @Bind(R.id.et_write_code) EditText etWriteCode;
-  @Bind(R.id.tv_enter) TextView tvEnter;
+  @Bind(R.id.et_write_code) EditText etWriteCode; //条码单号
+  @Bind(R.id.tv_enter) TextView tvEnter; //完成
 
   private String QRcode;
   // 0 取货  1 扫一扫

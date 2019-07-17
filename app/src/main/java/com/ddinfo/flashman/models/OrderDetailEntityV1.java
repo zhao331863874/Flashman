@@ -26,17 +26,17 @@ public class OrderDetailEntityV1 implements Serializable {
    */
 
   private int id;
-  private int OrderId;
-  private String numberId;
-  private String orderAmount;
-  private String receiveTime;
-  private String commission;
-  private String warehouseAddress;
-  private String storeName;
-  private String storeAddress;
+  private int OrderId;             //订单编号
+  private String numberId;         //运单编号
+  private String orderAmount;      //订单金额
+  private String receiveTime;      //取货时间
+  private String commission;       //预期收入
+  private String warehouseAddress; //取货地址
+  private String storeName;        //店铺名称
+  private String storeAddress;     //收货地址
   private int WarehouseId;
   private String rejectCode;
-  private String invoiceNumberId;
+  private String invoiceNumberId;  //发货单号
 
   public int getId() {
     return id;

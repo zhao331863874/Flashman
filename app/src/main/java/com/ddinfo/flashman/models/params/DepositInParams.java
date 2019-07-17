@@ -11,6 +11,13 @@ public class DepositInParams {
     private String userName;
     private int target; // 提现类型 0:余额提现， 1:押金提现(必须提供， 原来的余额提现需添加target:0)
 
+    /**
+     * @param sum 提现金额
+     * @param validateCode 验证码
+     * @param accountNo 第三方账户编号
+     * @param userName 第三方用户名
+     * @param target 提现类型
+     */
     public DepositInParams(double sum, String validateCode, String accountNo, String userName, int target) {
         this.sum = sum;
         this.validateCode = validateCode;

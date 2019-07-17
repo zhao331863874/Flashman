@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by 李占晓 on 2017/5/25.
+ * 店铺详细信息布局适配器
  */
 
 public class TaskMapAdapter extends RecyclerView.Adapter<TaskMapAdapter.ViewHolder> {
@@ -61,33 +62,33 @@ public class TaskMapAdapter extends RecyclerView.Adapter<TaskMapAdapter.ViewHold
         .into(viewHolder.imgMapShoppre);
     viewHolder.imgMapShoppre.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick(View view) {
+      public void onClick(View view) { //点击店铺图片监听
         onStoreImgClick.onStoreImgClick(view, i);
       }
     });
     viewHolder.tvStoreAddress.setText(mListData.get(i).getStoreAddress());
     viewHolder.tvLeft.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick(View view) {
+      public void onClick(View view) { //点击送达监听
         onTaskClick.onTaskOptionLeftClick(view, i);
       }
     });
     viewHolder.tvRight.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick(View view) {
+      public void onClick(View view) { //点击拒收监听
         onTaskClick.onTaskOptionRightClick(view, i);
       }
     });
     viewHolder.tvStorePhoneNum.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick(View view) {
+      public void onClick(View view) { //点击店铺老板电话监听
         onPhoneClick.onPhoneClick(i);
       }
     });
 
     viewHolder.tvNewLeft.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick(View v) {
+      public void onClick(View v) { //点击部分送达监听
         onTaskClick.onTaskOptionNewLeftClick(v,i);
       }
     });
@@ -141,17 +142,17 @@ public class TaskMapAdapter extends RecyclerView.Adapter<TaskMapAdapter.ViewHold
 
   class ViewHolder extends RecyclerView.ViewHolder {
     @Bind(R.id.ll_itemView) LinearLayout llItemView;
-    @Bind(R.id.tv_store_name) TextView tvStoreName;
-    @Bind(R.id.tv_numberid) TextView tvNumberid;
-    @Bind(R.id.tv_map_dingwei) TextView tvMapDingwei;
-    @Bind(R.id.tv_store_lbname) TextView tvStoreLbname;
-    @Bind(R.id.tv_store_phoneNum) TextView tvStorePhoneNum;
-    @Bind(R.id.img_map_shoppre) ImageView imgMapShoppre;
-    @Bind(R.id.tv_left) TextView tvLeft;
-    @Bind(R.id.tv_new_left) TextView tvNewLeft;
-    @Bind(R.id.tv_right) TextView tvRight;
-    @Bind(R.id.ll_task_bottom) LinearLayout llTaskBottom;
-    @Bind(R.id.tv_store_Address) TextView tvStoreAddress;
+    @Bind(R.id.tv_store_name) TextView tvStoreName; //店铺名称
+    @Bind(R.id.tv_numberid) TextView tvNumberid;    //订单ID
+    @Bind(R.id.tv_map_dingwei) TextView tvMapDingwei;   //距离
+    @Bind(R.id.tv_store_lbname) TextView tvStoreLbname;     //店铺老板名称
+    @Bind(R.id.tv_store_phoneNum) TextView tvStorePhoneNum; //店铺老板电话
+    @Bind(R.id.img_map_shoppre) ImageView imgMapShoppre;    //店铺图片
+    @Bind(R.id.tv_left) TextView tvLeft;        //送达
+    @Bind(R.id.tv_new_left) TextView tvNewLeft; //部分送达
+    @Bind(R.id.tv_right) TextView tvRight;      //拒收
+    @Bind(R.id.ll_task_bottom) LinearLayout llTaskBottom;   //送达、部分送达、拒收布局控件
+    @Bind(R.id.tv_store_Address) TextView tvStoreAddress;   //地址
 
     ViewHolder(View view) {
       super(view);

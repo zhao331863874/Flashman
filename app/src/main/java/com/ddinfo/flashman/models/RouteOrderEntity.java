@@ -16,14 +16,14 @@ public class RouteOrderEntity {
      * warehouseName : 南京中心仓
      */
 
-    private int commission;
-    private double orderAmount;
-    private String orderTime;
+    private int commission;       //收入金额
+    private double orderAmount;   //冻结金额
+    private String orderTime;     //下单时间
     private int routeId;
-    private String routeName;
-    private String storeAddress;
-    private String storeName;
-    private String warehouseName;
+    private String routeName;     //线路名称
+    private String storeAddress;  //收货地址
+    private String storeName;     //店铺名称
+    private String warehouseName; //取货地址
 
     public int getCommission() {
         return commission;

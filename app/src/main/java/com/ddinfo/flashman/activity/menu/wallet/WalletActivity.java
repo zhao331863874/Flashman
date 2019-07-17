@@ -30,29 +30,29 @@ import retrofit2.Response;
 
 public class WalletActivity extends BaseActivity {
 
-    @Bind(R.id.left_button)
+    @Bind(R.id.left_button) //左返回按钮
     ImageButton leftButton;
-    @Bind(R.id.header_name)
+    @Bind(R.id.header_name) //抬头标题
     TextView headerName;
     @Bind(R.id.right_button)
     ImageButton rightButton;
     @Bind(R.id.rightBtn)
     Button rightBtn;
-    @Bind(R.id.tv_balance)
+    @Bind(R.id.tv_balance)  //余额
     TextView tvBalance;
-    @Bind(R.id.rl_balance)
+    @Bind(R.id.rl_balance)  //余额布局
     RelativeLayout rlBalance;
-    @Bind(R.id.tv_pledge)
+    @Bind(R.id.tv_pledge)   //押金
     TextView tvPledge;
-    @Bind(R.id.rl_pledge)
+    @Bind(R.id.rl_pledge)   //押金布局
     RelativeLayout rlPledge;
     @Bind(R.id.activity_purse)
     LinearLayout activityPurse;
-    @Bind(R.id.tv_credit)
+    @Bind(R.id.tv_credit)   //授信额度
     TextView tvCredit;
-    @Bind(R.id.tv_total_credit)
+    @Bind(R.id.tv_total_credit) //可接货额度
     TextView tvTotalCredit;
-    @Bind(R.id.tv_frozen)
+    @Bind(R.id.tv_frozen)   //冻结额度
     TextView tvFrozen;
 
     WalletEntity data;
@@ -84,17 +84,17 @@ public class WalletActivity extends BaseActivity {
     @OnClick({R.id.rl_balance, R.id.rl_pledge,R.id.rl_total_credit})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.rl_balance:
+            case R.id.rl_balance: //点击余额
                 Bundle bunder = new Bundle();
                 bunder.putSerializable("wallet", data);
                 startActivity(BalanceActivity.class, bunder);
                 break;
-            case R.id.rl_pledge:
+            case R.id.rl_pledge: //点击押金
                 Bundle pledgeBunder = new Bundle();
                 pledgeBunder.putSerializable("wallet", data);
                 startActivity(PledgeActivity.class, pledgeBunder);
                 break;
-            case R.id.rl_total_credit:
+            case R.id.rl_total_credit: //点击可接货额度
                 startActivity(FrozenDetailActivity.class);
                 break;
         }
@@ -137,14 +137,14 @@ public class WalletActivity extends BaseActivity {
         }
     }
 
-    public void setWalletInfo(WalletEntity walletInfo) {
+    public void setWalletInfo(WalletEntity walletInfo) { //设置钱包信息
         try {
             tvBalance.setText(Utils.jointNumFromat(walletInfo.getBalance()));
             tvPledge.setText(Utils.jointNumFromat(walletInfo.getDeposit()));
             tvCredit.setText(Utils.jointNumFromat(walletInfo.getCreditAmount()));
             tvTotalCredit.setText(Utils.jointNumFromat(walletInfo.getUsable()));
             if(walletInfo.getFrozenAmount()!=0){
-                tvFrozen.setVisibility(View.VISIBLE);
+                tvFrozen.setVisibility(View.VISIBLE); //显示冻结额度
                 tvFrozen.setText("(冻结" + Utils.jointNumFromat(walletInfo.getFrozenAmount()) + ")");
             }else{
                 tvFrozen.setVisibility(View.GONE);

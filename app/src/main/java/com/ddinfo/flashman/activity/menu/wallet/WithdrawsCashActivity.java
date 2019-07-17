@@ -38,33 +38,33 @@ import retrofit2.Response;
  */
 public class WithdrawsCashActivity extends BaseActivity {
 
-    @Bind(R.id.tv_alipay_account)
+    @Bind(R.id.tv_alipay_account) //支付宝账号
     TextView tvAlipayAccount;
-    @Bind(R.id.et_withdraws_cash)
+    @Bind(R.id.et_withdraws_cash) //提现金额
     EditText etWithdrawsCash;
-    @Bind(R.id.textView3)
+    @Bind(R.id.textView3)         //钱标识
     TextView textView3;
-    @Bind(R.id.balance_desc)
+    @Bind(R.id.balance_desc)      //当前余额名称
     TextView balanceDesc;
-    @Bind(R.id.tv_balance_num)
+    @Bind(R.id.tv_balance_num)    //当前余额
     TextView tvBalanceNum;
-    @Bind(R.id.text_password)
+    @Bind(R.id.text_password)     //验证码名称
     TextView textPassword;
-    @Bind(R.id.et_auth_code)
+    @Bind(R.id.et_auth_code)      //验证码
     EditText etAuthCode;
-    @Bind(R.id.bt_get_auth_code)
+    @Bind(R.id.bt_get_auth_code)  //获取验证码按钮
     Button btGetAuthCode;
-    @Bind(R.id.btn_take_cash)
+    @Bind(R.id.btn_take_cash)     //提现按钮
     Button btnTakeCash;
 
     private static final int TIMEDELSTART = 0x111;
-    private static int lastTime;
-    private static Thread mTimeThread;
+    private static int lastTime; //获取验证码倒计时
+    private static Thread mTimeThread;     //获取验证码倒计时线程
     private static Handler mTimeHandler;
-    private static Boolean isStop = false;
+    private static Boolean isStop = false; //获取验证码开关
     WalletEntity wallet;
-    BalanceAccountListEntity account;
-    private String from;
+    BalanceAccountListEntity account;      //账号实体类
+    private String from; //类的简写名称
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +83,7 @@ public class WithdrawsCashActivity extends BaseActivity {
                 startThread();
             }
             btGetAuthCode.setText(lastTime + "秒");
-            btGetAuthCode.setEnabled(false);
+            btGetAuthCode.setEnabled(false); //设置不可点击
             btGetAuthCode.setBackground(ContextCompat.getDrawable(context, R.drawable.corners_deep_gray));
         }
     }
@@ -99,10 +99,10 @@ public class WithdrawsCashActivity extends BaseActivity {
             tvAlipayAccount.setText(account.getAccountNo());
         }
 
-        etWithdrawsCash.addTextChangedListener(new TextWatcher() {
+        etWithdrawsCash.addTextChangedListener(new TextWatcher() { //提现金额监听
             public void afterTextChanged(Editable edt) {
                 String temp = edt.toString();
-                int posDot = temp.indexOf(".");
+                int posDot = temp.indexOf("."); //返回"."字串在父串中首次出现的位置
                 if (posDot <= 0) return;
                 if (temp.length() - posDot - 1 > 2) {
                     edt.delete(posDot + 3, posDot + 4);
@@ -141,10 +141,10 @@ public class WithdrawsCashActivity extends BaseActivity {
     @OnClick({R.id.bt_get_auth_code, R.id.btn_take_cash})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.bt_get_auth_code:
+            case R.id.bt_get_auth_code: //获取验证码
                 getAuthCode();
                 break;
-            case R.id.btn_take_cash:
+            case R.id.btn_take_cash: //提现
                 encash();
                 break;
         }
@@ -170,7 +170,7 @@ public class WithdrawsCashActivity extends BaseActivity {
                 return;
             }
             String authCode = etAuthCode.getText().toString().trim();
-            double withCashNum = Double.parseDouble(etWithdrawsCash.getText().toString().trim());
+            double withCashNum = Double.parseDouble(etWithdrawsCash.getText().toString().trim()); //提现金额
             BigDecimal withCashBD = new BigDecimal(withCashNum);
             BigDecimal balanceBD = new BigDecimal(isFromDeposit(from) ? wallet.getCanDeposit() : wallet.getBalance());
             int compareRes = withCashBD.compareTo(balanceBD);
@@ -239,11 +239,11 @@ public class WithdrawsCashActivity extends BaseActivity {
 
     private void startThread() {
         isStop = false;
-        if (mTimeThread.getState() == Thread.State.NEW) {
+        if (mTimeThread.getState() == Thread.State.NEW) { //一个尚未启动的线程的状态
             if (!mTimeThread.isAlive()) {
                 mTimeThread.start();
             }
-        } else if (mTimeThread.getState() == Thread.State.TERMINATED) {
+        } else if (mTimeThread.getState() == Thread.State.TERMINATED) { //个完全运行完成的线程的状态
             mTimeThread = new TimeThread();
             mTimeThread.start();
         }
@@ -277,7 +277,7 @@ public class WithdrawsCashActivity extends BaseActivity {
         }
     }
 
-    private class TimeThread extends Thread {
+    private class TimeThread extends Thread { //获取验证码倒计时线程
         @Override
         public void run() {
             while (!isStop) {
@@ -292,7 +292,7 @@ public class WithdrawsCashActivity extends BaseActivity {
                     }
 
                     if (isStop) {
-                        this.interrupt();
+                        this.interrupt(); //中断线程
                     }
                 } catch (InterruptedException e) {
                     LogUtils.i(e.toString());

@@ -54,39 +54,39 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
 
     @Bind(R.id.content_frame)
     FrameLayout contentFrame;
-    @Bind(R.id.img_user)
+    @Bind(R.id.img_user)        //用户头像
     ImageView imgUser;
-    @Bind(R.id.tv_user_name)
+    @Bind(R.id.tv_user_name)    //用户名称
     TextView tvUserName;
-    @Bind(R.id.ll_r)
+    @Bind(R.id.ll_r)            //到仓确认布局
     LinearLayout llR;
-    @Bind(R.id.activity_main)
+    @Bind(R.id.activity_main)   //侧滑菜单效果的控件
     DrawerLayout activityMain;
-    @Bind(R.id.tv_purse)
+    @Bind(R.id.tv_purse)        //钱包
     TextView tvPurse;
-    @Bind(R.id.tv_setting)
+    @Bind(R.id.tv_setting)      //设置
     TextView tvSetting;
-    @Bind(R.id.tv_arrive)
+    @Bind(R.id.tv_arrive)       //到仓确认
     TextView tvArrive;
-    @Bind(R.id.tv_cur_response)
+    @Bind(R.id.tv_cur_response) //到仓确认状态
     TextView tvCurResponse;
-    @Bind(R.id.tv_money)
+    @Bind(R.id.tv_money)        //待缴金额
     TextView tvMoney;
-    @Bind(R.id.tv_payment)
+    @Bind(R.id.tv_payment)      //待交货款
     TextView tvPayment;
     @Bind(R.id.rl_top)
     RelativeLayout rlTop;
-    @Bind(R.id.tv_payment_list)
+    @Bind(R.id.tv_payment_list) //交货款单
     TextView tvPaymentList;
-    @Bind(R.id.tv_superior_name)
+    @Bind(R.id.tv_superior_name)//上级配送员名称
     TextView tvSuperiorName;
 
-    @Bind(R.id.tv_payment_money)
+    @Bind(R.id.tv_payment_money)//待支付金额
     TextView tvPaymentMoney;
 
     private WareHouseInfoEntity wareHouseInfoEntity;
-    private boolean isLogin;
-    private ContentFragment fragment;
+    private boolean isLogin; //判断是否登录
+    private ContentFragment fragment; //线路总览布局
     private boolean isFirstOpenLeft = true;
 
 
@@ -236,7 +236,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
             case R.id.tv_payment_list: //交货款单
                 startActivity(PaymentListActivity.class);
                 break;
-            case R.id.tv_board:
+            case R.id.tv_board: //我的看板
                 startActivity(BoardActivity.class);
                 break;
             case R.id.rl_top:
@@ -295,8 +295,8 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
                     }
                 }
                 break;
-            case CODE_PERFECT:
-                if(resultCode == RESULT_OK) {
+            case CODE_PERFECT: //完善个人信息
+                if(resultCode == RESULT_OK) { //个人信息提交成功
                     initData();
                 }
                 break;
@@ -330,10 +330,10 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
     public void onPermissionsDenied(int requestCode, List<String> perms) {
     }
 
-
+    //显示左侧菜单
     public void showLeftDraw() {
-        if (!activityMain.isDrawerOpen(GravityCompat.START)) {
-            activityMain.openDrawer(GravityCompat.START);
+        if (!activityMain.isDrawerOpen(GravityCompat.START)) { //判断左边菜单是否打开
+            activityMain.openDrawer(GravityCompat.START); //打开菜单
 
             if(isFirstOpenLeft) {
                 if(wareHouseInfoEntity==null) {

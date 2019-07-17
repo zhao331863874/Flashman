@@ -15,10 +15,10 @@ public class RouteEntity {
      * sum : 10
      */
 
-    private String routeName;
+    private String routeName; //路线名称
     private String capacity;
     private String orderTotal;
-    private int routeId;
+    private int routeId;      //路线ID
     private double sum;
 
     public String getRouteName() {

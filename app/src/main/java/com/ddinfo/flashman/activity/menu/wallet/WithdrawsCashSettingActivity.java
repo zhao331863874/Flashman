@@ -24,13 +24,16 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
+/**
+ * 提现设置
+ */
 public class WithdrawsCashSettingActivity extends BaseActivity {
 
-    @Bind(R.id.btn_add_account)
+    @Bind(R.id.btn_add_account) //添加提现账户
     Button btnAddAccount;
-    @Bind(R.id.tv_alipay_account)
+    @Bind(R.id.tv_alipay_account) //支付宝账号
     TextView tvAlipayAccount;
-    @Bind(R.id.rel_alipay_account)
+    @Bind(R.id.rel_alipay_account) //已绑定的支付宝布局
     RelativeLayout relAlipayAccount;
     ArrayList<BalanceAccountListEntity> accountLists;
 
@@ -51,7 +54,7 @@ public class WithdrawsCashSettingActivity extends BaseActivity {
     }
 
     private void initData() {
-        relAlipayAccount.setVisibility(View.GONE);
+        relAlipayAccount.setVisibility(View.GONE); //隐藏支付宝布局
         getAccountList();
     }
 
@@ -64,10 +67,10 @@ public class WithdrawsCashSettingActivity extends BaseActivity {
     @OnClick({R.id.btn_add_account, R.id.rel_alipay_account})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_add_account:
+            case R.id.btn_add_account: //添加提现账户
                 startActivity(WithdrawsCashAddAlipayActivity.class);
                 break;
-            case R.id.rel_alipay_account:
+            case R.id.rel_alipay_account: //点击已绑定的提现账户
                 new AlertDialog.Builder(context)
                         .setTitle("解除绑定")
                         .setMessage("是否确认解除支付宝提现账户绑定？")
@@ -104,8 +107,8 @@ public class WithdrawsCashSettingActivity extends BaseActivity {
                 public void onSuccess(Call<BaseResponseEntity<ArrayList<BalanceAccountListEntity>>> call, Response<BaseResponseEntity<ArrayList<BalanceAccountListEntity>>> response) {
                     accountLists = response.body().getData();
                     if (accountLists != null && !accountLists.isEmpty()) {//有账户 直接体现
-                        relAlipayAccount.setVisibility(View.VISIBLE);
-                        btnAddAccount.setVisibility(View.GONE);
+                        relAlipayAccount.setVisibility(View.VISIBLE); //显示已绑定的支付宝布局
+                        btnAddAccount.setVisibility(View.GONE); //隐藏添加提现账户
                         tvAlipayAccount.setText(accountLists.get(0).getAccountNo());
                     } else {//没账户 可以添加设置账户
                         relAlipayAccount.setVisibility(View.GONE);

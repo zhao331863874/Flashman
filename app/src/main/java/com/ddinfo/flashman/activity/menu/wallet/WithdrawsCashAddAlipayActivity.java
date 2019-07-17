@@ -19,13 +19,16 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
+/**
+ * 添加提现账户
+ */
 public class WithdrawsCashAddAlipayActivity extends BaseActivity {
 
-    @Bind(R.id.name_et)
+    @Bind(R.id.name_et)   //姓名
     EditText nameEt;
-    @Bind(R.id.alipay_et)
+    @Bind(R.id.alipay_et) //支付宝账号
     EditText alipayEt;
-    @Bind(R.id.ok_btn)
+    @Bind(R.id.ok_btn)    //完成
     Button okBtn;
 
     @Override
@@ -47,7 +50,7 @@ public class WithdrawsCashAddAlipayActivity extends BaseActivity {
         return R.layout.activity_add_alipay;
     }
 
-    @OnClick(R.id.ok_btn)
+    @OnClick(R.id.ok_btn) //点击完成
     public void onClick() {
         if (TextUtils.isEmpty(nameEt.getText().toString().trim()) || TextUtils.isEmpty(alipayEt.getText().toString().trim())) {
             ToastUtils.showShortToastSafe("姓名和账户不能为空");
@@ -57,7 +60,7 @@ public class WithdrawsCashAddAlipayActivity extends BaseActivity {
     }
 
     /**
-     * 获取体现账户 信息
+     * 获取提现账户 信息
      */
     private void addWalletAccountInfo() {
         if (NetworkUtils.isConnected()) {

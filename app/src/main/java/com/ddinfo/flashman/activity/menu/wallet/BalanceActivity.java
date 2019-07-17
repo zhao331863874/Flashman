@@ -28,19 +28,22 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
+/**
+ * 余额界面
+ */
 public class BalanceActivity extends BaseActivity {
 
-    @Bind(R.id.tv_balance)
+    @Bind(R.id.tv_balance) //余额
     TextView tvBalance;
-    @Bind(R.id.ll_balance_top)
+    @Bind(R.id.ll_balance_top) //余额布局
     LinearLayout llBalanceTop;
-    @Bind(R.id.tv_balance_one)
+    @Bind(R.id.tv_balance_one) //申请提现
     TextView tvBalanceOne;
-    @Bind(R.id.tv_balance_two)
+    @Bind(R.id.tv_balance_two) //提现历史
     TextView tvBalanceTwo;
 
-    private AlertDialog.Builder builderOne;
-    private AlertDialog.Builder builderTwo;
+    private AlertDialog.Builder builderOne; //提示押金少于100元弹框
+    private AlertDialog.Builder builderTwo; //提示未设置提现账号弹框
     private AlertDialog alertDialogOne;//提示充值押金
     private AlertDialog alertDialogTwo;//提示未绑定账户
 
@@ -123,24 +126,24 @@ public class BalanceActivity extends BaseActivity {
     @OnClick({R.id.rightBtn, R.id.ll_balance_top, R.id.tv_balance_one, R.id.tv_balance_two})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.ll_balance_top:
+            case R.id.ll_balance_top: //余额明细
                 Intent intentBalance = new Intent();
                 intentBalance.setClass(context, WebViewClientActivity.class);
                 intentBalance.putExtra(ExampleConfig.WB_URL_KEY, UrlConstant.H5_BALANCE_DETAIL);
                 intentBalance.putExtra(ExampleConfig.WB_NAV_TITLE_KEY, "余额明细");
                 startActivity(intentBalance);
                 break;
-            case R.id.rightBtn:
+            case R.id.rightBtn: //提现设置
                 startActivity(WithdrawsCashSettingActivity.class);
                 break;
-            case R.id.tv_balance_one:
+            case R.id.tv_balance_one: //申请提现
                 if (wallet != null && wallet.getDeposit() < 100) {
                     alertDialogOne.show();
                 } else {
                     getAccountList();//获取账户信息
                 }
                 break;
-            case R.id.tv_balance_two:
+            case R.id.tv_balance_two: //提现历史
                 Intent intent = new Intent();
                 intent.setClass(context, WebViewClientActivity.class);
                 intent.putExtra(ExampleConfig.WB_URL_KEY, UrlConstant.H5_EXTRACE_HISTORY);
@@ -171,7 +174,7 @@ public class BalanceActivity extends BaseActivity {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("wallet", wallet);
                         bundle.putSerializable("walletAccount", accountLists.get(0));
-                        bundle.putString(ExampleConfig.FROM,BalanceActivity.class.getSimpleName());
+                        bundle.putString(ExampleConfig.FROM,BalanceActivity.class.getSimpleName()); //类的简写名称
                         Intent intent = new Intent(BalanceActivity.this,WithdrawsCashActivity.class);
                         intent.putExtras(bundle);
                         startActivity(intent);

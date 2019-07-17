@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by Gavin on 2017/8/8.
+ * 待配送单适配器
  */
 
 public class WaitForDeliveryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -62,11 +63,11 @@ public class WaitForDeliveryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         RecyclerView.ViewHolder holder = null;
         switch (viewType) {
             case ExampleConfig.VIEWHOLDER_NORMAL:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_wait_delivery, null);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_wait_delivery, null); //待配送单布局
                 holder = new ViewHolderNormal(view);
                 break;
             case ExampleConfig.VIEWHOLDER_FOOT:
-                View viewFooter = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer_load_more, null);
+                View viewFooter = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer_load_more, null); //正在加载布局
                 holder = new ViewHolderFoot(viewFooter);
                 break;
         }
@@ -89,13 +90,13 @@ public class WaitForDeliveryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         } else {
             ViewHolderNormal viewHolderNormal = (ViewHolderNormal) holder;
             viewHolderNormal.itemView.setTag(position);
-            viewHolderNormal.tvAmountIncome.setText(mListData.get(position).getCommission()+"");
-            viewHolderNormal.tvAmountFrozen.setText("金额：" + mListData.get(position).getOrderAmount() + "元");
-            viewHolderNormal.tvAddressSend.setText(mListData.get(position).getStoreAddress());
-            viewHolderNormal.tvAddressTake.setText(mListData.get(position).getWarehouseName());
-            viewHolderNormal.tvOrderTime.setText(mListData.get(position).getOrderTime());
-            viewHolderNormal.tvLineName.setText(mListData.get(position).getRouteName());
-            viewHolderNormal.tvStoreName.setText(mListData.get(position).getStoreName());
+            viewHolderNormal.tvAmountIncome.setText(mListData.get(position).getCommission()+""); //收入金额
+            viewHolderNormal.tvAmountFrozen.setText("金额：" + mListData.get(position).getOrderAmount() + "元"); //冻结金额
+            viewHolderNormal.tvAddressSend.setText(mListData.get(position).getStoreAddress());   //收货地址
+            viewHolderNormal.tvAddressTake.setText(mListData.get(position).getWarehouseName());  //取货地址
+            viewHolderNormal.tvOrderTime.setText(mListData.get(position).getOrderTime());        //下单时间
+            viewHolderNormal.tvLineName.setText(mListData.get(position).getRouteName());         //线路名称
+            viewHolderNormal.tvStoreName.setText(mListData.get(position).getStoreName());        //店铺名称
         }
     }
 
@@ -113,30 +114,30 @@ public class WaitForDeliveryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
     }
 
-    class ViewHolderNormal extends RecyclerView.ViewHolder {
-        @Bind(R.id.text_amount_income)
+    class ViewHolderNormal extends RecyclerView.ViewHolder { //待配送单布局
+        @Bind(R.id.text_amount_income) //收入
         TextView textAmountIncome;
-        @Bind(R.id.tv_amount_frozen)
+        @Bind(R.id.tv_amount_frozen)   //冻结金额
         TextView tvAmountFrozen;
-        @Bind(R.id.tv_amount_income)
+        @Bind(R.id.tv_amount_income)   //收入金额
         TextView tvAmountIncome;
-        @Bind(R.id.tv_distance_take)
+        @Bind(R.id.tv_distance_take)   //取货距离
         TextView tvDistanceTake;
-        @Bind(R.id.tv_distance_send)
+        @Bind(R.id.tv_distance_send)   //送货距离
         TextView tvDistanceSend;
-        @Bind(R.id.tv_order_time)
+        @Bind(R.id.tv_order_time)      //下单时间
         TextView tvOrderTime;
-        @Bind(R.id.tv_address_take)
+        @Bind(R.id.tv_address_take)    //取货地址
         TextView tvAddressTake;
-        @Bind(R.id.text_time_take)
+        @Bind(R.id.text_time_take)     //取货时间名称
         TextView textTimeTake;
-        @Bind(R.id.tv_time_take)
+        @Bind(R.id.tv_time_take)       //取货时间
         TextView tvTimeTake;
-        @Bind(R.id.tv_store_name)
+        @Bind(R.id.tv_store_name)      //店铺名称
         TextView tvStoreName;
-        @Bind(R.id.tv_line_name)
+        @Bind(R.id.tv_line_name)       //线路
         TextView tvLineName;
-        @Bind(R.id.tv_address_send)
+        @Bind(R.id.tv_address_send)    //收货地址
         TextView tvAddressSend;
         @Bind(R.id.ll_top)
         LinearLayout llTop;
@@ -148,7 +149,7 @@ public class WaitForDeliveryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
     }
 
-    class ViewHolderFoot extends RecyclerView.ViewHolder {
+    class ViewHolderFoot extends RecyclerView.ViewHolder { //正在加载布局
         @Bind(R.id.tv_load_more)
         TextView tvLoadMore;
         @Bind(R.id.rl_load_more)

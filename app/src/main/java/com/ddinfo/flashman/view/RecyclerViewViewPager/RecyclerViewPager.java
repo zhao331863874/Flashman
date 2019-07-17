@@ -31,22 +31,22 @@ public class RecyclerViewPager extends RecyclerView {
   private float mFlingFactor = 0.15f;
   private float mTouchSpan;
   private List<OnPageChangedListener> mOnPageChangedListeners;
-  private int mSmoothScrollTargetPosition = -1;
-  private int mPositionBeforeScroll = -1;
+  private int mSmoothScrollTargetPosition = -1; //平滑到想要显示的项索引
+  private int mPositionBeforeScroll = -1; //滚动前位置
 
   private boolean mSinglePageFling;
 
-  boolean mNeedAdjust;
+  boolean mNeedAdjust; //是否正在被外部拖拽
   int mFisrtLeftWhenDragging;
   int mFirstTopWhenDragging;
   View mCurView;
-  int mMaxLeftWhenDragging = Integer.MIN_VALUE;
-  int mMinLeftWhenDragging = Integer.MAX_VALUE;
+  int mMaxLeftWhenDragging = Integer.MIN_VALUE; //int 类型能够表示的最小值
+  int mMinLeftWhenDragging = Integer.MAX_VALUE; //int 类型能够表示的最大值
   int mMaxTopWhenDragging = Integer.MIN_VALUE;
   int mMinTopWhenDragging = Integer.MAX_VALUE;
   private int mPositionOnTouchDown = -1;
   private boolean mHasCalledOnPageChanged = true;
-  private boolean reverseLayout = false;
+  private boolean reverseLayout = false; //判断是否逆向布局
 
   public RecyclerViewPager(Context context) {
     this(context, null);
@@ -59,12 +59,12 @@ public class RecyclerViewPager extends RecyclerView {
   public RecyclerViewPager(Context context, AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
     initAttrs(context, attrs, defStyle);
-    setNestedScrollingEnabled(false);
+    setNestedScrollingEnabled(false); //设置嵌套滑动不可用
   }
 
   private void initAttrs(Context context, AttributeSet attrs, int defStyle) {
     final TypedArray a =
-        context.obtainStyledAttributes(attrs, R.styleable.RecyclerViewPager, defStyle, 0);
+        context.obtainStyledAttributes(attrs, R.styleable.RecyclerViewPager, defStyle, 0); //获取自定义属性
     mFlingFactor = a.getFloat(R.styleable.RecyclerViewPager_rvp_flingFactor, 0.15f);
     mTriggerOffset = a.getFloat(R.styleable.RecyclerViewPager_rvp_triggerOffset, 0.25f);
     mSinglePageFling =
@@ -97,10 +97,10 @@ public class RecyclerViewPager extends RecyclerView {
   }
 
   @Override
-  protected void onRestoreInstanceState(Parcelable state) {
+  protected void onRestoreInstanceState(Parcelable state) { //Activity 在先前销毁之后重新创建时调用
     try {
-      Field fLayoutState = state.getClass().getDeclaredField("mLayoutState");
-      fLayoutState.setAccessible(true);
+      Field fLayoutState = state.getClass().getDeclaredField("mLayoutState"); //反射mLayoutState成员变量
+      fLayoutState.setAccessible(true); //对单个属性设置访问权限
       Object layoutState = fLayoutState.get(state);
       Field fAnchorOffset = layoutState.getClass().getDeclaredField("mAnchorOffset");
       Field fAnchorPosition = layoutState.getClass().getDeclaredField("mAnchorPosition");
@@ -147,16 +147,16 @@ public class RecyclerViewPager extends RecyclerView {
     super.setLayoutManager(layout);
 
     if (layout instanceof LinearLayoutManager) {
-      reverseLayout = ((LinearLayoutManager) layout).getReverseLayout();
+      reverseLayout = ((LinearLayoutManager) layout).getReverseLayout(); //获取是否逆向布局
     }
   }
 
   @Override
-  public boolean fling(int velocityX, int velocityY) {
+  public boolean fling(int velocityX, int velocityY) { //滑动滚动停止
     boolean flinging =
         super.fling((int) (velocityX * mFlingFactor), (int) (velocityY * mFlingFactor));
     if (flinging) {
-      if (getLayoutManager().canScrollHorizontally()) {
+      if (getLayoutManager().canScrollHorizontally()) { //查询当前是否支持水平滚动
         adjustPositionX(velocityX);
       } else {
         adjustPositionY(velocityY);
@@ -171,14 +171,14 @@ public class RecyclerViewPager extends RecyclerView {
   }
 
   @Override
-  public void smoothScrollToPosition(int position) {
+  public void smoothScrollToPosition(int position) { //平滑到想要显示的项
     //        if (DEBUG) {
     //            Log.d("@", "smoothScrollToPosition:" + position);
     //        }
     mSmoothScrollTargetPosition = position;
     if (getLayoutManager() != null && getLayoutManager() instanceof LinearLayoutManager) {
       // exclude item decoration
-      LinearSmoothScroller linearSmoothScroller = new LinearSmoothScroller(getContext()) {
+      LinearSmoothScroller linearSmoothScroller = new LinearSmoothScroller(getContext()) { //滑动事件的包装类，用于控制滑动的逻辑
         @Override
         public PointF computeScrollVectorForPosition(int targetPosition) {
           if (getLayoutManager() == null) {
@@ -189,7 +189,7 @@ public class RecyclerViewPager extends RecyclerView {
         }
 
         @Override
-        protected void onTargetFound(View targetView, RecyclerView.State state, Action action) {
+        protected void onTargetFound(View targetView, RecyclerView.State state, Action action) { //计算需要滑动的距离和时间，更新到action上
           if (getLayoutManager() == null) {
             return;
           }
@@ -216,14 +216,14 @@ public class RecyclerViewPager extends RecyclerView {
       if (position == RecyclerView.NO_POSITION) {
         return;
       }
-      getLayoutManager().startSmoothScroll(linearSmoothScroller);
+      getLayoutManager().startSmoothScroll(linearSmoothScroller); //启动平滑滚动
     } else {
       super.smoothScrollToPosition(position);
     }
   }
 
   @Override
-  public void scrollToPosition(int position) {
+  public void scrollToPosition(int position) { //滚动到指定position
     //        if (DEBUG) {
     //            Log.d("@", "scrollToPosition:" + position);
     //        }
@@ -263,7 +263,7 @@ public class RecyclerViewPager extends RecyclerView {
    */
   public int getCurrentPosition() {
     int curPosition;
-    if (getLayoutManager().canScrollHorizontally()) {
+    if (getLayoutManager().canScrollHorizontally()) { //查询当前是否支持水平滚动
       curPosition = ViewUtils.getCenterXChildPosition(this);
     } else {
       curPosition = ViewUtils.getCenterYChildPosition(this);
@@ -282,9 +282,9 @@ public class RecyclerViewPager extends RecyclerView {
 
     int childCount = getChildCount();
     if (childCount > 0) {
-      int curPosition = ViewUtils.getCenterXChildPosition(this);
+      int curPosition = ViewUtils.getCenterXChildPosition(this); //返回X坐标轴的中心点
       int childWidth = getWidth() - getPaddingLeft() - getPaddingRight();
-      int flingCount = getFlingCount(velocityX, childWidth);
+      int flingCount = getFlingCount(velocityX, childWidth); //滑动次数？
       int targetPosition = curPosition + flingCount;
       if (mSinglePageFling) {
         flingCount = Math.max(-1, Math.min(1, flingCount));
@@ -392,7 +392,7 @@ public class RecyclerViewPager extends RecyclerView {
   }
 
   @Override
-  public boolean dispatchTouchEvent(MotionEvent ev) {
+  public boolean dispatchTouchEvent(MotionEvent ev) { //发生点击事件
     if (ev.getAction() == MotionEvent.ACTION_DOWN && getLayoutManager() != null) {
       mPositionOnTouchDown =
           getLayoutManager().canScrollHorizontally() ? ViewUtils.getCenterXChildPosition(this)
@@ -419,16 +419,16 @@ public class RecyclerViewPager extends RecyclerView {
   }
 
   @Override
-  public void onScrollStateChanged(int state) {
+  public void onScrollStateChanged(int state) { //监听滑动状态的变化
     super.onScrollStateChanged(state);
-    if (state == SCROLL_STATE_DRAGGING) {
+    if (state == SCROLL_STATE_DRAGGING) { //正在被外部拖拽
       mNeedAdjust = true;
       mCurView = getLayoutManager().canScrollHorizontally() ? ViewUtils.getCenterXChild(this)
           : ViewUtils.getCenterYChild(this);
       if (mCurView != null) {
         if (mHasCalledOnPageChanged) {
           // While rvp is scrolling, mPositionBeforeScroll will be previous value.
-          mPositionBeforeScroll = getChildLayoutPosition(mCurView);
+          mPositionBeforeScroll = getChildLayoutPosition(mCurView); //获取view在layout中的position
           mHasCalledOnPageChanged = false;
         }
         //                if (DEBUG) {
@@ -440,10 +440,10 @@ public class RecyclerViewPager extends RecyclerView {
         mPositionBeforeScroll = -1;
       }
       mTouchSpan = 0;
-    } else if (state == SCROLL_STATE_SETTLING) {
+    } else if (state == SCROLL_STATE_SETTLING) { //自动滚动
       mNeedAdjust = false;
       if (mCurView != null) {
-        if (getLayoutManager().canScrollHorizontally()) {
+        if (getLayoutManager().canScrollHorizontally()) { //查询当前是否支持水平滚动
           mTouchSpan = mCurView.getLeft() - mFisrtLeftWhenDragging;
         } else {
           mTouchSpan = mCurView.getTop() - mFirstTopWhenDragging;
@@ -452,14 +452,14 @@ public class RecyclerViewPager extends RecyclerView {
         mTouchSpan = 0;
       }
       mCurView = null;
-    } else if (state == SCROLL_STATE_IDLE) {
+    } else if (state == SCROLL_STATE_IDLE) { //静止没有滚动
       if (mNeedAdjust) {
         int targetPosition =
             getLayoutManager().canScrollHorizontally() ? ViewUtils.getCenterXChildPosition(this)
                 : ViewUtils.getCenterYChildPosition(this);
         if (mCurView != null) {
-          targetPosition = getChildAdapterPosition(mCurView);
-          if (getLayoutManager().canScrollHorizontally()) {
+          targetPosition = getChildAdapterPosition(mCurView); //获取view在Adapter中的position
+          if (getLayoutManager().canScrollHorizontally()) {   //查询当前是否支持水平滚动
             int spanX = mCurView.getLeft() - mFisrtLeftWhenDragging;
             // if user is tending to cancel paging action, don't perform position changing
             if (spanX > mCurView.getWidth() * mTriggerOffset
@@ -496,7 +496,7 @@ public class RecyclerViewPager extends RecyclerView {
             }
           }
         }
-        smoothScrollToPosition(safeTargetPosition(targetPosition, getItemCount()));
+        smoothScrollToPosition(safeTargetPosition(targetPosition, getItemCount())); //平滑到想要显示的项
         mCurView = null;
       } else if (mSmoothScrollTargetPosition != mPositionBeforeScroll) {
         //                if (DEBUG) {

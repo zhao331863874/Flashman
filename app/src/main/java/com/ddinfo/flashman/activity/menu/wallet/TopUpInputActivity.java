@@ -17,19 +17,22 @@ import com.ddinfo.flashman.models.WalletEntity;
 import butterknife.Bind;
 import butterknife.OnClick;
 
+/**
+ * 押金充值界面
+ */
 public class TopUpInputActivity extends BaseActivity {
 
-    @Bind(R.id.left_button)
+    @Bind(R.id.left_button) //返回按钮
     ImageButton leftButton;
-    @Bind(R.id.header_name)
+    @Bind(R.id.header_name) //标题抬头
     TextView headerName;
     @Bind(R.id.right_button)
     ImageButton rightButton;
     @Bind(R.id.rightBtn)
     Button rightBtn;
-    @Bind(R.id.et_top_up)
+    @Bind(R.id.et_top_up)   //金额
     EditText etTopUp;
-    @Bind(R.id.tv_next)
+    @Bind(R.id.tv_next)     //下一步
     TextView tvNext;
     WalletEntity wallet;
 
@@ -48,7 +51,7 @@ public class TopUpInputActivity extends BaseActivity {
     @OnClick({R.id.tv_next})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_next:
+            case R.id.tv_next: //点击下一步
                 String topUpMoney = etTopUp.getText().toString().trim();
                 if (TextUtils.isEmpty(topUpMoney)) {
                     ToastUtils.showShortToast("请输入正确的充值金额");

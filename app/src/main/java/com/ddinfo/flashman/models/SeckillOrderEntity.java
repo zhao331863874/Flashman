@@ -6,6 +6,7 @@ import java.util.List;
  * Title: 请输入标题
  * Created by fuh on 2017/2/14.
  * Email：unableApe@gmail.com
+ * 历史任务订单实体类
  */
 
 public class SeckillOrderEntity {
@@ -18,11 +19,11 @@ public class SeckillOrderEntity {
      * list : []
      */
 
-    private int todayOrderCount;
+    private int todayOrderCount; //今日完成订单数量
     private int allOrderCount;
     private int count;
-    private String thisMonthOrderCount;
-    private String preMonthOrderCount;
+    private String thisMonthOrderCount; //本月累计完成订单数量
+    private String preMonthOrderCount;  //上月累计完成订单数量
     private List<SeckillOrderList> list;
 
     public String getThisMonthOrderCount() {

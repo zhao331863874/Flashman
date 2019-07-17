@@ -27,21 +27,24 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * 更多任务列表界面
+ */
 public class TaskMoreListActivity extends BaseActivity {
 
-    @Bind(R.id.tv_count_left)
+    @Bind(R.id.tv_count_left) //今日完成订单数量
     TextView tvCountLeft;
-    @Bind(R.id.tv_text_left)
+    @Bind(R.id.tv_text_left)  //今日完成订单数
     TextView tvTextLeft;
-    @Bind(R.id.tv_count_right_top)
+    @Bind(R.id.tv_count_right_top) //上月累计完成订单数量
     TextView tvCountRightTop;
-    @Bind(R.id.text_count_right_top)
+    @Bind(R.id.text_count_right_top) //上月累计完成订单数
     TextView textCountRightTop;
-    @Bind(R.id.tv_count_right_bottom)
+    @Bind(R.id.tv_count_right_bottom) //本月累计完成订单数量
     TextView tvCountRightBottom;
-    @Bind(R.id.text_count_right_bottom)
+    @Bind(R.id.text_count_right_bottom) //本月累计完成订单数
     TextView textCountRightBottom;
-    @Bind(R.id.rcv_task_more_task)
+    @Bind(R.id.rcv_task_more_task) //订单数量展示列表
     RecyclerView rcvTaskMoreTask;
     @Bind(R.id.swipe_search_list)
     MaterialRefreshLayout swipeSearchList;
@@ -58,7 +61,7 @@ public class TaskMoreListActivity extends BaseActivity {
     private LinearLayoutManager layoutManager;
 
     private int lastVisibleItem = 0;
-    private boolean isLoadMore = false;
+    private boolean isLoadMore = false; //是否加载中
     private int offset;
     private int limit = 20;
 
@@ -74,7 +77,7 @@ public class TaskMoreListActivity extends BaseActivity {
         type = getIntent().getExtras().getInt(ExampleConfig.ACTIVITY_TYPE);
         flag = getIntent().getExtras().getInt(ExampleConfig.ACTIVITY_FLAG);
         switch (type) {
-            case 4:
+            case 4: //退货取消、已完成订单
                 if (flag == 1) {
                     setTitle("退货取消");
                     llOrderTop.setVisibility(View.GONE);
@@ -128,9 +131,9 @@ public class TaskMoreListActivity extends BaseActivity {
             }
             isLoadMore = false;
             SeckillOrderEntity entity = response.body().getData();
-            tvCountLeft.setText(entity.getTodayOrderCount() + "");
-            tvCountRightTop.setText(entity.getPreMonthOrderCount() + "");
-            tvCountRightBottom.setText(entity.getThisMonthOrderCount() + "");
+            tvCountLeft.setText(entity.getTodayOrderCount() + ""); //今日完成订单数量
+            tvCountRightTop.setText(entity.getPreMonthOrderCount() + ""); //上月累计完成订单数量
+            tvCountRightBottom.setText(entity.getThisMonthOrderCount() + ""); //本月累计完成订单数量
             mListDataNew = entity.getList();
             mListData.addAll(mListDataNew);
             offset = mListData.size();
@@ -163,7 +166,7 @@ public class TaskMoreListActivity extends BaseActivity {
 
         rcvTaskMoreTask.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) { //滚动状态变化时回调
                 super.onScrollStateChanged(recyclerView, newState);
                 if (swipeSearchList != null && swipeSearchList.isRefreshing()) {
                     swipeSearchList.setRefreshing(false);
@@ -178,9 +181,9 @@ public class TaskMoreListActivity extends BaseActivity {
             }
 
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) { //滚动时回调
                 super.onScrolled(recyclerView, dx, dy);
-                lastVisibleItem = layoutManager.findLastVisibleItemPosition();
+                lastVisibleItem = layoutManager.findLastVisibleItemPosition(); //返回当前RecycelrView中最后一个可见的item的adapter postion
             }
         });
 
@@ -192,7 +195,7 @@ public class TaskMoreListActivity extends BaseActivity {
                     bundle.putInt(ExampleConfig.ID, mListData.get(position).getBackOrderId());
                     bundle.putString(ExampleConfig.ACTIVITY_TYPE, "more");
                     startActivity(ReturnBackTaskDetailActivity.class, bundle);
-                } else {
+                } else { //已完成、已取消订单
                     bundle.putInt(ExampleConfig.TASK_DETAIL_TYPE, type);
                     bundle.putInt(ExampleConfig.ID, mListData.get(position).getId());
                     startActivity(TaskDetailActivity.class, bundle);

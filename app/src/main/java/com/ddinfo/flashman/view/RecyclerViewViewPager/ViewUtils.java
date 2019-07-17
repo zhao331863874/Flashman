@@ -30,7 +30,7 @@ public class ViewUtils {
       for (int i = 0; i < childCount; i++) {
         View child = recyclerView.getChildAt(i);
         if (isChildInCenterX(recyclerView, child)) {
-          return recyclerView.getChildAdapterPosition(child);
+          return recyclerView.getChildAdapterPosition(child); //获取view在Adapter中的position
         }
       }
     }
@@ -62,7 +62,7 @@ public class ViewUtils {
       for (int i = 0; i < childCount; i++) {
         View child = recyclerView.getChildAt(i);
         if (isChildInCenterY(recyclerView, child)) {
-          return recyclerView.getChildAdapterPosition(child);
+          return recyclerView.getChildAdapterPosition(child); //获取view在Adapter中的position
         }
       }
     }
@@ -73,7 +73,7 @@ public class ViewUtils {
     int childCount = recyclerView.getChildCount();
     int[] lvLocationOnScreen = new int[2];
     int[] vLocationOnScreen = new int[2];
-    recyclerView.getLocationOnScreen(lvLocationOnScreen);
+    recyclerView.getLocationOnScreen(lvLocationOnScreen); //获取View左上顶点在屏幕中的绝对位置
     int middleX = lvLocationOnScreen[0] + recyclerView.getWidth() / 2;
     if (childCount > 0) {
       view.getLocationOnScreen(vLocationOnScreen);

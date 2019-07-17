@@ -55,12 +55,12 @@ public class WaitForDeliveryActivity extends BaseActivity {
     RelativeLayout relSetting;
 
     public static final String ROUND_NAME = "ROUND_NAME";
-    private String roundName;
+    private String roundName; //路线名称
 
-    private boolean isLoadMore;
+    private boolean isLoadMore; //是否加载中
     private LinearLayoutManager layoutManager;
-    private WaitForDeliveryAdapter mAdapter;
-    private int routeId;
+    private WaitForDeliveryAdapter mAdapter; //待配送单适配器
+    private int routeId; //路线ID
 
     private List<RouteOrderEntity> mListData = new ArrayList<>();
 
@@ -133,16 +133,16 @@ public class WaitForDeliveryActivity extends BaseActivity {
     @OnClick({R.id.rel_setting, R.id.txt_no_network_try_again, R.id.txt_empty_try_again})
     public void doClick(View view) {
         switch (view.getId()) {
-            case R.id.txt_empty_try_again:
+            case R.id.txt_empty_try_again: //重新加载
                 initData();
                 break;
-            case R.id.rel_setting:
+            case R.id.rel_setting: //请检查您的网络
                 Utils.openSetting(this);
                 if (relSetting != null) {
                     relSetting.setVisibility(View.GONE);
                 }
                 break;
-            case R.id.txt_no_network_try_again:
+            case R.id.txt_no_network_try_again: //重新加载
                 initData();
                 break;
         }

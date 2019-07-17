@@ -12,10 +12,10 @@ public class WareHouseInfoEntity {
      * warehouseAddress : 达尔文路
      */
 
-    private String sum;
-    private String warehouseAddress;
-    private String batchOrderSum;
-    private String parentManName;
+    private String sum;              //待缴金额
+    private String warehouseAddress; //当前接单仓
+    private String batchOrderSum;    //待支付金额
+    private String parentManName;    //上级配送员名称
     private int confirmState;//信息审核状态（0:未提交、1:审核中、2:已通过、3:未通过
 
     public int getConfirmState() {

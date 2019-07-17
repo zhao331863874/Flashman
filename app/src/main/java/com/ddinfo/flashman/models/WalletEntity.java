@@ -12,11 +12,11 @@ public class WalletEntity implements Serializable {
      * deposit : 0
      */
 
-    private double balance;
-    private double deposit;
-    private double frozenAmount;
-    private double creditAmount;
-    private double usable;
+    private double balance;   //余额
+    private double deposit;   //押金
+    private double frozenAmount; //冻结额度
+    private double creditAmount; //授信额度
+    private double usable;       //可接货额度
     private String deliveryManId;
 
     public String getDeliveryManId() {

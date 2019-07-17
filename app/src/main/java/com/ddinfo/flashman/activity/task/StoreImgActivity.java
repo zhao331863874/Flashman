@@ -26,6 +26,7 @@ import retrofit2.Response;
 
 /**
  * Created by 李占晓 on 2017/6/1.
+ * 店铺图片页面
  */
 
 public class StoreImgActivity extends BaseActivity {
@@ -62,8 +63,8 @@ public class StoreImgActivity extends BaseActivity {
     imageView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-          activity.finishAfterTransition();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) { //当前设备的API Level 大于等于Android 6.0版本
+          activity.finishAfterTransition(); //结束当前Activity并回退这个动画
         } else {
           finish();
         }

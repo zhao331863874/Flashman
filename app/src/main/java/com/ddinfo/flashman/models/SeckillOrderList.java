@@ -42,24 +42,24 @@ public class SeckillOrderList implements Serializable {
     private int OrderId;             //订单ID
     private String numberId;
     private String orderAmount;      //冻结金额
-    private String receiveTime;
+    private String receiveTime;      //取货时间
     private String commission;       //收入金额
     private String warehouseAddress; //取货地址
     private String storeName;        //收货店铺名称
-    private String storeAddress;     //收货地址
-    private String createdTime;
+    private String storeAddress;     //店铺地址
+    private String createdTime;      //创建时间
     private int backOrderId;         //退货单号
     private int WarehouseId;
     private int StoreId;
     private int mainOrderId;
-    private String storeImg;
-    private String storePhone;
-    private String storeAcceptName;
+    private String storeImg;         //店铺图片
+    private String storePhone;       //店铺老板电话
+    private String storeAcceptName;  //店铺老板名称
     private String invoiceNumberId;
     private String pickupTime;
     private String rejectCode;       //二维码代码
     private int hasPay;
-    private int distance;
+    private int distance;            //距离
     private double lon;
     private double lat;
 

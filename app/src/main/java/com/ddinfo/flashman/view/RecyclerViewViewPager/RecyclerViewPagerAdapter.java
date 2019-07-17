@@ -94,7 +94,7 @@ public class RecyclerViewPagerAdapter<VH extends RecyclerView.ViewHolder>
   }
 
   @Override
-  public void setHasStableIds(boolean hasStableIds) {
+  public void setHasStableIds(boolean hasStableIds) { //防止数据更新时，焦点丢失
     super.setHasStableIds(hasStableIds);
     mAdapter.setHasStableIds(hasStableIds);
   }

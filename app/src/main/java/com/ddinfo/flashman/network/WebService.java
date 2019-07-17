@@ -114,13 +114,13 @@ public interface WebService {
     @GET(UrlConstant.GOODSLIST)
     Call<BaseResponseEntity<ArrayList<PaymentEntity>>> getPayments(@Header("Authorization") String authorization,
                                                                    @Query("offset") int offset, @Query("limit") int limit);
-
+    //接单仓信息
     @GET(UrlConstant.WAREHOUSEINFO)
     Call<BaseResponseEntity<WareHouseInfoEntity>> getWareHouseInfo(@Header("Authorization") String authorization);
-
+    //获取个人信息
     @GET(UrlConstant.ATTACH_USER_INFO)
     Call<BaseResponseEntity<AttachUserInfoEntity>> getAttachUserInfo(@Header("Authorization") String authorization);
-
+    //提交个人信息
     @POST(UrlConstant.ATTACH_USER_INFO)
     Call<BaseResponseEntity> uploadAttachUserInfo(@Header("Authorization") String authorization, @Body AttachUserInfo entity);
 
@@ -128,7 +128,7 @@ public interface WebService {
     @POST(UrlConstant.DELIVERY_ORDER)
     Call<BaseResponseEntity<OrderDetailEntity>> getDeliveryOrder(@Header("Authorization") String authorization,
                                                                  @Body DeliveryOrderParams params);
-
+    //取货请求
     @POST(UrlConstant.GOODSGET)
     Call<BaseResponseEntity> goodsGet(@Header("Authorization") String authorization, @Body GoodsGetParams params);
     //拒收请求
@@ -152,7 +152,7 @@ public interface WebService {
     @FormUrlEncoded
     @POST(UrlConstant.BALANCE_DEPOSITIN)
     Call<BaseResponseEntity> balanceDepositin(@Header("Authorization") String authorization, @Field("sum") double sum);
-
+    //获取提现验证码
     @POST(UrlConstant.SEND_ENCASH_CODE)
     Call<BaseResponseEntity> sendEncashCode(@Header("Authorization") String authorization);
 

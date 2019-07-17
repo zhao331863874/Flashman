@@ -77,7 +77,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 holder = new ViewHolderNormal(view);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v) { //点击路线布局监听
                         if(onItemClickListener!=null){
                             onItemClickListener.onItemClick(v, (Integer) v.getTag());
                         }

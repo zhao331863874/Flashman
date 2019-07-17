@@ -186,7 +186,7 @@ public class ContentFragment extends BaseFragment implements EasyPermissions.Per
                     startActivity(RegisterActivity.class);
                 }
                 break;
-            case R.id.txt_empty_try_again:
+            case R.id.txt_empty_try_again: //重新加载
                 initDatas();
                 break;
             case R.id.rel_setting:
@@ -195,10 +195,10 @@ public class ContentFragment extends BaseFragment implements EasyPermissions.Per
                     relSetting.setVisibility(View.GONE);
                 }
                 break;
-            case R.id.txt_no_network_try_again:
+            case R.id.txt_no_network_try_again: //重新加载
                 initDatas();
                 break;
-            case R.id.left_button:
+            case R.id.left_button: //点击个人按钮
                 ((MainActivity) getActivity()).showLeftDraw();
                 break;
         }
@@ -266,10 +266,10 @@ public class ContentFragment extends BaseFragment implements EasyPermissions.Per
     protected void initListener() {
         mAdapter.setItemClickListener(new OnItemClickListenerRv() {
             @Override
-            public void onItemClick(View view, int position) {
+            public void onItemClick(View view, int position) { //点击路线布局监听
                 Bundle bundle = new Bundle();
-                bundle.putInt("routeId", mListData.get(position).getRouteId());
-                bundle.putString("routeName", mListData.get(position).getRouteName());
+                bundle.putInt("routeId", mListData.get(position).getRouteId()); //路线ID
+                bundle.putString("routeName", mListData.get(position).getRouteName()); //路线名称
                 startActivity(WaitForDeliveryActivity.class, bundle);
             }
         });

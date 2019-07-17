@@ -27,29 +27,32 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
+/**
+ * 充值金额选择支付方式界面
+ */
 public class ModeOfPaymentActivity extends BaseActivity {
 
 
-    @Bind(R.id.tv_pay_money)
+    @Bind(R.id.tv_pay_money) //充值金额
     TextView tvPayMoney;
-    @Bind(R.id.tv1)
+    @Bind(R.id.tv1) //余额支付
     TextView tv1;
-    @Bind(R.id.tv_balance_money)
+    @Bind(R.id.tv_balance_money)  //当前可用余额
     TextView tvBalanceMoney;
-    @Bind(R.id.iv_sel_by_balance)
+    @Bind(R.id.iv_sel_by_balance) //余额支付选项图标
     ImageButton ivByBalance;
-    @Bind(R.id.rl_alipay)
+    @Bind(R.id.rl_alipay)    //余额支付选项布局
     RelativeLayout rlAlipay;
-    @Bind(R.id.tv2)
+    @Bind(R.id.tv2)          //其他支付方式
     TextView tv2;
-    @Bind(R.id.iv_sel_by_aliwx_pay)
+    @Bind(R.id.iv_sel_by_aliwx_pay) //其他支付方式选项图标
     ImageButton ivByAliwxPay;
-    @Bind(R.id.rl_wechatpay)
+    @Bind(R.id.rl_wechatpay) //其他支付方式选项布局
     RelativeLayout rlWechatpay;
-    @Bind(R.id.btn_enter)
+    @Bind(R.id.btn_enter)    //确认支付按钮
     Button btnEnter;
     int checkedType = 0;
-    double topUpMoney;
+    double topUpMoney;       //充值金额
     WalletEntity wallet;
 
     @Override
@@ -100,18 +103,18 @@ public class ModeOfPaymentActivity extends BaseActivity {
     @OnClick({R.id.iv_sel_by_balance, R.id.iv_sel_by_aliwx_pay, R.id.btn_enter})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.iv_sel_by_balance:
+            case R.id.iv_sel_by_balance: //选中余额支付选项图标
                 checkedType = 0;
                 ivByBalance.setImageResource(R.mipmap.icon_sel_pressed);
                 ivByAliwxPay.setImageResource(R.mipmap.icon_sel_unpress);
 
                 break;
-            case R.id.iv_sel_by_aliwx_pay:
+            case R.id.iv_sel_by_aliwx_pay: //选中其他支付方式选项图标
                 checkedType = 1;
                 ivByBalance.setImageResource(R.mipmap.icon_sel_unpress);
                 ivByAliwxPay.setImageResource(R.mipmap.icon_sel_pressed);
                 break;
-            case R.id.btn_enter:
+            case R.id.btn_enter: //确认支付
                 if (checkedType == 1) {
                     Bundle bundle = new Bundle();
                     bundle.putDouble(ExampleConfig.INTENT_TOPUPMONEY, topUpMoney);
