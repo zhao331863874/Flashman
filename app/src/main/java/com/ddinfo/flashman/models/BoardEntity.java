@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * Created by fuh on 2017/5/5.
  * Email：unableApe@gmail.com
+ * 看板实体类
  */
 
 public class BoardEntity {
@@ -16,10 +17,10 @@ public class BoardEntity {
      * dayList : [{"days":"20170329","num":2,"orderSum":0.4,"commissionSum":0.2}]
      */
 
-    private String months;
-    private int num;
-    private double orderSum;
-    private double commissionSum;
+    private String months; //月份
+    private int num;       //配送单数
+    private double orderSum; //月份累计总金额
+    private double commissionSum; //收益
     private List<DayListBean> dayList;
 
     public String getMonths() {
@@ -70,10 +71,10 @@ public class BoardEntity {
          * commissionSum : 0.2
          */
 
-        private String days;
-        private int num;
-        private double orderSum;
-        private double commissionSum;
+        private String days; //时间
+        private int num;     //数量
+        private double orderSum; //订单金额
+        private double commissionSum; //收入
 
         public String getDays() {
             return days;

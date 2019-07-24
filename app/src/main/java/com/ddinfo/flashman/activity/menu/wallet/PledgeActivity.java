@@ -30,24 +30,27 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
+/**
+ * 押金界面
+ */
 public class PledgeActivity extends BaseActivity {
 
 
-    @Bind(R.id.left_button)
+    @Bind(R.id.left_button) //左返回按钮
     ImageButton leftButton;
-    @Bind(R.id.header_name)
+    @Bind(R.id.header_name) //标题抬头
     TextView headerName;
     @Bind(R.id.right_button)
     ImageButton rightButton;
     @Bind(R.id.rightBtn)
     Button rightBtn;
-    @Bind(R.id.tv_pledge)
+    @Bind(R.id.tv_pledge)   //押金金额
     TextView tvPledge;
-    @Bind(R.id.ll_pledge_top)
+    @Bind(R.id.ll_pledge_top) //押金、冻结明细布局控件
     LinearLayout llPledgeTop;
-    @Bind(R.id.tv_pledge_one)
+    @Bind(R.id.tv_pledge_one) //押金充值
     TextView tvPledgeOne;
-    @Bind(R.id.apply_withdraw_crash)
+    @Bind(R.id.apply_withdraw_crash) //押金提现
     TextView tvPledgeTwo;
     @Bind(R.id.activity_balance)
     LinearLayout activityBalance;
@@ -123,7 +126,7 @@ public class PledgeActivity extends BaseActivity {
         Bundle bundle = getIntent().getExtras();
         wallet = (WalletEntity) bundle.getSerializable("wallet");
         if (wallet != null) {
-            tvPledge.setText(Utils.jointNumFromat(wallet.getDeposit()));
+            tvPledge.setText(Utils.jointNumFromat(wallet.getDeposit())); //押金金额
         }
     }
 
@@ -169,7 +172,7 @@ public class PledgeActivity extends BaseActivity {
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
-            case R.id.ll_pledge_top:
+            case R.id.ll_pledge_top: //点击押金、冻结明细布局控件
                 intent.setClass(context, WebViewClientActivity.class);
                 intent.putExtra(ExampleConfig.WB_URL_KEY, UrlConstant.H5_FREEZE_DETAIL);
                 intent.putExtra(ExampleConfig.WB_NAV_TITLE_KEY, "冻结明细");
@@ -183,7 +186,7 @@ public class PledgeActivity extends BaseActivity {
                 intent.putExtras(bunder1);
                 startActivity(intent);
                 break;
-            case R.id.apply_withdraw_crash:
+            case R.id.apply_withdraw_crash: //押金提现
                 //押金低于100友好提示
                 if (wallet != null && wallet.getDeposit() < 100) {
                     alertDialogOne.show();
@@ -191,7 +194,7 @@ public class PledgeActivity extends BaseActivity {
                     widthDrawCash();
                 }
                 break;
-            case R.id.history_withdraw_crash:
+            case R.id.history_withdraw_crash: //提现历史
                 intent.setClass(context,WithDrawsHistoryActivity.class);
                 startActivity(intent);
                 break;

@@ -27,14 +27,15 @@ import butterknife.ButterKnife;
 
 /**
  * Created by Gavin on 2017/8/9.
+ * 下级配送员适配器
  */
 
 public class SupervinsingJuniorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
     private List<ChildManEntity> mListData = new ArrayList<>();
-    private boolean isEmpty = false;
-    private boolean isLoadAll = false;
+    private boolean isEmpty = false; //是否为空数据
+    private boolean isLoadAll = false; //是否加载全部
     private WalletEntity data;
 
 
@@ -73,15 +74,15 @@ public class SupervinsingJuniorAdapter extends RecyclerView.Adapter<RecyclerView
         RecyclerView.ViewHolder holder = null;
         switch (viewType) {
             case ExampleConfig.VIEWHOLDER_TOP:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_super_junior_top, null);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_super_junior_top, null); //管理下级配送员布局
                 holder = new ViewHolderTop(view);
                 break;
             case ExampleConfig.VIEWHOLDER_NORMAL:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_super_junior_normal, null);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_super_junior_normal, null); //单条下级配送员布局
                 holder = new ViewHolderNormal(view);
                 break;
             case ExampleConfig.VIEWHOLDER_FOOT:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer_load_more, null);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer_load_more, null); //正在加载布局
                 holder = new ViewHolderFoot(view);
                 break;
         }
@@ -104,7 +105,7 @@ public class SupervinsingJuniorAdapter extends RecyclerView.Adapter<RecyclerView
                     }
                     viewHolderTop.ivQrCode.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {
+                        public void onClick(View v) { //我的二维码监听
                             if (onJuniorMenuClickListener != null) {
                                 onJuniorMenuClickListener.onQRcodeClick(v, urlCode);
                             }
@@ -123,30 +124,30 @@ public class SupervinsingJuniorAdapter extends RecyclerView.Adapter<RecyclerView
                 ViewHolderNormal viewHolderNormal = (ViewHolderNormal) holder;
                 viewHolderNormal.tvSetAmount.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v) { //授信监听
                         if (onJuniorMenuClickListener != null) {
                             onJuniorMenuClickListener.onLeftMenuClick(v, position-1);
                         }
                     }
                 });
-                viewHolderNormal.tvDeliveryMes.setOnClickListener(new View.OnClickListener() {
+                viewHolderNormal.tvDeliveryMes.setOnClickListener(new View.OnClickListener() { //配送完成情况监听
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v) { //配送完成情况监听
                         if (onJuniorMenuClickListener != null) {
                             onJuniorMenuClickListener.onRightMenuClick(v, position-1);
                         }
                     }
                 });
-                viewHolderNormal.tvFrozenDetail.setOnClickListener(new View.OnClickListener() {
+                viewHolderNormal.tvFrozenDetail.setOnClickListener(new View.OnClickListener() { //冻结明细
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v) { //冻结明细监听
                         if (onJuniorMenuClickListener != null) {
                             onJuniorMenuClickListener.onFrozenClick(v, position-1);
                         }
                     }
                 });
-                viewHolderNormal.tvJuniorName.setText(mListData.get(position-1).getDeliveryManName());
-                viewHolderNormal.tvJuniorTel.setText(mListData.get(position-1).getPhone());
+                viewHolderNormal.tvJuniorName.setText(mListData.get(position-1).getDeliveryManName()); //下级配送员名称
+                viewHolderNormal.tvJuniorTel.setText(mListData.get(position-1).getPhone()); //下级配送员电话
                 viewHolderNormal.tvAmount.setText("授信额度："+mListData.get(position-1).getCreditAmount());
                 viewHolderNormal.tvFrozen.setText("冻结金额"+mListData.get(position-1).getFrozenAmount());
                 viewHolderNormal.tvTakeAmount.setText("可接货额度"+mListData.get(position-1).getUsable());
@@ -207,20 +208,20 @@ public class SupervinsingJuniorAdapter extends RecyclerView.Adapter<RecyclerView
 
         void onRightMenuClick(View view, int position);
     }
-    static class ViewHolderTop extends RecyclerView.ViewHolder {
-        @Bind(R.id.text_goods_amount)
+    static class ViewHolderTop extends RecyclerView.ViewHolder { //管理下级配送员布局
+        @Bind(R.id.text_goods_amount) //我的接货额度名称
         TextView textGoodsAmount;
-        @Bind(R.id.tv_goods_amount)
+        @Bind(R.id.tv_goods_amount)   //我的接货额度
         TextView tvGoodsAmount;
-        @Bind(R.id.iv_qrCode)
+        @Bind(R.id.iv_qrCode)         //我的二维码
         ImageView ivQrCode;
-        @Bind(R.id.tv_junior_sum)
+        @Bind(R.id.tv_junior_sum)     //下级配送员人数
         TextView tvJuniorSum;
-        @Bind(R.id.tv_amount_sum)
+        @Bind(R.id.tv_amount_sum)     //总授信额度
         TextView tvAmountSum;
-        @Bind(R.id.text_frozen_sum)
+        @Bind(R.id.text_frozen_sum)   //总冻结金额名称
         TextView textFrozenSum;
-        @Bind(R.id.tv_frozen_sum)
+        @Bind(R.id.tv_frozen_sum)     //总冻结金额
         TextView tvFrozenSum;
 
         public ViewHolderTop(View itemView) {
@@ -229,22 +230,22 @@ public class SupervinsingJuniorAdapter extends RecyclerView.Adapter<RecyclerView
         }
     }
 
-    static class ViewHolderNormal extends RecyclerView.ViewHolder {
-        @Bind(R.id.tv_junior_name)
+    static class ViewHolderNormal extends RecyclerView.ViewHolder { //单条下级配送员布局
+        @Bind(R.id.tv_junior_name) //下级配送员名称
         TextView tvJuniorName;
-        @Bind(R.id.tv_junior_tel)
+        @Bind(R.id.tv_junior_tel)  //下级配送员电话
         TextView tvJuniorTel;
-        @Bind(R.id.tv_amount)
+        @Bind(R.id.tv_amount)      //授信额度
         TextView tvAmount;
-        @Bind(R.id.tv_frozen)
+        @Bind(R.id.tv_frozen)      //冻结金额
         TextView tvFrozen;
-        @Bind(R.id.tv_take_amount)
+        @Bind(R.id.tv_take_amount) //可接货额度
         TextView tvTakeAmount;
-        @Bind(R.id.tv_frozen_detail)
+        @Bind(R.id.tv_frozen_detail) //冻结明细
         TextView tvFrozenDetail;
-        @Bind(R.id.tv_set_amount)
+        @Bind(R.id.tv_set_amount)  //授信
         TextView tvSetAmount;
-        @Bind(R.id.tv_delivery_mes)
+        @Bind(R.id.tv_delivery_mes)//配送完成情况
         TextView tvDeliveryMes;
 
         public ViewHolderNormal(View itemView) {
@@ -253,7 +254,7 @@ public class SupervinsingJuniorAdapter extends RecyclerView.Adapter<RecyclerView
         }
     }
 
-    static class ViewHolderFoot extends RecyclerView.ViewHolder {
+    static class ViewHolderFoot extends RecyclerView.ViewHolder { //正在加载布局
         @Bind(R.id.tv_load_more)
         TextView tvLoadMore;
         @Bind(R.id.rl_load_more)

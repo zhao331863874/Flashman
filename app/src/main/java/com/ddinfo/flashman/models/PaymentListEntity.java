@@ -3,6 +3,7 @@ package com.ddinfo.flashman.models;
 /**
  * Created by fuh on 2017/5/11.
  * Email：unableApe@gmail.com
+ * 交货款单实体类
  */
 
 public class PaymentListEntity {
@@ -17,12 +18,12 @@ public class PaymentListEntity {
      */
 
     private String tradeRecordNo;
-    private String fmt;
+    private String fmt; //日期
     private int id;
     private String state;
-    private double sum;
-    private String time;
-    private String batchId;
+    private double sum; //金额
+    private String time;//时间
+    private String batchId; //交货款单号
 
     public String getBatchId() {
         return batchId;

@@ -28,19 +28,22 @@ import retrofit2.Response;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
+/**
+ * 联系客服界面
+ */
 public class CallServiceActivity extends BaseActivity implements EasyPermissions.PermissionCallbacks {
 
-    @Bind(R.id.left_button)
+    @Bind(R.id.left_button) //左返回按钮
     ImageButton leftButton;
-    @Bind(R.id.header_name)
+    @Bind(R.id.header_name) //标题抬头
     TextView headerName;
     @Bind(R.id.right_button)
     ImageButton rightButton;
     @Bind(R.id.rightBtn)
     Button rightBtn;
-    @Bind(R.id.tv_call_phone)
+    @Bind(R.id.tv_call_phone) //客服电话
     TextView tvCallPhone;
-    @Bind(R.id.tv_email)
+    @Bind(R.id.tv_email)      //客服邮箱
     TextView tvEmail;
     @Bind(R.id.activity_call_service)
     LinearLayout activityCallService;
@@ -70,8 +73,8 @@ public class CallServiceActivity extends BaseActivity implements EasyPermissions
             public void onSuccess(Call<BaseResponseEntity<CallPhoneEntity>> call, Response<BaseResponseEntity<CallPhoneEntity>> response) {
                 ExampleConfig.telephone = response.body().getData().getTelephone();
                 ExampleConfig.email =response.body().getData().getEmail();
-                MyApplication.getSPUtilsInstance().putString(ExampleConfig.TELEPHONE, ExampleConfig.telephone);
-                MyApplication.getSPUtilsInstance().putString(ExampleConfig.EMAIL, ExampleConfig.email);
+                MyApplication.getSPUtilsInstance().putString(ExampleConfig.TELEPHONE, ExampleConfig.telephone); //存储客服电话
+                MyApplication.getSPUtilsInstance().putString(ExampleConfig.EMAIL, ExampleConfig.email); //存储客服邮箱
                 tvCallPhone.setText("电话："+ExampleConfig.telephone);
                 tvEmail.setText("邮箱："+ExampleConfig.email);
             }
@@ -89,7 +92,7 @@ public class CallServiceActivity extends BaseActivity implements EasyPermissions
     @OnClick({R.id.tv_call_phone, R.id.tv_email})
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_call_phone:
+            case R.id.tv_call_phone: //点击客服电话
                 requestCodeQRCodePermissions();
                 break;
             case R.id.tv_email:

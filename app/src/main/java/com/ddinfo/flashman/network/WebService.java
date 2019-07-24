@@ -110,7 +110,7 @@ public interface WebService {
     @GET(UrlConstant.HISTORYORDERS)
     Call<BaseResponseEntity<SeckillOrderEntity>> getHistoryOrderList(@Header("Authorization") String authorization, @Query("flag") int flag,
                                                                      @Query("state") int state, @Query("offset") int offset, @Query("limit") int limit);
-
+    //货款列表
     @GET(UrlConstant.GOODSLIST)
     Call<BaseResponseEntity<ArrayList<PaymentEntity>>> getPayments(@Header("Authorization") String authorization,
                                                                    @Query("offset") int offset, @Query("limit") int limit);
@@ -220,22 +220,22 @@ public interface WebService {
     //查询支付二维码状态
     @POST(UrlConstant.CHECKPAYORDERSTATUS)
     Call<BaseResponseEntity<CheckPayStatusEntity>> CheckPayOrderStatus(@Body CheckPayStatusParams params);
-
+    //查看交货款订单状态
     @GET(UrlConstant.CHECK_BATCH_PAY_ORDER_STATUS)
     Call<BaseResponseEntity<PayOrderResult>> checkBatchPayOrderStatus(@Query("tradeRecordNo") String tradeRecordNo);
-
+    //我的看板列表请求
     @GET(UrlConstant.GETBOARDLIST)
     Call<BaseResponseEntity<ArrayList<BoardEntity>>> getBoardList();
-
+    //下级配送看板列表请求
     @GET(UrlConstant.GETBOARDLIST)
     Call<BaseResponseEntity<ArrayList<BoardEntity>>> getDeliveryBoardList(@Query("deliveryManId") int delivery);
-
+    //交货款单列表
     @POST(UrlConstant.GETBATCHORDERLIST)
     Call<BaseResponseEntity<ArrayList<PaymentListEntity>>> getPaymentList(@Body PaymentListParams params);
 
     @POST(UrlConstant.GETBATCHORDERDETAIL)
     Call<BaseResponseEntity<PaymentDetailEntity>> getPaymentDetail(@Body IdParams idParams);
-
+    //生成交货款单
     @POST(UrlConstant.CREATEBATCHORDER)
     Call<BaseResponseEntity<BatchOrderEntity>> createBatchOrder(@Body CreateBatchOrderParams params);
 
@@ -276,19 +276,19 @@ public interface WebService {
 
     @GET("/v2/order/delivery/unHandleDetail")
     Call<BaseResponseEntity<ArrayList<RouteOrderEntity>>> getRouteOrderList(@Query("routeId") int routeId);
-
+    //绑定上级配送员
     @POST("/v1/user/bindParentMan")
     Call<BaseResponseEntity> bindParentMan(@Body DeliveryManIdParams deliveryManId);
-
+    //获取下级配送员列表
     @GET("/v1/user/childManList")
     Call<BaseResponseEntity<ArrayList<ChildManEntity>>> getChildManList();
-
+    //下级配送员冻结明细查询请求
     @GET("/v1/wallet/deposit/frozenDetails")
     Call<BaseResponseEntity<ArrayList<FrozenDetailsEntity>>> getFrozenDetail(@Query("deliveryManId") int deliveryManId);
-
+    //冻结明细请求
     @GET("/v1/wallet/deposit/frozenDetails")
     Call<BaseResponseEntity<ArrayList<FrozenDetailsEntity>>> getFrozenDetail();
-
+    //下级配送员授权额度
     @POST("/v1/wallet/balance/creditMan")
     Call<BaseResponseEntity> creditMan(@Body CreditManParams params);
 

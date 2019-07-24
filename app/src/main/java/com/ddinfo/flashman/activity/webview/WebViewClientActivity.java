@@ -34,7 +34,7 @@ import butterknife.OnClick;
 //import com.blankj.utilcode.utils.ToastUtils;
 
 /**
- * 余额明细界面
+ * 余额明细、提现历史、冻结明细界面
  */
 @SuppressLint({"JavascriptInterface", "SetJavaScriptEnabled"})
 public class WebViewClientActivity extends BaseActivity {
@@ -42,7 +42,7 @@ public class WebViewClientActivity extends BaseActivity {
     WebView webView;
     View navigationView;
     private ProgressDialog mDialogLoad = null;
-    private String urlStr = ""; //余额明细Web url地址
+    private String urlStr = ""; //WebView url地址
     private String title = "";  //标题抬头
 
     @Override

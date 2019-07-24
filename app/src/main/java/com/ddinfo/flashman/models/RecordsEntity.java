@@ -23,14 +23,14 @@ public class RecordsEntity implements Serializable {
 
     private int payMethod;
     private int DeliveryManId;
-    private String createdAt;
+    private String createdAt;      //提现时间
     private int id;
-    private String numberId;
+    private String numberId;       //运单号
     private String state;
-    private String tradeNumberId;
-    private double transferAmount;
+    private String tradeNumberId;  //交易单号
+    private double transferAmount; //提现金额
     private int type;
-    private String typeState;
+    private String typeState;      //交易类型
     private String updatedAt;
 
     public int getPayMethod() {

@@ -25,17 +25,20 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
+/**
+ * 交货款单详情界面
+ */
 public class PaymentDetailActivity extends BaseActivity {
 
     @Bind(R.id.recycle_view)
     RecyclerView recycleView;
     @Bind(R.id.swipe_search_list)
     MaterialRefreshLayout swipeSearchList;
-    @Bind(R.id.tv_money)
+    @Bind(R.id.tv_money)  //价格
     TextView tvMoney;
-    @Bind(R.id.tv_re_pay)
+    @Bind(R.id.tv_re_pay) //支付按钮
     TextView tvRePay;
-    @Bind(R.id.ll_bottom)
+    @Bind(R.id.ll_bottom) //支付和价格布局控件
     LinearLayout llBottom;
     @Bind(R.id.multiStateView)
     MultiStateView multiStateView;
@@ -43,10 +46,10 @@ public class PaymentDetailActivity extends BaseActivity {
     LinearLayout activityPaymentDetail;
 
     private LinearLayoutManager layoutManager;
-    private PaymentDetailAdapter mAdapter;
-    private PaymentDetailEntity mData;
+    private PaymentDetailAdapter mAdapter; //交货款单详情界面适配器
+    private PaymentDetailEntity mData; //交货款单详情实体类
 
-    private int index;
+    private int index; //索引 0：待支付 1：支付失败 2：支付异常 3：支付成功
     private int id;
 
     private double sum;
@@ -66,8 +69,8 @@ public class PaymentDetailActivity extends BaseActivity {
         id = getIntent().getIntExtra("id",-1);
         layoutManager = new LinearLayoutManager(context);
         mAdapter = new PaymentDetailAdapter(this);
-        recycleView.setLayoutManager(layoutManager);
-        recycleView.setAdapter(mAdapter);
+        recycleView.setLayoutManager(layoutManager); //设置布局管理器
+        recycleView.setAdapter(mAdapter); //设置adapter
 
     }
 
@@ -76,13 +79,13 @@ public class PaymentDetailActivity extends BaseActivity {
             case 0: //交货款充值
                 tvRePay.setText("支付");
                 break;
-            case 1:
+            case 1: //支付失败
                 tvRePay.setText("重新支付");
                 break;
-            case 2:
+            case 2: //支付异常
                 llBottom.setVisibility(View.GONE);
                 break;
-            case 3:
+            case 3: //支付成功
                 llBottom.setVisibility(View.GONE);
                 break;
             case 99: //生成货款单
@@ -120,7 +123,7 @@ public class PaymentDetailActivity extends BaseActivity {
     @OnClick({R.id.tv_re_pay})
     public void doClick(View view) {
         switch (view.getId()){
-            case R.id.tv_re_pay:
+            case R.id.tv_re_pay:  //支付
                 if(sum!=0 && id !=0){
                     Bundle bundle = new Bundle();
                     bundle.putDouble(ExampleConfig.INTENT_TOPUPMONEY, sum);

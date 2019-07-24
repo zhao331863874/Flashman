@@ -84,15 +84,15 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
     @Bind(R.id.tv_payment_money)//待支付金额
     TextView tvPaymentMoney;
 
-    private WareHouseInfoEntity wareHouseInfoEntity;
+    private WareHouseInfoEntity wareHouseInfoEntity; //仓库信息实体类
     private boolean isLogin; //判断是否登录
     private ContentFragment fragment; //线路总览布局
     private boolean isFirstOpenLeft = true;
 
 
-    private static final int CODE_BIND_WAREHOUSE = 0x001;
-    private static final int CODE_BIND_SUPERIOR = 0x002;
-    private static final int CODE_PERFECT = 0x003;
+    private static final int CODE_BIND_WAREHOUSE = 0x001; //到仓确认/刷新接单仓
+    private static final int CODE_BIND_SUPERIOR = 0x002;  //上级配送员
+    private static final int CODE_PERFECT = 0x003;        //完善个人信息
     private static final int REQUEST_CODE_QRCODE_PERMISSIONS = 1;
 
     Callback<BaseResponseEntity<WareHouseInfoEntity>> callbackWareHouseInfo = new SimpleCallBack<BaseResponseEntity<WareHouseInfoEntity>>(this) {
@@ -248,7 +248,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case CODE_BIND_WAREHOUSE:
+            case CODE_BIND_WAREHOUSE: //到仓确认
                 if (resultCode == RESULT_OK) { //RESULT_OK = -1
                     Bundle bundle = data.getExtras();
                     String scanResult = bundle.getString("result");
@@ -273,7 +273,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
                     });
                 }
                 break;
-            case CODE_BIND_SUPERIOR:
+            case CODE_BIND_SUPERIOR: //上级配送员
                 if (resultCode == RESULT_OK) { //RESULT_OK = -1
                     Bundle bundle = data.getExtras();
                     String scanResult = bundle.getString("result");

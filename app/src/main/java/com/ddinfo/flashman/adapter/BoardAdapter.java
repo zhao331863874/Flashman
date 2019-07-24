@@ -26,12 +26,13 @@ import static com.blankj.utilcode.utils.TimeUtils.string2Millis;
 /**
  * Created by fuh on 2017/5/5.
  * Email：unableApe@gmail.com
+ * 下级配送员配送完成情况适配器
  */
 
 public class BoardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
-    private List<BoardEntity> mListData = new ArrayList<>();
+    private List<BoardEntity> mListData = new ArrayList<>(); //看板实体类ListData
     private List<ItemMessage> mListItemMes = new ArrayList<>();
 
     public BoardAdapter(Context context) {
@@ -54,7 +55,7 @@ public class BoardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 holder = new ViewHolderHead(view);
                 break;
             case ExampleConfig.VIEWHOLDER_NORMAL:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_board_normal, parent,false);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_board_normal, parent,false); //下级配送员配送明细
                 holder = new ViewHolderNormal(view);
                 break;
         }
@@ -74,10 +75,10 @@ public class BoardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             case ExampleConfig.VIEWHOLDER_NORMAL:
                 BoardEntity.DayListBean dayBean = mListData.get(parentPosition).getDayList().get(childPosition);
                 ViewHolderNormal viewHolderNormal = (ViewHolderNormal) holder;
-                viewHolderNormal.tvCount.setText(dayBean.getNum()+"");
-                viewHolderNormal.tvIncome.setText("￥"+dayBean.getCommissionSum());
-                viewHolderNormal.tvDay.setText(getFriendlyTimeSpanByNow(dayBean.getDays(),"yyyy-MM-dd"));
-                viewHolderNormal.tvSum.setText("￥"+dayBean.getOrderSum());
+                viewHolderNormal.tvCount.setText(dayBean.getNum()+""); //数量
+                viewHolderNormal.tvIncome.setText("￥"+dayBean.getCommissionSum()); //收入
+                viewHolderNormal.tvDay.setText(getFriendlyTimeSpanByNow(dayBean.getDays(),"yyyy-MM-dd")); //时间
+                viewHolderNormal.tvSum.setText("￥"+dayBean.getOrderSum()); //订单金额
                 break;
         }
     }
@@ -139,7 +140,7 @@ public class BoardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public static class ItemMessage {
         private int viewType;
-        private int parentPosition = -1;
+        private int parentPosition = -1; //下级配送员配送完成适配器索引
         private int childPosition = -1;
 
         public int getParentPosition() {
@@ -168,7 +169,7 @@ public class BoardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     static class ViewHolderHead extends RecyclerView.ViewHolder {
-        @Bind(R.id.tv_month)
+        @Bind(R.id.tv_month) //月份
         TextView tvMonth;
         public ViewHolderHead(View itemView) {
             super(itemView);
@@ -176,14 +177,14 @@ public class BoardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
-    static class ViewHolderNormal extends RecyclerView.ViewHolder {
-        @Bind(R.id.tv_day)
+    static class ViewHolderNormal extends RecyclerView.ViewHolder { //下级配送员配送明细
+        @Bind(R.id.tv_day) //时间
         TextView tvDay;
-        @Bind(R.id.tv_sum)
+        @Bind(R.id.tv_sum) //订单金额
         TextView tvSum;
-        @Bind(R.id.tv_count)
+        @Bind(R.id.tv_count) //数量
         TextView tvCount;
-        @Bind(R.id.tv_income)
+        @Bind(R.id.tv_income)//收入
         TextView tvIncome;
         public ViewHolderNormal(View itemView) {
             super(itemView);

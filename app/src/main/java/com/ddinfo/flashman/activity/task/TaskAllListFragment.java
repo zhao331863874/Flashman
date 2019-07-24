@@ -52,7 +52,7 @@ import static android.app.Activity.RESULT_OK;
 public class TaskAllListFragment extends BaseFragment
         implements EasyPermissions.PermissionCallbacks {
 
-    @Bind(R.id.rcv_task_all_task)   //瀑布流效果布局控件
+    @Bind(R.id.rcv_task_all_task)   //滚动控件
     RecyclerView rcvTaskAllTask;    //当前任务列表
     @Bind(R.id.swipe_search_list)
     MaterialRefreshLayout swipeSearchList;

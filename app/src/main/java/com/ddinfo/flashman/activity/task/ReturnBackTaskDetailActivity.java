@@ -38,7 +38,7 @@ import retrofit2.Response;
  */
 public class ReturnBackTaskDetailActivity extends BaseActivity {
 
-    @Bind(R.id.rcv_task_all_task)   //瀑布流布局控件
+    @Bind(R.id.rcv_task_all_task)   //滚动控件
     RecyclerView rcvTaskAllTask;
     @Bind(R.id.swipe_search_list)   //动画刷新布局
     MaterialRefreshLayout swipeSearchList;

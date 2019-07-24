@@ -50,9 +50,9 @@ public class WithDrawsHistoryActivity extends BaseActivity {
     private List<RecordsEntity> list=new ArrayList<>();
 
     private int lastVisibleItem = 0;
-    private boolean isLoadMore = false;
+    private boolean isLoadMore = false; //是否在加载
     private int offset;
-    private int limit = 20;
+    private int limit = 20; //最多加载数据
 
     private Callback<BaseResponseEntity<ArrayList<RecordsEntity>>> callbackInit;
     private LinearLayoutManager layoutManager;
@@ -72,7 +72,7 @@ public class WithDrawsHistoryActivity extends BaseActivity {
 
                 list.addAll(newList);
                 offset = list.size();
-                mAdapter.setLoadAll(newList.size() < limit);
+                mAdapter.setLoadAll(newList.size() < limit); //加载数据不能大于20条
                 mAdapter.setEmpty(list.size() == 0);
 
                 mAdapter.notifyDataSetChanged();
@@ -125,7 +125,7 @@ public class WithDrawsHistoryActivity extends BaseActivity {
             }
         });
 
-        mAdapter.setOnItemClickListenerRv(new OnItemClickListenerRv() {
+        mAdapter.setOnItemClickListenerRv(new OnItemClickListenerRv() { //点击单条提现布局回调
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(context,WithdrawsDetailActivity.class);
@@ -163,10 +163,10 @@ public class WithDrawsHistoryActivity extends BaseActivity {
         return R.layout.activity_with_draws_history;
     }
 
-    static class WithdrawHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+    static class WithdrawHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{ //押金体现历史适配器
         List<RecordsEntity> list;
-        private boolean isEmpty = false;
-        private boolean isLoadAll = false;
+        private boolean isEmpty = false; //是否为空
+        private boolean isLoadAll = false; //是否全部加载
         private OnItemClickListenerRv onItemClickListenerRv;
 
         public WithdrawHistoryAdapter(List<RecordsEntity> list) {
@@ -190,9 +190,9 @@ public class WithDrawsHistoryActivity extends BaseActivity {
             View view = null;
             switch (viewType) {
                 case ExampleConfig.VIEWHOLDER_NORMAL:
-                    return new HistoryViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_withdraw_record,parent,false));
+                    return new HistoryViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_withdraw_record,parent,false)); //提现单条数据布局
                 case ExampleConfig.VIEWHOLDER_FOOT:
-                    View viewFooter = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer_load_more, null);
+                    View viewFooter = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer_load_more, null); //正在加载布局
                     return new ViewHolderFoot(viewFooter);
             }
             return null;
@@ -215,13 +215,13 @@ public class WithDrawsHistoryActivity extends BaseActivity {
                 HistoryViewHolder viewHolderNormal = (HistoryViewHolder) holder;
                 viewHolderNormal.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v) { //点击提现单条数据布局
                         onItemClickListenerRv.onItemClick(v, position);
                     }
                 });
                 RecordsEntity recordsEntity = list.get(position);
-                viewHolderNormal.Time.setText(recordsEntity.getCreatedAt());
-                viewHolderNormal.Money.setText(String.format("%.2f",recordsEntity.getTransferAmount()));
+                viewHolderNormal.Time.setText(recordsEntity.getCreatedAt()); //提现时间
+                viewHolderNormal.Money.setText(String.format("%.2f",recordsEntity.getTransferAmount())); //提现金额
                 viewHolderNormal.TypeState.setText(recordsEntity.getTypeState());
             }
         }
@@ -241,23 +241,23 @@ public class WithDrawsHistoryActivity extends BaseActivity {
         }
     }
 
-    static class HistoryViewHolder extends RecyclerView.ViewHolder {
+    static class HistoryViewHolder extends RecyclerView.ViewHolder { //提现单条数据布局
         TextView Time,Money,TypeState;
         public HistoryViewHolder(View itemView) {
             super(itemView);
-            Time = (TextView) itemView.findViewById(R.id.time);
-            Money = (TextView) itemView.findViewById(R.id.money);
-            TypeState = (TextView) itemView.findViewById(R.id.type_state);
+            Time = (TextView) itemView.findViewById(R.id.time); //提现时间
+            Money = (TextView) itemView.findViewById(R.id.money); //提现金额
+            TypeState = (TextView) itemView.findViewById(R.id.type_state); //提现名称
         }
     }
 
-    static class ViewHolderFoot extends RecyclerView.ViewHolder {
+    static class ViewHolderFoot extends RecyclerView.ViewHolder { //正在加载布局
         public TextView tvLoadMore;
         public  RelativeLayout rlLoadMore;
 
         public ViewHolderFoot(View itemView) {
             super(itemView);
-            tvLoadMore = (TextView) itemView.findViewById(R.id.tv_load_more);
+            tvLoadMore = (TextView) itemView.findViewById(R.id.tv_load_more); //正在加载
             rlLoadMore = (RelativeLayout) itemView.findViewById(R.id.rl_load_more);
         }
     }

@@ -20,21 +20,24 @@ import com.ddinfo.flashman.constant.ExampleConfig;
 import butterknife.Bind;
 import butterknife.OnClick;
 
+/**
+ * 设置界面
+ */
 public class SettingActivity extends BaseActivity {
 
-    @Bind(R.id.tv_app_mes)
+    @Bind(R.id.tv_app_mes)      //关于猪行侠
     TextView tvAppMes;
-    @Bind(R.id.tv_checkout_new)
+    @Bind(R.id.tv_checkout_new) //检查新版本
     TextView tvCheckoutNew;
-    @Bind(R.id.tv_call_service)
+    @Bind(R.id.tv_call_service) //联系客服
     TextView tvCallService;
-    @Bind(R.id.tv_quit)
+    @Bind(R.id.tv_quit)         //退出登录
     TextView tvQuit;
     @Bind(R.id.activity_setting)
     LinearLayout activitySetting;
 
     private AlertDialog.Builder builder;
-    private AlertDialog alertDialog;
+    private AlertDialog alertDialog; //退出提示弹框
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,19 +89,19 @@ public class SettingActivity extends BaseActivity {
     @OnClick({R.id.perfectUserInfo,R.id.tv_app_mes, R.id.tv_checkout_new, R.id.tv_call_service, R.id.tv_quit})
     public void doClick(View view) {
         switch (view.getId()) {
-            case R.id.perfectUserInfo:
+            case R.id.perfectUserInfo: //完善个人信息
                 startActivity(PerfectUserInfoActivity.class);
                 break;
-            case R.id.tv_app_mes:
+            case R.id.tv_app_mes: //关于猪行侠
                 startActivity(AppMesActivity.class);
                 break;
-            case R.id.tv_checkout_new:
+            case R.id.tv_checkout_new: //检查新版本
                 ToastUtils.showShortToast("查看更新");
                 break;
-            case R.id.tv_call_service:
+            case R.id.tv_call_service: //联系客服
                 startActivity(CallServiceActivity.class);
                 break;
-            case R.id.tv_quit:
+            case R.id.tv_quit: //退出登录
                 MyApplication.getSPUtilsInstance().remove(ExampleConfig.TOKEN);
                 MyApplication.getSPUtilsInstance().remove(ExampleConfig.LOGIN_PHONE);
                 ExampleConfig.token = null;

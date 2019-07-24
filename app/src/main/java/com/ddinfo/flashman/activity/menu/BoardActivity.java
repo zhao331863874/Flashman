@@ -25,22 +25,25 @@ import butterknife.Bind;
 import retrofit2.Call;
 import retrofit2.Response;
 
+/**
+ * 下级配送员配送完成情况界面
+ */
 public class BoardActivity extends TranStatusBarActivity {
-    @Bind(R.id.tv_cur_income)
+    @Bind(R.id.tv_cur_income) //收益
     TextView tvCurIncome;
-    @Bind(R.id.tv_cur_income_text)
+    @Bind(R.id.tv_cur_income_text) //当月收益名称
     TextView tvCurIncomeText;
-    @Bind(R.id.tv_cur_all_count)
+    @Bind(R.id.tv_cur_all_count)   //当月配送单数
     TextView tvCurAllCount;
-    @Bind(R.id.tv_cur_all_count_text)
+    @Bind(R.id.tv_cur_all_count_text) //月份累计总笔数名称
     TextView tvCurAllCountText;
-    @Bind(R.id.tv_cur_all_money)
+    @Bind(R.id.tv_cur_all_money)      //月份累计总金额
     TextView tvCurAllMoney;
-    @Bind(R.id.tv_cur_all_money_text)
+    @Bind(R.id.tv_cur_all_money_text) //月份累计总金额名称
     TextView tvCurAllMoneyText;
-    @Bind(R.id.tv_month)
+    @Bind(R.id.tv_month)      //本月
     TextView tvMonth;
-    @Bind(R.id.ll_board_head)
+    @Bind(R.id.ll_board_head) //下级配送员配送完成界面抬头布局
     LinearLayout llBoardHead;
     @Bind(R.id.rcv_payment)
     RecyclerView rcvPayment;
@@ -138,7 +141,7 @@ public class BoardActivity extends TranStatusBarActivity {
 
         rcvPayment.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) { //滚动状态变化时回调
                 super.onScrollStateChanged(recyclerView, newState);
                 if (swipeSearchList.isRefreshing()) {
                     swipeSearchList.setRefreshing(false);
@@ -146,7 +149,7 @@ public class BoardActivity extends TranStatusBarActivity {
             }
 
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) { //滚动时回调
                 super.onScrolled(recyclerView, dx, dy);
                 showBoardHeadView();
                 llBoardHead.setVisibility(View.VISIBLE);
@@ -158,7 +161,7 @@ public class BoardActivity extends TranStatusBarActivity {
 
     private void showBoardHeadView() {
         llBoardHead.setVisibility(View.VISIBLE);
-        View stickyInfoView = rcvPayment.findChildViewUnder(llBoardHead.getMeasuredWidth() / 2, 10);
+        View stickyInfoView = rcvPayment.findChildViewUnder(llBoardHead.getMeasuredWidth() / 2, 10); //返回指定位置的childView
         if (stickyInfoView != null) {
             int groupIndex = ((BoardAdapter.ItemMessage) stickyInfoView.getTag()).getParentPosition();
             tvMonth.setText(mListData.get(groupIndex).getMonths());

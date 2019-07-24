@@ -30,8 +30,8 @@ public class PaymentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
     private Context context;
-    private boolean isEmpty = false;
-    private boolean isLoadAll = false;
+    private boolean isEmpty = false; //是否为空数据
+    private boolean isLoadAll = false; //是否加载完成
 
     private OnItemClickListenerRv onItemClickListenerRv;
     private OnPaySelClickListener onPaySelClickListener;
@@ -69,11 +69,11 @@ public class PaymentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         RecyclerView.ViewHolder holder = null;
         switch (viewType) {
             case ExampleConfig.VIEWHOLDER_NORMAL:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_payment, null);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_payment, null); //交货款单条数据布局
                 holder = new ViewHolderNormal(view);
                 break;
             case ExampleConfig.VIEWHOLDER_FOOT:
-                View viewFooter = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer_load_more, null);
+                View viewFooter = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer_load_more, null); //正在加载布局
                 holder = new ViewHolderFoot(viewFooter);
                 break;
         }
@@ -98,7 +98,7 @@ public class PaymentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             viewHolderNormal.itemView.setTag(position);
             viewHolderNormal.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) { //点击单条交货款项监听
                     if (onItemClickListenerRv != null) {
                         onItemClickListenerRv.onItemClick(v, position);
                     }
@@ -114,7 +114,7 @@ public class PaymentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             viewHolderNormal.tvPayId.setText(mListData.get(position).getNumberId());
             viewHolderNormal.tvPayAmount.setText("￥" + mListData.get(position).getOrderAmount());
-            if (!mListData.get(position).getChecked()) {
+            if (!mListData.get(position).getChecked()) { //如果选中当前交货款项
                 viewHolderNormal.ivPayState.setImageResource(R.mipmap.content_button_normal);
             } else {
                 viewHolderNormal.ivPayState.setImageResource(R.mipmap.content_button_pressed);
@@ -136,17 +136,17 @@ public class PaymentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
-    class ViewHolderNormal extends RecyclerView.ViewHolder {
+    class ViewHolderNormal extends RecyclerView.ViewHolder { //交货款单条数据布局
 
         @Bind(R.id.tv_pay_id)
         TextView tvPayId;
-        @Bind(R.id.tv_pay_one)
+        @Bind(R.id.tv_pay_one)  //支付状态
         TextView tvPayOne;
-        @Bind(R.id.tv_pay_two)
+        @Bind(R.id.tv_pay_two) //配送状态
         TextView tvPayTwo;
-        @Bind(R.id.tv_pay_amount)
+        @Bind(R.id.tv_pay_amount) //货款价格
         TextView tvPayAmount;
-        @Bind(R.id.iv_pay_state)
+        @Bind(R.id.iv_pay_state)  //选中图片
         ImageView ivPayState;
 
         public ViewHolderNormal(View itemView) {
@@ -155,7 +155,7 @@ public class PaymentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
-    class ViewHolderFoot extends RecyclerView.ViewHolder {
+    class ViewHolderFoot extends RecyclerView.ViewHolder { //正在加载布局
         @Bind(R.id.tv_load_more)
         TextView tvLoadMore;
         @Bind(R.id.rl_load_more)

@@ -16,16 +16,19 @@ import com.ddinfo.flashman.models.RecordsEntity;
 
 import butterknife.Bind;
 
+/**
+ * 提现明细布局
+ */
 public class WithdrawsDetailActivity extends BaseActivity {
-  @Bind(R.id.money)
+  @Bind(R.id.money) //出账金额
   TextView money;
-  @Bind(R.id.type_state)
+  @Bind(R.id.type_state) //交易类型
   TextView typeState;
-  @Bind(R.id.time)
+  @Bind(R.id.time)       //提现时间
   TextView time;
-  @Bind(R.id.number_id)
+  @Bind(R.id.number_id)  //运单号
   TextView numberId;
-  @Bind(R.id.trade_number_id)
+  @Bind(R.id.trade_number_id) //交易单号
   TextView tradeNumberId;
 
   RecordsEntity entity;
@@ -41,11 +44,11 @@ public class WithdrawsDetailActivity extends BaseActivity {
   }
 
   private void initViews(RecordsEntity entity) {
-    money.setText(String.format("%.2f",Math.abs(entity.getTransferAmount())));
-    typeState.setText(entity.getTypeState());
-    time.setText(entity.getCreatedAt());
-    numberId.setText(entity.getNumberId());
-    tradeNumberId.setText(entity.getTradeNumberId());
+    money.setText(String.format("%.2f",Math.abs(entity.getTransferAmount()))); //出账金额
+    typeState.setText(entity.getTypeState()); //交易类型
+    time.setText(entity.getCreatedAt());      //提现时间
+    numberId.setText(entity.getNumberId());   //运单号
+    tradeNumberId.setText(entity.getTradeNumberId()); //交易单号
   }
 
   @Override

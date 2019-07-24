@@ -35,6 +35,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * 交货款单界面
+ */
 public class PaymentActivity extends BaseActivity {
 
     @Bind(R.id.rcv_payment)
@@ -43,38 +46,38 @@ public class PaymentActivity extends BaseActivity {
     MaterialRefreshLayout swipeSearchList;
     @Bind(R.id.activity_payment)
     LinearLayout activityPayment;
-    @Bind(R.id.left_button)
+    @Bind(R.id.left_button)   //左返回按钮
     ImageButton leftButton;
-    @Bind(R.id.header_name)
+    @Bind(R.id.header_name)   //标题抬头
     TextView headerName;
     @Bind(R.id.right_button)
     ImageButton rightButton;
     @Bind(R.id.rightBtn)
     Button rightBtn;
-    @Bind(R.id.text_sel_order)
+    @Bind(R.id.text_sel_order)//已选单数名称
     TextView textSelOrder;
-    @Bind(R.id.tv_sel_number)
+    @Bind(R.id.tv_sel_number) //已选单数
     TextView tvSelNumber;
-    @Bind(R.id.tv_sel_amount)
+    @Bind(R.id.tv_sel_amount) //交货款金额
     TextView tvSelAmount;
-    @Bind(R.id.tv_enter)
+    @Bind(R.id.tv_enter)      //交货款按钮
     TextView tvEnter;
-    @Bind(R.id.tv_all_sel)
+    @Bind(R.id.tv_all_sel)    //全选
     TextView tvAllSel;
-    @Bind(R.id.tv_adverse_sel)
+    @Bind(R.id.tv_adverse_sel)//反选
     TextView tvAdverseSel;
 
 
     private LinearLayoutManager layoutManager;
     private PaymentAdapter mAdapter;
-    private int lastVisibleItem = 0;
+    private int lastVisibleItem = 0; //最后一个可见view的位置
     private boolean isLoadMore = false;
     private int offset;
-    int selNum = 0;
-    double amount = 0;
+    int selNum = 0;    //已选单数
+    double amount = 0; //交货款金额
     private List<PaymentEntity> mListData = new ArrayList<>();
     private List<PaymentEntity> mListDataNew = new ArrayList<>();
-    private ArrayList<Integer> deliveryOrderIds = new ArrayList<>();
+    private ArrayList<Integer> deliveryOrderIds = new ArrayList<>(); //所选中交货款项
 
 
     @Override
@@ -136,7 +139,7 @@ public class PaymentActivity extends BaseActivity {
     @OnClick({R.id.tv_enter,R.id.tv_all_sel,R.id.tv_adverse_sel})
     public void doClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_enter:
+            case R.id.tv_enter: //点击交货款
                 if(selNum == 0){
                     ToastUtils.showShortToast("请选择所交货款");
                 }else{
@@ -197,8 +200,8 @@ public class PaymentActivity extends BaseActivity {
 
         mAdapter.setItemClickListener(new OnItemClickListenerRv() {
             @Override
-            public void onItemClick(View view, int position) {
-                if (mListData.get(position).getChecked()) {
+            public void onItemClick(View view, int position) { //点击单条交货款项回调
+                if (mListData.get(position).getChecked()) { //如果已选中当条交货款则设置未选中
                     mListData.get(position).setChecked(false);
                 } else {
                     mListData.get(position).setChecked(true);
@@ -210,7 +213,7 @@ public class PaymentActivity extends BaseActivity {
 
         rcvPayment.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) { //滚动状态变化时回调
                 super.onScrollStateChanged(recyclerView, newState);
                 if (swipeSearchList.isRefreshing()) {
                     swipeSearchList.setRefreshing(false);
@@ -227,14 +230,14 @@ public class PaymentActivity extends BaseActivity {
             }
 
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) { //滚动时回调
                 super.onScrolled(recyclerView, dx, dy);
-                lastVisibleItem = layoutManager.findLastVisibleItemPosition();
+                lastVisibleItem = layoutManager.findLastVisibleItemPosition();  //获取最后一个可见view的位置
             }
         });
     }
 
-    private void updataSelItem(){
+    private void updataSelItem(){ //更新所选数量和总金额
         selNum = 0;
         amount = 0.0;
         deliveryOrderIds.clear();

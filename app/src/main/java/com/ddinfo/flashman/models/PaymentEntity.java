@@ -3,6 +3,7 @@ package com.ddinfo.flashman.models;
 /**
  * Created by fuh on 2017/2/8.
  * Email：unableApe@gmail.com
+ * 交货款项实体类
  */
 
 public class PaymentEntity {
@@ -16,10 +17,10 @@ public class PaymentEntity {
 
     private int DeliveryOrderId;
     private int id;
-    private String numberId;
-    private String orderAmount;
+    private String numberId;    //交货款ID
+    private String orderAmount; //货款价格
     private String state;
-    private boolean isChecked = false;
+    private boolean isChecked = false; //是否选中当前交货款项
 
     public boolean getChecked() {
         return isChecked;

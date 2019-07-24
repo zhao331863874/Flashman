@@ -2,6 +2,7 @@ package com.ddinfo.flashman.models;
 
 /**
  * Created by Gavin on 2017/8/19.
+ * 冻结明细实体类
  */
 
 public class FrozenDetailsEntity {
@@ -14,13 +15,13 @@ public class FrozenDetailsEntity {
      * updatedAt : 2017-01-09 17:40:45
      */
 
-    private String orderAmount;
-    private String finishState;
+    private String orderAmount; //冻结金额
+    private String finishState; //订单完成状态
     private int id;
-    private String numberId;
-    private String state;
+    private String numberId;    //订单ID
+    private String state;       //冻结状态
     private String updatedAt;
-    private String receiveTime;
+    private String receiveTime; //接收时间
 
     public String getReceiveTime() {
         return receiveTime;

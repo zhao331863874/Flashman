@@ -23,14 +23,15 @@ import butterknife.ButterKnife;
 /**
  * Created by Gavin on 2017/8/11.
  * 暂不显示头部数据 后台没有返回
+ * 冻结明细适配器
  */
 
 public class FrozenDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
   private Context context;
   private List<FrozenDetailsEntity> mListData = new ArrayList<>();
-  private boolean isEmpty = false;
-  private boolean isLoadAll = false;
+  private boolean isEmpty = false; //是否为空
+  private boolean isLoadAll = false; //是否加载全部
 
   public FrozenDetailAdapter(Context context) {
     this.context = context;
@@ -60,11 +61,11 @@ public class FrozenDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         holder.itemView.setVisibility(View.GONE);
         break;
       case ExampleConfig.VIEWHOLDER_NORMAL:
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_frozen_normal, null);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_frozen_normal, null); //加载冻结明细布局
         holder = new ViewHolderNormal(view);
         break;
       case ExampleConfig.VIEWHOLDER_FOOT:
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer_load_more, null);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer_load_more, null); //正在加载布局
         holder = new ViewHolderFoot(view);
         break;
     }
@@ -81,13 +82,13 @@ public class FrozenDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         break;
       case ExampleConfig.VIEWHOLDER_NORMAL:
         ViewHolderNormal viewHolderNormal = (ViewHolderNormal) holder;
-        viewHolderNormal.tvOrderId.setText(mListData.get(position).getNumberId());
-        viewHolderNormal.tvOrderPrice.setText(mListData.get(position).getOrderAmount());
+        viewHolderNormal.tvOrderId.setText(mListData.get(position).getNumberId()); //订单ID
+        viewHolderNormal.tvOrderPrice.setText(mListData.get(position).getOrderAmount());   //冻结金额
         viewHolderNormal.tvOrderPriceTop.setText("");
-        viewHolderNormal.tvOrderState.setText(mListData.get(position).getState());
+        viewHolderNormal.tvOrderState.setText(mListData.get(position).getState());         //冻结状态
         viewHolderNormal.tvOrderStateTop.setText(mListData.get(position).getState());
-        viewHolderNormal.tvOrderStateTwo.setText(mListData.get(position).getFinishState());
-        viewHolderNormal.tvOrderTime.setText(mListData.get(position).getReceiveTime());
+        viewHolderNormal.tvOrderStateTwo.setText(mListData.get(position).getFinishState());//订单完成状态
+        viewHolderNormal.tvOrderTime.setText(mListData.get(position).getReceiveTime());    //接收时间
 
         break;
       case ExampleConfig.VIEWHOLDER_FOOT:
@@ -151,16 +152,16 @@ public class FrozenDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
   }
 
-  static class ViewHolderNormal extends RecyclerView.ViewHolder {
+  static class ViewHolderNormal extends RecyclerView.ViewHolder { //冻结明细布局
 
-    @Bind(R.id.tv_order_state_top) TextView tvOrderStateTop;
+    @Bind(R.id.tv_order_state_top) TextView tvOrderStateTop; //冻结状态
     @Bind(R.id.tv_order_price_top) TextView tvOrderPriceTop;
-    @Bind(R.id.tv_order_id) TextView tvOrderId;
-    @Bind(R.id.tv_order_state) TextView tvOrderState;
-    @Bind(R.id.tv_order_state_two) TextView tvOrderStateTwo;
-    @Bind(R.id.tv_order_price) TextView tvOrderPrice;
+    @Bind(R.id.tv_order_id) TextView tvOrderId;       //订单ID
+    @Bind(R.id.tv_order_state) TextView tvOrderState; //状态
+    @Bind(R.id.tv_order_state_two) TextView tvOrderStateTwo; //订单完成状态
+    @Bind(R.id.tv_order_price) TextView tvOrderPrice; //冻结金额
     @Bind(R.id.ll_center) LinearLayout llCenter;
-    @Bind(R.id.tv_order_time) TextView tvOrderTime;
+    @Bind(R.id.tv_order_time) TextView tvOrderTime;   //时间
 
     public ViewHolderNormal(View itemView) {
       super(itemView);
@@ -168,7 +169,7 @@ public class FrozenDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
   }
 
-  static class ViewHolderFoot extends RecyclerView.ViewHolder {
+  static class ViewHolderFoot extends RecyclerView.ViewHolder { //正在加载布局
 
     @Bind(R.id.tv_load_more) TextView tvLoadMore;
     @Bind(R.id.rl_load_more) RelativeLayout rlLoadMore;

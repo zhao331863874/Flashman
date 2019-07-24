@@ -25,6 +25,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * 冻结明细界面
+ */
 public class FrozenDetailActivity extends BaseActivity {
 
     @Bind(R.id.recycle_view)
@@ -38,7 +41,7 @@ public class FrozenDetailActivity extends BaseActivity {
 
     private boolean isLoadMore = false;
     private LinearLayoutManager layoutManager;
-    private FrozenDetailAdapter mAdapter;
+    private FrozenDetailAdapter mAdapter; //冻结明细适配器
 
     private List<FrozenDetailsEntity> mListData = new ArrayList<>();
     private List<FrozenDetailsEntity> mListDataNew = new ArrayList<>();
@@ -73,13 +76,13 @@ public class FrozenDetailActivity extends BaseActivity {
     private void initData() {
         Call<BaseResponseEntity<ArrayList<FrozenDetailsEntity>>> callFrozen;
         if(deliveryId == -1){
-            callFrozen = webService.getFrozenDetail();
+            callFrozen = webService.getFrozenDetail(); //冻结明细查询请求
         }else{
-            callFrozen = webService.getFrozenDetail(deliveryId);
+            callFrozen = webService.getFrozenDetail(deliveryId); //下级配送员冻结明细查询请求
         }
         callFrozen.enqueue(callbackFrozen);
     }
-
+    //冻结明细查询回调
     Callback<BaseResponseEntity<ArrayList<FrozenDetailsEntity>>> callbackFrozen = new SimpleCallBack<BaseResponseEntity<ArrayList<FrozenDetailsEntity>>>(context) {
         @Override
         public void onSuccess(Call<BaseResponseEntity<ArrayList<FrozenDetailsEntity>>> call,
@@ -98,7 +101,7 @@ public class FrozenDetailActivity extends BaseActivity {
             if (swipeSearchList.isRefreshing()) {
                 swipeSearchList.setRefreshing(false);
             }
-            proDialogHelps.removeProDialog();
+            proDialogHelps.removeProDialog(); //移除加载框
         }
     };
 

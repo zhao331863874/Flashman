@@ -28,6 +28,9 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
+/**
+ * 我的钱包界面
+ */
 public class WalletActivity extends BaseActivity {
 
     @Bind(R.id.left_button) //左返回按钮

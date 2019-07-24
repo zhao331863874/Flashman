@@ -14,15 +14,18 @@ import com.ddinfo.flashman.activity.tab_frame.MainActivity;
 import butterknife.Bind;
 
 
+/**
+ * 关于猪行侠界面
+ */
 public class AppMesActivity extends BaseActivity {
 
-    @Bind(R.id.iv_app_logo)
+    @Bind(R.id.iv_app_logo) //软件Logo
     ImageView ivAppLogo;
-    @Bind(R.id.tv_app_mes)
+    @Bind(R.id.tv_app_mes)  //软件名称
     TextView tvAppMes;
     @Bind(R.id.activity_app_mes)
     RelativeLayout activityAppMes;
-    private String appVersionCode;
+    private String appVersionCode; //软件版本号
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

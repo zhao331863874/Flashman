@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
 /**
  * Created by fuh on 2017/5/10.
  * Email：unableApe@gmail.com
+ * 交货款单列表适配器
  */
 
 public class PaymentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -29,8 +30,8 @@ public class PaymentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private List<ItemMessage> mListMessage = new ArrayList<>();
     private OnItemClickListener onItemClickListenerRv;
 
-    private boolean isEmpty = false;
-    private boolean isLoadAll = false;
+    private boolean isEmpty = false; //是否为空数据
+    private boolean isLoadAll = false; //是否加载全部
 
     public void setOnItemClickListenerRv(OnItemClickListener onItemClickListenerRv) {
         this.onItemClickListenerRv = onItemClickListenerRv;
@@ -62,21 +63,21 @@ public class PaymentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         RecyclerView.ViewHolder holder = null;
         switch (viewType) {
             case ExampleConfig.VIEWHOLDER_HEAD:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_payment_list_head, parent, false);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_payment_list_head, parent, false); //头部布局
                 holder = new ViewHolderHead(view);
                 break;
             case ExampleConfig.VIEWHOLDER_NORMAL:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_payment_list_normal, parent, false);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_payment_list_normal, parent, false); //交货款单布局
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v) { //交货款单布局监听
                         onItemClickListenerRv.onItemClick(v, (Integer) v.getTag());
                     }
                 });
                 holder = new ViewHolderNormal(view);
                 break;
             case ExampleConfig.VIEWHOLDER_FOOT:
-                View viewFooter = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer_load_more, null);
+                View viewFooter = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer_load_more, null); //正在加载布局
                 holder = new ViewHolderFoot(viewFooter);
                 break;
         }
@@ -143,14 +144,14 @@ public class PaymentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         double headSum = 0;
         if (mListData.size() == 1) {
             ItemMessage itemMessageHead = new ItemMessage();
-            itemMessageHead.setViewType(ExampleConfig.VIEWHOLDER_HEAD);
-            itemMessageHead.setSum(mListData.get(0).getSum());
-            itemMessageHead.setDate(mListData.get(0).getFmt());
+            itemMessageHead.setViewType(ExampleConfig.VIEWHOLDER_HEAD); //设置View状态为头部布局
+            itemMessageHead.setSum(mListData.get(0).getSum());  //金额
+            itemMessageHead.setDate(mListData.get(0).getFmt()); //日期
             listMessage.add(itemMessageHead);
 
             ItemMessage itemMessageNormal = new ItemMessage();
             itemMessageNormal.setViewType(ExampleConfig.VIEWHOLDER_NORMAL);
-            itemMessageNormal.setChildPosition(0);
+            itemMessageNormal.setChildPosition(0); //设置位置索引
             listMessage.add(itemMessageNormal);
             return listMessage;
         } else {
@@ -224,9 +225,9 @@ public class PaymentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public static class ItemMessage {
         private int viewType;
         private int parentPosition = -1;
-        private int childPosition = -1;
-        private String date;
-        private double sum;
+        private int childPosition = -1; //位置索引
+        private String date; //日期
+        private double sum;  //金额
 
         public String getDate() {
             return date;
@@ -269,10 +270,10 @@ public class PaymentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
-    static class ViewHolderHead extends RecyclerView.ViewHolder {
-        @Bind(R.id.tv_date)
+    static class ViewHolderHead extends RecyclerView.ViewHolder { //交货款单头部布局
+        @Bind(R.id.tv_date)  //日期
         TextView tvDate;
-        @Bind(R.id.tv_money)
+        @Bind(R.id.tv_money)//金额
         TextView tvMoney;
 
         public ViewHolderHead(View itemView) {
@@ -281,12 +282,12 @@ public class PaymentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
-    static class ViewHolderNormal extends RecyclerView.ViewHolder {
-        @Bind(R.id.tv_id)
+    static class ViewHolderNormal extends RecyclerView.ViewHolder { //交货款单布局
+        @Bind(R.id.tv_id)    //交货款单号
         TextView tvId;
-        @Bind(R.id.tv_date)
+        @Bind(R.id.tv_date)  //时间
         TextView tvDate;
-        @Bind(R.id.tv_money)
+        @Bind(R.id.tv_money) //金额
         TextView tvMoney;
 
         public ViewHolderNormal(View itemView) {
@@ -295,8 +296,8 @@ public class PaymentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
-    static class ViewHolderFoot extends RecyclerView.ViewHolder {
-        @Bind(R.id.tv_load_more)
+    static class ViewHolderFoot extends RecyclerView.ViewHolder { //正在加载布局
+        @Bind(R.id.tv_load_more) //正在加载
         TextView tvLoadMore;
         @Bind(R.id.rl_load_more)
         RelativeLayout rlLoadMore;

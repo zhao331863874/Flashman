@@ -99,10 +99,10 @@ public class ExampleConfig {
   public static final String ACTIVITY_TYPE = "ACTIVITY_TYPE";
   public static final String ACTIVITY_FLAG = "ACTIVITY_FLAG";
 
-  public static final String TELEPHONE = "TELEPHONE";
-  public static String telephone = "";
-  public static String email = "";
-  public static final String EMAIL = "EMAIL";
+  public static final String TELEPHONE = "TELEPHONE"; //客服电话
+  public static String telephone = ""; //电话
+  public static String email = "";     //邮箱
+  public static final String EMAIL = "EMAIL"; //客服邮箱
   public static final String DELIVERY_ID = "DELIVERY_ID";
   public static final String NUMBER_ID = "NUMBER_ID";
   public static final String ORDER_ID = "ORDER_ID";

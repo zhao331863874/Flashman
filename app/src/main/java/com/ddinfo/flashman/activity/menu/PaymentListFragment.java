@@ -39,16 +39,16 @@ public class PaymentListFragment extends BaseFragment {
     @Bind(R.id.recycle_view)
     RecyclerView recycleView;
 
-    private int fragIndex;
+    private int fragIndex; //位置索引 0：待支付 1：支付失败 2：支付异常 3：支付成功
 
     private LinearLayoutManager layoutManager;
-    private boolean isPrepared = false;
-    private PaymentListAdapter mAdapter;
+    private boolean isPrepared = false;  //是否准备好(View创建成功)
+    private PaymentListAdapter mAdapter; //交货款单列表适配器
     private List<PaymentListEntity> mListData = new ArrayList<>();
     private List<PaymentListEntity> mListDataNew = new ArrayList<>();
 
-    private int lastVisibleItem = 0;
-    private boolean isLoadMore = false;
+    private int lastVisibleItem = 0;    //最后一个可见view的位置
+    private boolean isLoadMore = false; //是否加载中
     private int offset;
     private int limit = 20;
 
@@ -58,16 +58,20 @@ public class PaymentListFragment extends BaseFragment {
     public PaymentListFragment() {
     }
 
+    /**
+     * @param position 选项卡索引 0：待支付 1：支付失败 2：支付异常 3：支付成功
+     * @return
+     */
     public static PaymentListFragment newInstance(int position) {
         mFragment = new PaymentListFragment();
         Bundle args = new Bundle();
         args.putInt(KEY_INDEX, position);
-        mFragment.setArguments(args);
+        mFragment.setArguments(args); //传递参数
         return mFragment;
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) { //当onCreateView的View创建成功
         isPrepared = true;
         super.onViewCreated(view, savedInstanceState);
     }
@@ -97,14 +101,14 @@ public class PaymentListFragment extends BaseFragment {
     }
 
     @Override
-    protected void initDatas() {
+    protected void initDatas() { //初始化数据
         if (!isPrepared) {
             return;
         }
         getData(fragIndex);
     }
 
-    private void getData(final int index){
+    private void getData(final int index){ //获取数据
         switch (index){
             case 1:
                 type = -99;
@@ -161,13 +165,13 @@ public class PaymentListFragment extends BaseFragment {
 
         recycleView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) { //用于监听ListView滑动状态的变化
                 super.onScrollStateChanged(recyclerView, newState);
                 if (swipeSearchList.isRefreshing()) {
                     swipeSearchList.setRefreshing(false);
                 }
                 if (newState == RecyclerView.SCROLL_STATE_IDLE
-                        && lastVisibleItem == mAdapter.getItemCount() - 1) {
+                        && lastVisibleItem == mAdapter.getItemCount() - 1) { //SCROLL_STATE_IDLE停止滑动状态
                     if (mListDataNew.size() == 15 && !isLoadMore) {
                         isLoadMore = true;
                         //根据分类获取到商品列表
@@ -177,15 +181,15 @@ public class PaymentListFragment extends BaseFragment {
             }
 
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) { //用于监听ListView屏幕滚动
                 super.onScrolled(recyclerView, dx, dy);
-                lastVisibleItem = layoutManager.findLastVisibleItemPosition();
+                lastVisibleItem = layoutManager.findLastVisibleItemPosition();  //获取最后一个可见view的位置
             }
         });
 
         mAdapter.setOnItemClickListenerRv(new PaymentListAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, int position) {
+            public void onItemClick(View v, int position) { //点击交货款单布局回调
                 Intent intent = new Intent(context,PaymentDetailActivity.class);
                 intent.putExtra("index",fragIndex);
                 intent.putExtra("id",mListData.get(position).getId());

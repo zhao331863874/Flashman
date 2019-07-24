@@ -105,8 +105,8 @@ public class PayOrderActivity extends BaseActivity {
     private Dialog popUpDialog;
     private Timer payTimer;
 
-    private double topUpMoney; //充值金额
-    private int deliveryOrderIds;
+    private double topUpMoney;    //充值金额
+    private int deliveryOrderIds; //交货订单ID
     private int payWayCur = -1;
     private long lastTime;
 
@@ -241,7 +241,7 @@ public class PayOrderActivity extends BaseActivity {
         }
     }
 
-    private void startRegularTimeQueryPayOrderState(final String payOrderNo) {
+    private void startRegularTimeQueryPayOrderState(final String payOrderNo) { //轮循查询付款状态
         if(TextUtils.isEmpty(payOrderNo)) return;
 
         if(payTimer!=null) payTimer.cancel();
@@ -250,7 +250,7 @@ public class PayOrderActivity extends BaseActivity {
             @Override
             public void run() {
                 Call<BaseResponseEntity<PayOrderResult>> callPayStatus =
-                        webService.checkBatchPayOrderStatus(payOrderNo);
+                        webService.checkBatchPayOrderStatus(payOrderNo); //查看交货款订单状态
                 callPayStatus.enqueue(
                         new SimpleCallBack<BaseResponseEntity<PayOrderResult>>(context) {
                             @Override
@@ -320,7 +320,7 @@ public class PayOrderActivity extends BaseActivity {
                         switch (payType) {
                             case payWayAli:
                                 if (!TextUtils.isEmpty(alipayResponse.getCodeUrl())) {
-                                    AlipayAPI.alipay(PayOrderActivity.this, alipayResponse);   //ZYZ标签
+                                    AlipayAPI.alipay(PayOrderActivity.this, alipayResponse);
                                 }
                                 break;
                             case payWayWx:
@@ -357,7 +357,7 @@ public class PayOrderActivity extends BaseActivity {
                     PayOrderResponseEntity alipayResponse = response.body().getData();
                     proDialogHelps.removeProDialog();
                     if (alipayResponse != null) {
-                        final String codeUrl = alipayResponse.getCodeUrl();
+                        final String codeUrl = alipayResponse.getCodeUrl(); //代付地址
 
                         String tradeRecordNo = alipayResponse.tradeRecordNo;
                         trackPayStateRecord(tradeRecordNo);
@@ -394,14 +394,14 @@ public class PayOrderActivity extends BaseActivity {
         }
     }
 
-    private void trackPayStateRecord(String payOrderId){
+    private void trackPayStateRecord(String payOrderId){ //跟踪付款状态记录
         if(TextUtils.isEmpty(payOrderId)) return;
 
         PayOrderStateRecord record=new PayOrderStateRecord(payOrderId);
         MyApplication.getSPUtilsInstance().putString(TRACK_PAY_ORDER_RECORD+'_'+deliveryOrderIds,new Gson().toJson(record));
     }
 
-    private void closePayStateRecord(){
+    private void closePayStateRecord(){ //关闭付款状态记录
         String recordStr=MyApplication.getSPUtilsInstance().getString(TRACK_PAY_ORDER_RECORD+'_'+deliveryOrderIds);
         if(!TextUtils.isEmpty(recordStr)){
             PayOrderStateRecord record = new Gson().fromJson(recordStr,PayOrderStateRecord.class);
@@ -411,7 +411,7 @@ public class PayOrderActivity extends BaseActivity {
         }
     }
 
-    private void resumeTrackOrderState(){
+    private void resumeTrackOrderState(){ //恢复确认订单状态
         String recordStr=MyApplication.getSPUtilsInstance().getString(TRACK_PAY_ORDER_RECORD+'_'+deliveryOrderIds);
         if(!TextUtils.isEmpty(recordStr)){
             PayOrderStateRecord record = new Gson().fromJson(recordStr,PayOrderStateRecord.class);
@@ -433,7 +433,7 @@ public class PayOrderActivity extends BaseActivity {
         return baos.toByteArray();
     }
 
-    public void weixinShare(String codeUrl, double money) {
+    public void weixinShare(String codeUrl, double money) { //微信邀请
         if (TextUtils.isEmpty(codeUrl)) {
             Toast.makeText(context, "代付地址为空", Toast.LENGTH_SHORT).show();
         }
@@ -473,7 +473,7 @@ public class PayOrderActivity extends BaseActivity {
         }
     }
 
-    public void alipayShare(String codeUrl, double money) {
+    public void alipayShare(String codeUrl, double money) { //支付宝邀请
         if (TextUtils.isEmpty(codeUrl)) {
             Toast.makeText(context, "代付地址为空", Toast.LENGTH_SHORT).show();
         }
@@ -497,15 +497,21 @@ public class PayOrderActivity extends BaseActivity {
         api.sendReq(webReq);
     }
 
+    /**
+     * @param title 支付方式
+     * @param urlCode 二维码地址
+     * @param enableShare 邀好友支付开关
+     * @param call
+     */
     private void initQrPopwindow(String title, String urlCode,boolean enableShare, final Runnable call) {
         try {
             popUpDialog = new Dialog(activity);
             View contentView = getLayoutInflater().inflate(R.layout.pop_pay_weijin_qrcode,
                     (ViewGroup) activity.getWindow().getDecorView(), false);
-            ImageView ivQrCode = (ImageView) contentView.findViewById(R.id.iv_qr_code);
-            TextView tvTtile = (TextView) contentView.findViewById(R.id.tv_title);
+            ImageView ivQrCode = (ImageView) contentView.findViewById(R.id.iv_qr_code); //二维码图片
+            TextView tvTtile = (TextView) contentView.findViewById(R.id.tv_title);      //支付方式标题
             tvTtile.setText(title);
-            View btnSend = contentView.findViewById(R.id.tv_send);
+            View btnSend = contentView.findViewById(R.id.tv_send); //邀好友代付
             if(urlCode!=null){
                 Bitmap www = QRBitMapUtil.createQRCode(urlCode, SizeUtils.dp2px(300));
                 ivQrCode.setImageBitmap(www);
@@ -538,7 +544,7 @@ public class PayOrderActivity extends BaseActivity {
             this.tradeRecordNo=tradeRecordNo;
             isOpen=true;
         }
-        public String tradeRecordNo;
-        public boolean isOpen;
+        public String tradeRecordNo; //交货款订单
+        public boolean isOpen;       //付款状态记录开关
     }
 }

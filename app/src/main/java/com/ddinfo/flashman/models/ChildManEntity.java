@@ -14,12 +14,12 @@ public class ChildManEntity {
      * usable : 1
      */
 
-    private String creditAmount;
+    private String creditAmount;    //授信额度
     private int deliveryManId;
-    private String deliveryManName;
-    private String frozenAmount;
-    private String phone;
-    private String usable;
+    private String deliveryManName; //下级配送员名称
+    private String frozenAmount;    //冻结金额
+    private String phone;           //下级配送员电话
+    private String usable;          //可接货额度
 
     public String getCreditAmount() {
         return creditAmount;

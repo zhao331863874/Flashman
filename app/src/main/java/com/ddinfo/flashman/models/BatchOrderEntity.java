@@ -6,7 +6,7 @@ package com.ddinfo.flashman.models;
  */
 
 public class BatchOrderEntity {
-    private int id;
+    private int id; //交货款ID？
 
     public int getId() {
         return id;

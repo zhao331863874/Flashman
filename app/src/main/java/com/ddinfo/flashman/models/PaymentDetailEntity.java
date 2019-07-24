@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * Created by fuh on 2017/5/12.
  * Email：unableApe@gmail.com
+ * 交货款单详情实体类
  */
 
 public class PaymentDetailEntity {
@@ -42,11 +43,11 @@ public class PaymentDetailEntity {
          * tradeRecordNo : 1
          */
 
-        private String batchId;
+        private String batchId; //交货款单号
         private int id;
-        private String state;
-        private double sum;
-        private String time;
+        private String state;   //交货款状态
+        private double sum;     //交货款金额
+        private String time;    //创建时间
         private String tradeRecordNo;
         private String modifyTime;
 

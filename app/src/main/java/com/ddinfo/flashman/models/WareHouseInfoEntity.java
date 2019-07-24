@@ -3,6 +3,7 @@ package com.ddinfo.flashman.models;
 /**
  * Created by fuh on 2017/2/8.
  * Email：unableApe@gmail.com
+ * 仓库信息实体类
  */
 
 public class WareHouseInfoEntity {

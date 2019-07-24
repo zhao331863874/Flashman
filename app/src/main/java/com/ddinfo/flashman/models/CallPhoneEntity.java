@@ -6,8 +6,8 @@ package com.ddinfo.flashman.models;
  */
 
 public class CallPhoneEntity {
-    private String telephone;
-    private String email;
+    private String telephone; //客服电话
+    private String email;     //客服邮箱
 
     public CallPhoneEntity(String telephone) {
         this.telephone = telephone;

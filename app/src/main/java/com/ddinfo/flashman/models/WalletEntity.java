@@ -17,7 +17,7 @@ public class WalletEntity implements Serializable {
     private double frozenAmount; //冻结额度
     private double creditAmount; //授信额度
     private double usable;       //可接货额度
-    private String deliveryManId;
+    private String deliveryManId;//送货员ID
 
     public String getDeliveryManId() {
         return deliveryManId;

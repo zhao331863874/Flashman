@@ -64,10 +64,10 @@ public class SupervisingJuniorActivity extends BaseActivity {
     private WalletEntity data;
     private boolean isLoadMore = false;
     private LinearLayoutManager layoutManager;
-    private SupervinsingJuniorAdapter mAdapter;
+    private SupervinsingJuniorAdapter mAdapter; //下级配送员适配器
 
     private List<ChildManEntity> mListData = new ArrayList<>();
-    private PopupWindow popupWindow;
+    private PopupWindow popupWindow; //任意视图的弹窗
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +85,7 @@ public class SupervisingJuniorActivity extends BaseActivity {
 
     private ImageView imageView;
 
-    private void initQrPopwindow(String urlCode) {
+    private void initQrPopwindow(String urlCode) { //初始化我的二维码弹框
         LinearLayout layout = new LinearLayout(context);
         layout.setBackgroundColor(ContextCompat.getColor(context,R.color.white));
         layout.setLayoutParams(new RecyclerView.LayoutParams(SizeUtils.dp2px(300), SizeUtils.dp2px(300)));
@@ -162,7 +162,7 @@ public class SupervisingJuniorActivity extends BaseActivity {
     private void initListener() {
         mAdapter.setOnJuniorMenuClickListener(new SupervinsingJuniorAdapter.OnJuniorMenuClickListener() {
             @Override
-            public void onQRcodeClick(View view, String urlCode) {
+            public void onQRcodeClick(View view, String urlCode) { //点击我的二维码回调
                 try {
                     Bitmap www = QRBitMapUtil.createQRCode(urlCode, SizeUtils.dp2px(300));
                     imageView.setImageBitmap(www);
@@ -174,19 +174,19 @@ public class SupervisingJuniorActivity extends BaseActivity {
             }
 
             @Override
-            public void onFrozenClick(View view, int position) {
+            public void onFrozenClick(View view, int position) { //点击冻结明细回调
                 Bundle bundle = new Bundle();
                 bundle.putInt("deliveryId",mListData.get(position).getDeliveryManId());
                 startActivity(FrozenDetailActivity.class,bundle);
             }
 
             @Override
-            public void onLeftMenuClick(View view, int position) {
+            public void onLeftMenuClick(View view, int position) { //点击授信监听回调
                 showLeftMenuDialog(position);
             }
 
             @Override
-            public void onRightMenuClick(View view, int position) {
+            public void onRightMenuClick(View view, int position) { //点击配送完成情况回调
                 Bundle bundle = new Bundle();
                 bundle.putInt("deliveryId",mListData.get(position).getDeliveryManId());
                 startActivity(BoardActivity.class,bundle);
@@ -211,7 +211,7 @@ public class SupervisingJuniorActivity extends BaseActivity {
         LinearLayout layout = new LinearLayout(context);
         layout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         final EditText editText = new EditText(context);
-        editText.setHint("修改为：");
+        editText.setHint("修改为："); //输入提示
         editText.setInputType(InputType.TYPE_CLASS_NUMBER);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.leftMargin = SizeUtils.dp2px(20);
